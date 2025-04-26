@@ -1,0 +1,23 @@
+"use server";
+
+import { db } from "@/database";
+import { usersTable } from "@/database/schema/users";
+
+export default async function registerUser(
+  emailInput: string,
+  passwordInput: string,
+  contactNumberInput: number
+) {
+  try {
+    await db.insert(usersTable).values({
+      email: emailInput,
+      password: passwordInput,
+      contact_number: contactNumberInput,
+      user_type: "customer",
+    });
+
+    console.log("User has succesfully been inserted into the database!");
+  } catch (err) {
+    console.error("Error inserting values into the database: ", err);
+  }
+}

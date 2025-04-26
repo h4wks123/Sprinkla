@@ -2,32 +2,27 @@
 
 import React, { useRef } from "react";
 
-import { createUsers } from "@/database/queries/users/createUsers";
+import registerUser from "@/app/actions/users/createUsers";
 
 const RegisterForm = () => {
   let emailInput = useRef<HTMLInputElement>(null);
   let passwordInput = useRef<HTMLInputElement>(null);
   let contactNumberInput = useRef<HTMLInputElement>(null);
 
-  async function registerUser() {
+  function submitRegisterForm() {
     if (!emailInput || !passwordInput || !contactNumberInput) {
       throw new Error("Inputs cannot be empty");
+    } else {
+      registerUser(
+        emailInput.current!.value,
+        passwordInput.current!.value,
+        Number(contactNumberInput.current!.value)
+      );
     }
 
-    const email = emailInput.current!.value;
-    const password = passwordInput.current!.value;
-    const contactNumber = Number(contactNumberInput.current!.value);
-
-    try {
-      await createUsers({
-        email,
-        password,
-        contact_number: contactNumber,
-        user_type: "customer",
-      });
-    } catch (err) {
-      console.error("Error inserting values into the database: ", err);
-    }
+    emailInput.current!.value = "";
+    passwordInput.current!.value = "";
+    contactNumberInput.current!.value = "";
   }
 
   return (
@@ -49,7 +44,7 @@ const RegisterForm = () => {
       </div>
       <button
         className="cursor-pointer w-44 h-8 rounded-md bg-quinary"
-        onClick={registerUser}
+        onClick={submitRegisterForm}
       >
         Register
       </button>
