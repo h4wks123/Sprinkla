@@ -33,12 +33,12 @@ export async function login(email: string) {
   cookieStore.set("session", session, { expires, httpOnly: true });
 }
 
-// export async function logout() {
-//   const cookieStore = await cookies();
+export async function logout() {
+  const cookieStore = await cookies();
 
-//   // Destroy the session
-//   cookieStore.set("session", "", { expires: new Date(0) });
-// }
+  // Destroy the session
+  cookieStore.set("session", "", { expires: new Date(0) });
+}
 
 export async function getSession() {
   const cookieStore = await cookies();

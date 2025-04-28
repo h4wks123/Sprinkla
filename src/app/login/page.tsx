@@ -3,10 +3,9 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-import LoginForm from "@/client/loginform";
+import LoginForm from "@/components/ui/loginform";
 
 const Login = () => {
-
   return (
     <section className="w-full h-[100dvh] flex justify-center align-middle">
       <article className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] max-w-[540px] rounded-md flex flex-col items-center gap-6 pb-12 bg-secondary">

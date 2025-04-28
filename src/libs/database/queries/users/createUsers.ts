@@ -1,7 +1,7 @@
 "use server";
 
-import { db } from "@/database";
-import { usersTable } from "@/database/schema/users";
+import { db } from "../..";
+import { usersTable } from "../../schema/users";
 
 export default async function registerUser(
   emailInput: string,

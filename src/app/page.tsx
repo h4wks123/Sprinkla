@@ -1,36 +1,25 @@
 import React from "react";
 
-import Link from "next/link";
+import NavSignInBtn from "@/components/ui/navsigninbtn";
+import NavSignOutBtn from "@/components/ui/navsignoutbtn";
+import SalesForm from "@/components/ui/salesform";
 
-const loggedIn = () => {
-  <header className="w-full max-w-[1280px] h-12 mx-auto flex justify-between items-center">
-    <h1>SPRINKLA</h1>
-    <div>
-      <Link className="cursor-pointer w-44 h-8 rounded-md bg-quinary" href="/">
-        SIGN OUT
-      </Link>
-    </div>
-  </header>;
-};
+import { getSession } from "@/libs/auth/session";
 
-const loggedOut = () => {
-  <header className="w-full max-w-[1280px] h-12 mx-auto flex justify-between items-center">
-    <h1>SPRINKLA</h1>
-    <div>
-      <Link
-        className="cursor-pointer w-44 h-8 rounded-md bg-quinary"
-        href="/login"
-      >
-        SIGN IN
-      </Link>
-    </div>
-  </header>;
-};
+const page = async () => {
+  const userSession = await getSession();
 
-const page = () => {
+  console.log(userSession);
+
   return (
     <>
-      <main></main>
+      <header className="w-full max-w-[1280px] h-12 mx-auto flex justify-between items-center">
+        <h1>SPRINKLA</h1>
+        <div>{userSession ? <NavSignOutBtn /> : <NavSignInBtn />}</div>
+      </header>
+      <main>
+        <SalesForm />
+      </main>
     </>
   );
 };

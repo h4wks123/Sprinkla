@@ -1,9 +1,9 @@
 "use server";
 
 import { eq, and } from "drizzle-orm";
-import { db } from "@/database";
-import { usersTable } from "@/database/schema/users";
-import cookies from "@/middleware/loginCookies";
+import { db } from "../..";
+import { usersTable } from "../../schema/users";
+import { loginCookies } from "@/libs/auth/middleware";
 
 export default async function loginUser(
   emailInput: string,
@@ -30,7 +30,7 @@ export default async function loginUser(
       };
     }
 
-    const setCookies = await cookies(emailInput);
+    const setCookies = await loginCookies(emailInput);
 
     console.log(setCookies, "setCookies");
     return {

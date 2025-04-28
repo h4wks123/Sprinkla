@@ -3,7 +3,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-import RegisterForm from "@/client/registerform";
+import RegisterForm from "@/components/ui/registerform";
 
 const Register = () => {
   return (

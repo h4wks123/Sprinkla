@@ -3,7 +3,7 @@
 import React, { useRef } from "react";
 import { useRouter } from "next/navigation";
 
-import loginUser from "@/database/helpers/users/loginUsers";
+import loginUser from "@/libs/database/queries/users/loginUsers";
 
 const LoginForm = () => {
   const router = useRouter();
