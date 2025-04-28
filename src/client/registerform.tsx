@@ -2,7 +2,7 @@
 
 import React, { useRef } from "react";
 
-import registerUser from "@/app/actions/users/createUsers";
+import registerUser from "@/database/helpers/users/createUsers";
 
 const RegisterForm = () => {
   let emailInput = useRef<HTMLInputElement>(null);

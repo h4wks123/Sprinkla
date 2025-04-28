@@ -3,7 +3,7 @@
 import React, { useRef } from "react";
 import { useRouter } from "next/navigation";
 
-import loginUser from "@/app/actions/users/loginUsers";
+import loginUser from "@/database/helpers/users/loginUsers";
 
 const LoginForm = () => {
   const router = useRouter();
@@ -25,7 +25,6 @@ const LoginForm = () => {
       if (loginStatus.status === 200) {
         router.push("/");
       }
-
     }
   }
 

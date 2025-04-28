@@ -3,6 +3,7 @@
 import { eq, and } from "drizzle-orm";
 import { db } from "@/database";
 import { usersTable } from "@/database/schema/users";
+import cookies from "@/middleware/loginCookies";
 
 export default async function loginUser(
   emailInput: string,
@@ -29,6 +30,9 @@ export default async function loginUser(
       };
     }
 
+    const setCookies = await cookies(emailInput);
+
+    console.log(setCookies, "setCookies");
     return {
       status: 200,
       message: "Login successful!",
