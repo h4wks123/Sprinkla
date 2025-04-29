@@ -6,10 +6,14 @@ import SalesForm from "@/components/ui/salesform";
 
 import { getSession } from "@/libs/auth/session";
 
+import checkUserRole from "@/libs/database/queries/users/checkUserRole";
+
 const page = async () => {
   const userSession = await getSession();
-
-  console.log(userSession);
+  let userType = null;
+  if (userSession !== null) {
+    userType = await checkUserRole(userSession.email);
+  }
 
   return (
     <>
