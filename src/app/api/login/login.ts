@@ -1,11 +1,13 @@
-import React, { FormEvent } from "react";
+import React, { Dispatch, FormEvent, SetStateAction } from "react";
 import { useRouter } from "next/navigation";
 
-import { emailRegexCheck } from "@/libs/auth/regex";
+import toaster from "@/components/ui/toaster";
+
 import loginUser from "@/libs/database/queries/users/loginUsers";
 
 export function LoginForm(
-  setHeaders: (value: { status: number; message: string; }) => void
+  setEmailInputMessage: Dispatch<SetStateAction<string | null>>,
+  setPasswordInputMessage: Dispatch<SetStateAction<string | null>>
 ) {
   const router = useRouter();
 
@@ -13,42 +15,41 @@ export function LoginForm(
     e.preventDefault();
 
     const formData = new FormData(e.currentTarget);
-    const emailInput = formData.get("email") as string;
-    const passwordInput = formData.get("password") as string;
+    let emailInput = formData.get("email") as string;
+    let passwordInput = formData.get("password") as string;
 
-    if (!emailInput || !passwordInput) {
-      setHeaders({
-        status: 204,
-        message: "Inputs cannot be empty!",
-      });
+    let hasError = false;
 
-      return;
+    //check email
+    if (!emailInput) {
+      setEmailInputMessage("Email input cannot be empty!");
+      hasError = true;
+    } else {
+      setEmailInputMessage(null);
     }
 
-    const [loginStatus, emailFormatValidation] = await Promise.all([
-      loginUser(emailInput, passwordInput),
-      emailRegexCheck(emailInput),
-    ]);
+    //check password
+    if (!passwordInput) {
+      setPasswordInputMessage("Password input cannot be empty!");
+      hasError = true;
+    } else {
+      setPasswordInputMessage(null);
+    }
 
-    if (emailFormatValidation?.status === 400) {
-      setHeaders({
-        status: emailFormatValidation.status,
-        message: emailFormatValidation.message,
-      });
-
+    if (hasError) {
       return;
     }
 
     e.currentTarget.reset();
 
+    const loginStatus = await loginUser(emailInput, passwordInput);
+
+    setEmailInputMessage(null), setPasswordInputMessage(null);
+    toaster(loginStatus.status, loginStatus.message);
+
     if (loginStatus.status === 200) {
       router.push("/");
     }
-
-    setHeaders({
-      status: loginStatus.status,
-      message: loginStatus.message,
-    });
 
     return;
   }

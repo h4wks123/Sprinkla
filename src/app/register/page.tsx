@@ -7,21 +7,20 @@ import Image from "next/image";
 
 import { registerForm } from "@/app/api/register/register";
 
-const Type = {
-  email: "Email",
-  password: "Password",
-  contactNumber: "ContactNumber",
-};
-
 const Register = () => {
-  const [headers, setHeaders] = useState<{
-    status: number[];
-    message: string[];
-    type: string[];
-  } | null>(null);
-  const submitregisterForm = registerForm(setHeaders);
+  let [emailInputMessage, setEmailInputMessage] = useState<string | null>(null);
+  let [passwordInputMessage, setPasswordInputMessage] = useState<string | null>(
+    null
+  );
+  let [contactNumberInputMessage, setContactNumberInputMessage] = useState<
+    string | null
+  >(null);
+  const submitregisterForm = registerForm(
+    setEmailInputMessage,
+    setPasswordInputMessage,
+    setContactNumberInputMessage
+  );
 
-  console.log(headers);
   return (
     <section className="w-full h-[100dvh] flex justify-center align-middle">
       <form
@@ -39,8 +38,8 @@ const Register = () => {
             name="email"
             className="w-full bg-white text-black rounded-sm"
           />
-          {headers?.status[0] !== 200 ? (
-            <h6 className="text-red-600 text-xs">{headers?.message}</h6>
+          {emailInputMessage ? (
+            <h6 className="text-red-600 text-xs">{emailInputMessage}</h6>
           ) : null}
         </div>
         <div className="w-[80%] h-18">
@@ -50,20 +49,21 @@ const Register = () => {
             name="password"
             className="w-full bg-white text-black rounded-sm"
           />
-          {headers?.status[0] !== 200 &&
-          headers?.message[0] !== "Invalid email format!" ? (
-            <h6 className="text-red-600 text-xs">{headers?.message}</h6>
+          {passwordInputMessage ? (
+            <h6 className="text-red-600 text-xs">{passwordInputMessage}</h6>
           ) : null}
         </div>
         <div className="w-[80%] h-18">
           <h6>Contact Number</h6>
           <input
-            type="text"
+            type="number"
             name="contactNumber"
             className="w-full bg-white text-black rounded-sm"
           />
-          {headers?.status[0] !== 200 ? (
-            <h6 className="text-red-600 text-xs">{headers?.message}</h6>
+          {contactNumberInputMessage ? (
+            <h6 className="text-red-600 text-xs">
+              {contactNumberInputMessage}
+            </h6>
           ) : null}
         </div>
         <button

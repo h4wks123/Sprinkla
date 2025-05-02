@@ -8,12 +8,15 @@ import Image from "next/image";
 import { LoginForm } from "../api/login/login";
 
 const Login = () => {
-  const [headers, setHeaders] = useState<{
-    status: number;
-    message: string;
-  } | null>(null);
-  const submitLoginForm = LoginForm(setHeaders);
-  
+  let [emailInputMessage, setEmailInputMessage] = useState<string | null>(null);
+  let [passwordInputMessage, setPasswordInputMessage] = useState<string | null>(
+    null
+  );
+  const submitLoginForm = LoginForm(
+    setEmailInputMessage,
+    setPasswordInputMessage
+  );
+
   return (
     <section className="w-full h-[100dvh] flex justify-center align-middle">
       <form
@@ -31,8 +34,8 @@ const Login = () => {
             name="email"
             className="bg-white w-full text-black rounded-sm"
           />
-          {headers?.status !== 200 ? (
-            <h6 className="text-red-600 text-xs">{headers?.message}</h6>
+          {emailInputMessage ? (
+            <h6 className="text-red-600 text-xs">{emailInputMessage}</h6>
           ) : null}
         </div>
         <div className="w-[80%] h-18">
@@ -42,8 +45,8 @@ const Login = () => {
             name="password"
             className="bg-white w-full text-black rounded-sm"
           />
-          {headers?.status !== 200 ? (
-            <h6 className="text-red-600 text-xs">{headers?.message}</h6>
+          {passwordInputMessage ? (
+            <h6 className="text-red-600 text-xs">{passwordInputMessage}</h6>
           ) : null}
         </div>
         <button

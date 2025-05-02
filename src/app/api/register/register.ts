@@ -1,15 +1,16 @@
-import React, { FormEvent } from "react";
+import React, { Dispatch, FormEvent, SetStateAction } from "react";
 
-import { emailRegexCheck, contactNumberRegexCheck } from "@/libs/auth/regex";
 import registerUser from "@/libs/database/queries/users/createUsers";
+import toaster from "@/components/ui/toaster";
+import { useRouter } from "next/navigation";
 
 export function registerForm(
-  setHeaders: (value: {
-    status: number[];
-    message: string[];
-    type: string[];
-  }) => void
+  setEmailInputMessage: Dispatch<SetStateAction<string | null>>,
+  setPasswordInputMessage: Dispatch<SetStateAction<string | null>>,
+  setContactNumberInputMessage: Dispatch<SetStateAction<string | null>>
 ) {
+  const router = useRouter();
+
   async function submitRegisterForm(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
@@ -18,56 +19,70 @@ export function registerForm(
     const passwordInput = formData.get("password") as string;
     const contactNumberInput = Number(formData.get("contactNumber"));
 
-    if (!emailInput || !passwordInput || !contactNumberInput) {
-      setHeaders({
-        status: [204],
-        message: ["Inputs cannot be empty!"],
-        type: ["None"],
-      });
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    const passwordRegex = /^(?=.*[0-9])[A-Za-z0-9!@#$%^&*]{6,}$/;
+    const contactNumberRegex = /^\d{10}$/; // Correct: only 10 digits
 
-      return;
+    let hasError = false;
+
+    // Check email
+    if (!emailInput) {
+      setEmailInputMessage("Email input cannot be empty!");
+      hasError = true;
+    } else if (!emailRegex.test(emailInput)) {
+      setEmailInputMessage("Invalid email format!");
+      hasError = true;
+    } else {
+      setEmailInputMessage(null);
     }
 
-    const [registerStatus, emailFormatValidation, contactNumberValidation] =
-      await Promise.all([
-        registerUser(emailInput, passwordInput, contactNumberInput),
-        emailRegexCheck(emailInput),
-        contactNumberRegexCheck(contactNumberInput),
-      ]);
-
-    const statusArray: number[] = [];
-    const messageArray: string[] = [];
-    const typeArray: string[] = [];
-
-    if (emailFormatValidation?.status === 400) {
-      statusArray.push(emailFormatValidation.status);
-      messageArray.push(emailFormatValidation.message);
-      typeArray.push(emailFormatValidation.type);
+    // Check password
+    if (!passwordInput) {
+      setPasswordInputMessage("Password input cannot be empty!");
+      hasError = true;
+    } else if (!passwordRegex.test(passwordInput)) {
+      setPasswordInputMessage(
+        "Invalid password, must contain at least 1 number, and no less than 6 letters!"
+      );
+      hasError = true;
+    } else {
+      setPasswordInputMessage(null);
     }
 
-    if (contactNumberValidation?.status === 400) {
-      statusArray.push(contactNumberValidation.status);
-      messageArray.push(contactNumberValidation.message);
-      typeArray.push(contactNumberValidation.type);
+    // Check contact number
+    if (!contactNumberInput) {
+      setContactNumberInputMessage("Contact number input cannot be empty!");
+      hasError = true;
+    } else if (!contactNumberRegex.test(contactNumberInput.toString())) {
+      setContactNumberInputMessage(
+        "Invalid contact number, must be exactly 10 digits!"
+      );
+      hasError = true;
+    } else {
+      setContactNumberInputMessage(null);
     }
 
-    if (statusArray.length > 0) {
-      setHeaders({
-        status: statusArray,
-        message: messageArray,
-        type: typeArray,
-      });
-
+    if (hasError) {
       return;
     }
 
     e.currentTarget.reset();
 
-    setHeaders({
-      status: [registerStatus.status],
-      message: [registerStatus.message],
-      type: [registerStatus.type],
-    });
+    const registerStatus = await registerUser(
+      emailInput,
+      passwordInput,
+      contactNumberInput
+    );
+
+    setEmailInputMessage(null),
+      setPasswordInputMessage(null),
+      setContactNumberInputMessage(null);
+
+    toaster(registerStatus.status, registerStatus.message);
+
+    if (registerStatus.status === 200) {
+      router.push("/login");
+    }
 
     return;
   }
