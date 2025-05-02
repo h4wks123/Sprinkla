@@ -1,6 +1,5 @@
 "use server";
 
-import { notBetween } from "drizzle-orm";
 import { db } from "../..";
 import { usersTable } from "../../schema/users";
 
@@ -17,8 +16,18 @@ export default async function registerUser(
       user_type: "customer",
     });
 
-    console.log("User has succesfully been inserted into the database!");
+    return {
+      status: 200,
+      message: "Login successful!",
+      type: "None",
+    };
   } catch (err) {
     console.error("Error inserting values into the database: ", err);
+
+    return {
+      status: 500,
+      message: "Internal server error during user registration.",
+      type: "None",
+    };
   }
 }

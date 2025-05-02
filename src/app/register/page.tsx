@@ -1,64 +1,70 @@
 "use client";
 
-import React, { FormEvent, useRef } from "react";
+import React, { useState } from "react";
 
 import Link from "next/link";
 import Image from "next/image";
 
-import registerUser from "@/libs/database/queries/users/createUsers";
+import { registerForm } from "@/app/api/register/register";
+
+const Type = {
+  email: "Email",
+  password: "Password",
+  contactNumber: "ContactNumber",
+};
 
 const Register = () => {
-  function submitRegisterForm(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
+  const [headers, setHeaders] = useState<{
+    status: number[];
+    message: string[];
+    type: string[];
+  } | null>(null);
+  const submitregisterForm = registerForm(setHeaders);
 
-    let formData = new FormData(e.currentTarget);
-    let emailInput = formData.get("email") as string;
-    let passwordInput = formData.get("password") as string;
-    let contactNumberInput = Number(formData.get("contactNumber"));
-
-    e.currentTarget.reset();
-
-    if (!emailInput || !passwordInput || !contactNumberInput) {
-      throw new Error("Inputs cannot be empty");
-    } 
-    // else {
-    //   registerUser(emailInput, passwordInput, contactNumberInput);
-    // }
-  }
-
+  console.log(headers);
   return (
     <section className="w-full h-[100dvh] flex justify-center align-middle">
       <form
-        onClick={submitRegisterForm}
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] max-w-[540px] rounded-md flex flex-col items-center gap-6 pb-12 bg-secondary"
+        onSubmit={submitregisterForm}
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] max-w-[540px] rounded-md flex flex-col items-center pb-12 bg-secondary"
       >
         <div className="relative w-full h-64">
           <Image src="/login_modal_image.png" alt="login modal image" fill />
         </div>
         <h1 className="mt-6">SPRINKLA</h1>
-        <div className="w-[80%]">
+        <div className="w-[80%] h-18 mt-6">
           <h6>Email</h6>
           <input
             type="text"
             name="email"
-            className="w-full bg-white text-black"
+            className="w-full bg-white text-black rounded-sm"
           />
+          {headers?.status[0] !== 200 ? (
+            <h6 className="text-red-600 text-xs">{headers?.message}</h6>
+          ) : null}
         </div>
-        <div className="w-[80%]">
+        <div className="w-[80%] h-18">
           <h6>Password</h6>
           <input
             type="text"
             name="password"
-            className="w-full bg-white text-black"
+            className="w-full bg-white text-black rounded-sm"
           />
+          {headers?.status[0] !== 200 &&
+          headers?.message[0] !== "Invalid email format!" ? (
+            <h6 className="text-red-600 text-xs">{headers?.message}</h6>
+          ) : null}
         </div>
-        <div className="w-[80%]">
+        <div className="w-[80%] h-18">
           <h6>Contact Number</h6>
           <input
             type="text"
             name="contactNumber"
-            className="w-full bg-white text-black"
+            className="w-full bg-white text-black rounded-sm"
           />
+          {headers?.status[0] !== 200 ? (
+            <h6 className="text-red-600 text-xs">{headers?.message}</h6>
+          ) : null}
         </div>
         <button
           type="submit"
@@ -66,9 +72,13 @@ const Register = () => {
         >
           Register
         </button>
-        <h6 className="font-light text-sm">
+        <h6 className="font-light text-sm mt-6">
           Already a member?
-          <Link href="/login" className="ml-2 text-quinary">
+          <Link
+            href="/login"
+            onClick={(e) => e.stopPropagation()}
+            className="ml-2 text-quinary"
+          >
             Sign In
           </Link>
         </h6>

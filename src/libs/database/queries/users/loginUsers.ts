@@ -8,7 +8,7 @@ import { loginCookies } from "@/libs/auth/middleware";
 export default async function loginUser(
   emailInput: string,
   passwordInput: string
-): Promise<{ status: number; message: string }> {
+): Promise<{ status: number; message: string; }> {
   try {
     const result = await db
       .select({
@@ -26,7 +26,7 @@ export default async function loginUser(
     if (!result || result.length === 0) {
       return {
         status: 404,
-        message: "User does not exist in the database!",
+        message: "Email or password is incorrect!",
       };
     }
 

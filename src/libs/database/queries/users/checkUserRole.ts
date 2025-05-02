@@ -12,13 +12,29 @@ export default async function checkUserRole(emailInput: string) {
       .where(eq(usersTable.email, emailInput));
 
     if (userRole[0].field5 === "admin") {
-      return "admin";
+      return {
+        status: 200,
+        message: "User role is an admin",
+        mode: "customer",
+      };
     } else if (userRole[0].field5 === "customer") {
-      return "customer";
+      return {
+        status: 200,
+        message: "User role is an customer",
+        mode: "customer",
+      };
     } else {
-      return null;
+      return {
+        status: 404,
+        message: "User role cannot be determined",
+      };
     }
   } catch (error) {
     console.error(error);
+
+    return {
+      status: 500,
+      message: "Internal server error during user role administration.",
+    };
   }
 }

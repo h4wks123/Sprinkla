@@ -1,64 +1,50 @@
 "use client";
 
-import React, { useRef } from "react";
-import { useRouter } from "next/navigation";
+import React, { useState } from "react";
 
 import Link from "next/link";
 import Image from "next/image";
 
-import loginUser from "@/libs/database/queries/users/loginUsers";
+import { LoginForm } from "../api/login/login";
 
 const Login = () => {
-  const router = useRouter();
-
-  async function submitLoginForm(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-
-    const formData = new FormData(e.currentTarget);
-    const emailInput = formData.get("email") as string;
-    const passwordInput = formData.get("password") as string;
-
-    e.currentTarget.reset();
-
-    if (!emailInput || !passwordInput) {
-      throw new Error("Login inputs cannot be empty!");
-    } else {
-      let email = emailInput;
-      let password = passwordInput;
-
-      const loginStatus = await loginUser(email, password);
-
-      if (loginStatus.status === 200) {
-        router.push("/");
-      }
-    }
-  }
-
+  const [headers, setHeaders] = useState<{
+    status: number;
+    message: string;
+  } | null>(null);
+  const submitLoginForm = LoginForm(setHeaders);
+  
   return (
     <section className="w-full h-[100dvh] flex justify-center align-middle">
       <form
         onSubmit={submitLoginForm}
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] max-w-[540px] rounded-md flex flex-col items-center gap-6 pb-12 bg-secondary"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] max-w-[540px] rounded-md flex flex-col items-center pb-12 bg-secondary"
       >
         <div className="relative w-full h-64">
           <Image src="/login_modal_image.png" alt="login modal image" fill />
         </div>
         <h1 className="mt-6">SPRINKLA</h1>
-        <div className="w-[80%]">
+        <div className="w-[80%] h-18 mt-6">
           <label>Email</label>
           <input
             type="text"
             name="email"
-            className="bg-white w-full text-black"
+            className="bg-white w-full text-black rounded-sm"
           />
+          {headers?.status !== 200 ? (
+            <h6 className="text-red-600 text-xs">{headers?.message}</h6>
+          ) : null}
         </div>
-        <div className="w-[80%]">
+        <div className="w-[80%] h-18">
           <h6>Password</h6>
           <input
             type="text"
             name="password"
-            className="bg-white w-full text-black"
+            className="bg-white w-full text-black rounded-sm"
           />
+          {headers?.status !== 200 ? (
+            <h6 className="text-red-600 text-xs">{headers?.message}</h6>
+          ) : null}
         </div>
         <button
           type="submit"
@@ -66,9 +52,13 @@ const Login = () => {
         >
           Login
         </button>
-        <h6 className="font-light text-sm">
+        <h6 className="font-light text-sm mt-6">
           Not a member?
-          <Link href="/register" className="ml-2 text-quinary">
+          <Link
+            href="/register"
+            onClick={(e) => e.stopPropagation()}
+            className="ml-2 text-quinary"
+          >
             Sign Up
           </Link>
         </h6>
