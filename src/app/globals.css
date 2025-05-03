@@ -24,3 +24,27 @@ body {
   color: var(--color-text-white);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@keyframes login_bezier_curves {
+  0% {
+    width: 28%;
+  }
+  50% {
+    width: 33%;
+  }
+  100% {
+    width: 28%;
+  }
+}
+
+@keyframes login_donut_1 {
+  0% {
+    transform: rotate(-5deg);
+  }
+  50% {
+    transform: rotate(5deg);
+  }
+  100% {
+    transform: rotate(-5deg);
+  }
+}
