@@ -88,7 +88,7 @@ const Login = () => {
       <div className="animate-login_triangle fixed hidden h-[170%] w-[20rem] bg-repeat-y overflow-hidden -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-45 bg-[url('/login_triangles.svg')] xl:block" />
       <form
         onSubmit={submitLoginForm}
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] max-w-[540px] rounded-md flex flex-col items-center pb-12 bg-secondary"
+        className="bg-secondary absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] max-w-[540px] rounded-md flex flex-col items-center pb-12 shadow-xl/30"
       >
         <div className="relative w-full h-64">
           <Image src="/login_modal_image.png" alt="login modal image" fill />
@@ -108,6 +108,7 @@ const Login = () => {
             type="text"
             name="email"
             className="bg-white w-full text-black rounded-sm"
+            placeholder="customer@sprinkla.com"
           />
           {emailInputMessage ? (
             <h6 className="text-red-600 text-xs">{emailInputMessage}</h6>
@@ -119,6 +120,7 @@ const Login = () => {
             type="text"
             name="password"
             className="bg-white w-full text-black rounded-sm"
+            placeholder="customer123"
           />
           {passwordInputMessage ? (
             <h6 className="text-red-600 text-xs">{passwordInputMessage}</h6>
@@ -126,7 +128,7 @@ const Login = () => {
         </div>
         <button
           type="submit"
-          className="cursor-pointer w-44 h-8 rounded-md bg-quinary"
+          className="cursor-pointer w-44 h-8 rounded-md bg-quinary hover:scale-110 ease-in-out"
         >
           Login
         </button>
@@ -135,7 +137,7 @@ const Login = () => {
           <Link
             href="/register"
             onClick={(e) => e.stopPropagation()}
-            className="ml-2 text-quinary"
+            className="ml-2 text-blue-400 hover:underline"
           >
             Sign Up
           </Link>

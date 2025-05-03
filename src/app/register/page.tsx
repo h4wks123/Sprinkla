@@ -22,21 +22,97 @@ const Register = () => {
   );
 
   return (
-    <section className="w-full h-[100dvh] flex justify-center align-middle">
+    <section className="w-full h-[100dvh]">
+      <Image
+        src="bezier_curve_2.svg"
+        alt="bezier_curve_2"
+        width={0}
+        height={0}
+        style={{
+          position: "fixed",
+          width: "28%",
+          minWidth: "400px",
+          height: "auto%",
+          animationName: "login_bezier_curves",
+          animationDuration: "40s",
+          animationIterationCount: "infinite",
+          animationDirection: "alternate",
+          animationTimingFunction: "ease-in-out",
+        }}
+      />
+      <Image
+        src="bezier_curve_1.svg"
+        alt="bezier_curve_1"
+        width={0}
+        height={0}
+        style={{
+          position: "fixed",
+          bottom: 0,
+          right: 0,
+          width: "28%",
+          minWidth: "400px",
+          height: "auto%",
+          animationName: "login_bezier_curves",
+          animationDuration: "40s",
+          animationIterationCount: "infinite",
+          animationDirection: "alternate",
+          animationTimingFunction: "ease-in-out",
+        }}
+      />
+      <Image
+        src="/login_donut_1.png"
+        alt="login_donut_1"
+        width={425}
+        height={425}
+        quality={100}
+        style={{
+          position: "fixed",
+          top: -40,
+          right: -50,
+          animationName: "login_donut",
+          animationDuration: "40s",
+          animationIterationCount: "infinite",
+        }}
+      />
+      <Image
+        src="/login_donut_2.png"
+        alt="login_donut_1"
+        width={525}
+        height={525}
+        quality={100}
+        style={{
+          position: "fixed",
+          bottom: -20,
+          left: -30,
+          animationName: "login_donut",
+          animationDuration: "40s",
+          animationIterationCount: "infinite",
+        }}
+      />
+      <div className="animate-login_triangle fixed hidden h-[170%] w-[20rem] bg-repeat-y overflow-hidden -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-45 bg-[url('/login_triangles.svg')] xl:block" />
       <form
         onSubmit={submitregisterForm}
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] max-w-[540px] rounded-md flex flex-col items-center pb-12 bg-secondary"
+        className="bg-secondary absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] max-w-[540px] rounded-md flex flex-col items-center pb-12 shadow-xl/30"
       >
         <div className="relative w-full h-64">
           <Image src="/login_modal_image.png" alt="login modal image" fill />
         </div>
-        <h1 className="mt-6">SPRINKLA</h1>
+        <Image
+          src="/sprinkla_logo.svg"
+          alt="spinkla_logo"
+          width={275}
+          height={275}
+          style={{
+            marginTop: "calc(var(--spacing) * 6)",
+          }}
+        />
         <div className="w-[80%] h-18 mt-6">
           <h6>Email</h6>
           <input
             type="text"
             name="email"
             className="w-full bg-white text-black rounded-sm"
+            placeholder="customer@sprinkla.com"
           />
           {emailInputMessage ? (
             <h6 className="text-red-600 text-xs">{emailInputMessage}</h6>
@@ -48,6 +124,7 @@ const Register = () => {
             type="text"
             name="password"
             className="w-full bg-white text-black rounded-sm"
+            placeholder="customer123"
           />
           {passwordInputMessage ? (
             <h6 className="text-red-600 text-xs">{passwordInputMessage}</h6>
@@ -59,6 +136,7 @@ const Register = () => {
             type="number"
             name="contactNumber"
             className="w-full bg-white text-black rounded-sm"
+            placeholder="1112223334"
           />
           {contactNumberInputMessage ? (
             <h6 className="text-red-600 text-xs">
@@ -68,7 +146,7 @@ const Register = () => {
         </div>
         <button
           type="submit"
-          className="cursor-pointer w-44 h-8 rounded-md bg-quinary"
+          className="cursor-pointer w-44 h-8 rounded-md bg-quinary hover:scale-110 ease-in-out"
         >
           Register
         </button>
@@ -77,7 +155,7 @@ const Register = () => {
           <Link
             href="/login"
             onClick={(e) => e.stopPropagation()}
-            className="ml-2 text-quinary"
+            className="ml-2 text-blue-400 hover:underline"
           >
             Sign In
           </Link>
