@@ -65,7 +65,7 @@ const Login = () => {
           position: "fixed",
           top: -40,
           right: -50,
-          animationName: "login_donut_1",
+          animationName: "login_donut",
           animationDuration: "40s",
           animationIterationCount: "infinite",
         }}
@@ -80,22 +80,12 @@ const Login = () => {
           position: "fixed",
           bottom: -20,
           left: -30,
-          animationName: "login_donut_1",
+          animationName: "login_donut",
           animationDuration: "40s",
           animationIterationCount: "infinite",
         }}
       />
-      <Image
-        src="/login_triangles.svg"
-        alt="login_triangles"
-        width={0}
-        height={0}
-        style={{
-          height: "100%",
-          width: "auto",
-          position: "fixed",
-        }}
-      />
+      <div className="animate-login_triangle fixed hidden h-[170%] w-[20rem] bg-repeat-y overflow-hidden -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-45 bg-[url('/login_triangles.svg')] xl:block" />
       <form
         onSubmit={submitLoginForm}
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] max-w-[540px] rounded-md flex flex-col items-center pb-12 bg-secondary"
