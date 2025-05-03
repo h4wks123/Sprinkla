@@ -6,69 +6,40 @@ import { toast } from "react-toastify";
 import { Bounce } from "react-toastify/unstyled";
 
 const toaster = (status: number, message: string) => {
-  // http request succesful
-  if (status >= 200 && status <= 299) {
-    toast.success(message, {
-      position: "bottom-right",
-      autoClose: 3000,
-      hideProgressBar: false,
-      closeOnClick: false,
-      pauseOnHover: false,
-      pauseOnFocusLoss: false,
-      draggable: true,
-      progress: undefined,
-      theme: "dark",
-      transition: Bounce,
-    });
-  }
+  const toasterOutput = () => {
+    //http request succesful
+    if (status >= 200 && status <= 299) {
+      return "success";
+    }
+    //redirection
+    if (status >= 300 && status <= 399) {
+      return "info";
+    }
+    // client error
+    if (status >= 400 && status <= 499) {
+      return "error";
+    }
+    // server error
+    if (status >= 500 && status <= 599) {
+      return "warning";
+    }
+    return "info";
+  };
 
-  // redirection
-  if (status >= 300 && status <= 399) {
-    toast.info(message, {
-      position: "bottom-right",
-      autoClose: 3000,
-      hideProgressBar: false,
-      closeOnClick: false,
-      pauseOnHover: false,
-      pauseOnFocusLoss: false,
-      draggable: true,
-      progress: undefined,
-      theme: "dark",
-      transition: Bounce,
-    });
-  }
+  const toastType = toasterOutput();
 
-  // client error
-  if (status >= 400 && status <= 499) {
-    toast.error(message, {
-      position: "bottom-right",
-      autoClose: 3000,
-      hideProgressBar: false,
-      closeOnClick: false,
-      pauseOnHover: false,
-      pauseOnFocusLoss: false,
-      draggable: true,
-      progress: undefined,
-      theme: "dark",
-      transition: Bounce,
-    });
-  }
-
-  // server error
-  if (status >= 500 && status <= 599) {
-    toast.warning(message, {
-      position: "bottom-right",
-      autoClose: 3000,
-      hideProgressBar: false,
-      closeOnClick: false,
-      pauseOnHover: false,
-      pauseOnFocusLoss: false,
-      draggable: true,
-      progress: undefined,
-      theme: "dark",
-      transition: Bounce,
-    });
-  }
+  toast[toastType](message, {
+    position: "bottom-right",
+    autoClose: 3000,
+    hideProgressBar: false,
+    closeOnClick: false,
+    pauseOnHover: false,
+    pauseOnFocusLoss: false,
+    draggable: true,
+    progress: undefined,
+    theme: "dark",
+    transition: Bounce,
+  });
 };
 
 export default toaster;

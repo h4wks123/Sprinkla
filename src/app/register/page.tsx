@@ -74,21 +74,21 @@ const Register = () => {
           animationIterationCount: "infinite",
         }}
       />
-      <Image
-        src="/login_donut_2.png"
-        alt="login_donut_1"
-        width={525}
-        height={525}
-        quality={100}
+      <div
+        className="fixed w-[18rem] h-[18rem] -bottom-5 -left-7.5 lg:w-[30rem] lg:h-[30rem]"
         style={{
-          position: "fixed",
-          bottom: -20,
-          left: -30,
           animationName: "login_donut",
           animationDuration: "40s",
           animationIterationCount: "infinite",
         }}
-      />
+      >
+        <Image
+          src="/login_donut_2.png"
+          alt="login_donut_2"
+          fill
+          quality={100}
+        />
+      </div>
       <div className="animate-login_triangle fixed hidden h-[170%] w-[20rem] bg-repeat-y overflow-hidden -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-45 bg-[url('/login_triangles.svg')] xl:block" />
       <form
         onSubmit={submitregisterForm}
