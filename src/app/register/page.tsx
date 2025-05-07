@@ -95,7 +95,13 @@ const Register = () => {
         className="bg-secondary absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] max-w-[540px] rounded-md flex flex-col items-center pb-12 shadow-xl/30"
       >
         <div className="relative w-full h-64">
-          <Image src="/login_modal_image.png" alt="login modal image" fill />
+          <Image
+            src="/login_modal_image.png"
+            alt="login modal image"
+            fill
+            objectFit="cover"
+            className="rounded-md"
+          />{" "}
         </div>
         <Image
           src="/sprinkla_logo.svg"
@@ -146,7 +152,7 @@ const Register = () => {
         </div>
         <button
           type="submit"
-          className="cursor-pointer w-44 h-8 rounded-md bg-quinary hover:scale-110 ease-in-out"
+          className="cursor-pointer w-44 h-10 mt-2 rounded-md bg-quinary hover:scale-110 ease-in-out"
         >
           Register
         </button>

@@ -8,20 +8,23 @@ import { loginCookies } from "@/libs/auth/middleware";
 export default async function loginUser(
   emailInput: string,
   passwordInput: string
-): Promise<{ status: number; message: string; }> {
+): Promise<{ status: number; message: string }> {
   try {
-    const result = await db
-      .select({
-        field2: usersTable.email,
-        field3: usersTable.password,
-      })
-      .from(usersTable)
-      .where(
-        and(
-          eq(usersTable.email, emailInput),
-          eq(usersTable.password, passwordInput)
-        )
-      );
+    const [result, setCookies] = await Promise.all([
+      db
+        .select({
+          field2: usersTable.email,
+          field3: usersTable.password,
+        })
+        .from(usersTable)
+        .where(
+          and(
+            eq(usersTable.email, emailInput),
+            eq(usersTable.password, passwordInput)
+          )
+        ),
+      loginCookies(emailInput),
+    ]);
 
     if (!result || result.length === 0) {
       return {
@@ -29,8 +32,6 @@ export default async function loginUser(
         message: "Email or password is incorrect!",
       };
     }
-
-    const setCookies = await loginCookies(emailInput);
 
     console.log(setCookies, "setCookies");
     return {

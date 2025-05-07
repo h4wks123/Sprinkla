@@ -14,7 +14,7 @@ const NavSignInBtn = () => {
   return (
     <button
       onClick={navigateToSignInPage}
-      className="cursor-pointer w-28 h-8 rounded-md bg-quinary"
+      className="cursor-pointer w-28 h-10 rounded-md bg-quinary"
     >
       SIGN IN
     </button>
