@@ -49,8 +49,8 @@ const page = async () => {
       </header>
       <main className="w-full h-full">
         {!userSession || userType?.mode === userRole.customer ? (
-          <section className="relative w-[100vw] h-[calc(100dvh-4rem)]">
-            <div className="relative h-[42rem]">
+          <section className="relative w-[100vw] h-[calc(42rem+min(175px,20vw))] xl:h-[calc(100dvh-4rem)]">
+            <div className="relative h-[42rem] mb-20">
               <Image
                 src="/home_donut_video.gif"
                 alt="my gif"
@@ -81,8 +81,8 @@ const page = async () => {
           </section>
         ) : null}
         {!userSession || userType?.mode === userRole.customer ? (
-          <section className="relative flex flex-col mb-24 xl:flex-row">
-            {/* > 1280px breakpoint */}
+          <section className="relative flex flex-col mb-20 xl:flex-row">
+            {/* < 1280px breakpoint */}
             <div className="relative w-[85vw] h-[25rem] aspect-[16/9] flex sm:h-[25rem] xl:hidden">
               <div className="bg-tertiary w-full h-[20.4rem] mt-[1.55rem] xl:hidden" />
               <Image
@@ -108,7 +108,7 @@ const page = async () => {
                 CEBU CITY
               </h3>
             </article>
-            {/* <= 1280px breakpoint */}
+            {/* >= 1280px breakpoint */}
             <div className="hidden bg-tertiary w-[calc(50%-640px)] lg:mt-[1.8rem] lg:h-[43.2rem] xl:block" />
             <div className="hidden relative w-[min(90%,1280px)] max-w-[1280px] justify-between items-center xl:flex">
               <div className="relative w-[50rem] h-[50rem]">
@@ -136,10 +136,55 @@ const page = async () => {
             </div>
           </section>
         ) : null}
-        <section className="w-[min(90%,1280px)] max-w-[1280px] mx-auto flex flex-col justify-center items-center bg-secondary">
-          <ul>NavBar</ul>
-          <div>Hello</div>
-        </section>
+        {!userSession || userType?.mode === userRole.customer ? (
+          <section className="relative w-screen mb-20">
+            <div className="relative w-[min(90%,1280px)] max-w-[1280px] h-[50rem] mx-auto flex flex-col justify-center items-center rounded-md bg-secondary">
+              <ul className="w-[90%] h-[5rem] mx-auto flex justify-start items-center gap-8 overflow-x-auto">
+                <li>PROMOS</li>
+                <li>DOUGHNUTS</li>
+              </ul>
+              <div className="w-full h-full rounded-md border-8 border-secondary bg-white">
+                Hello
+              </div>
+              <div className="animate-login_triangle hidden absolute -bottom-[150vw] h-[300vw] w-[20rem] rotate-70 bg-repeat-y overflow-hidden -z-10 bg-[url('/customer_home_circles_1.svg')] xl:block" />
+            </div>
+          </section>
+        ) : null}
+        {!userSession || userType?.mode === userRole.customer ? (
+          <section className="relative w-screen">
+            <div className="flex justify-start">
+              <div className="bg-quaternary w-[calc(50%-640px)] h-[16.8rem]" />
+              <div className="w-full max-w-[1280px] h-[16.8rem] bg-cover bg-[url('/brands_bezier_curve_1.svg')]" />
+            </div>
+            <ul className="w-screen bg-quaternary pb-20 flex justify-center">
+              <li className="relative w-[calc(1280px/3-2rem)] h-[calc(1280px/3-2rem)]">
+                <Image
+                  src="/kirspy_kreme_large.png"
+                  alt="kirspy_kreme_large"
+                  fill
+                  quality={100}
+                />
+              </li>
+              <li className="relative w-[calc(1280px/3-2rem)] h-[calc(1280px/3-2rem)]">
+                <Image
+                  src="/dunkin_donut_large.png"
+                  alt="dunkin_donut_large"
+                  fill
+                  quality={100}
+                />
+              </li>
+              <li className="relative w-[calc(1280px/3-2rem)] h-[calc(1280px/3-2rem)]">
+                <Image
+                  src="/starbucks_large.png"
+                  alt="starbucks_large"
+                  fill
+                  quality={100}
+                />
+              </li>
+            </ul>
+            <div className="w-screen h-[32rem] bg-repeat bg-[url('/brands_bezier_curve_3.svg')]" />
+          </section>
+        ) : null}
       </main>
     </>
   );
