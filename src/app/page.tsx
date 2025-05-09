@@ -50,7 +50,7 @@ const page = async () => {
       <main className="w-full h-full">
         {!userSession || userType?.mode === userRole.customer ? (
           <section className="relative w-[100vw] mb-20 h-[calc(42rem+min(175px,20vw))] xl:h-[calc(100dvh-4rem)]">
-            <div className="relative h-[42rem]">
+            <div className="relative h-[calc(100%-87.5px)]">
               <Image
                 src="/home_donut_video.gif"
                 alt="my gif"
@@ -103,8 +103,8 @@ const page = async () => {
             </div>
             <article className="relative flex flex-col gap-6 mt-20 xl:mt-0 xl:gap-8 xl:w-[min(90%,1280px)] xl:absolute xl:left-1/2 xl:top-1/2 xl:-translate-1/2">
               <h1
-                className="text-purple-logo text-center text-[50px] md:text-[60px] xl:text-right xl:text-[80px]"
-                style={{ fontFamily: "var(--font-satisfy)" }}
+                className="text-purple-logo text-center font-bold tracking-tight text-[50px] md:text-[60px] xl:text-right xl:text-[80px]"
+                style={{ fontFamily: "Lucida Handwriting" }}
               >
                 Triple the Delight
               </h1>
@@ -127,7 +127,7 @@ const page = async () => {
               <div className="w-full h-full rounded-md border-8 border-secondary bg-white">
                 Hello
               </div>
-              <div className="animate-slanting_elements absolute -top-[175rem] h-[400rem] w-[20rem] rotate-80 bg-repeat-y overflow-hidden -z-10 bg-[url('/customer_home_circles_1.svg')] xl:block" />
+              <div className="animate-slanting-elements-slow absolute -top-[175rem] h-[400rem] w-[20rem] rotate-80 bg-repeat-y overflow-hidden -z-10 bg-[url('/customer_home_circles_1.svg')]" />
             </div>
           </section>
         ) : null}
@@ -151,7 +151,7 @@ const page = async () => {
                 SPONSORS
               </h3>
               <ul className="w-[min(90%,1280px)] max-w-[1280px] mx-auto flex flex-wrap justify-center gap-10">
-                <li className="relative w-[calc(1280px/3-2rem)] h-[calc(1280px/3-2rem)]">
+                <li className="relative w-[calc(1280px/4-2rem)] h-[calc(1280px/4-2rem)]">
                   <Image
                     src="/dunkin_donuts_logo.png"
                     alt="dunkin_donuts_logo"
@@ -159,7 +159,7 @@ const page = async () => {
                     quality={100}
                   />
                 </li>
-                <li className="relative w-[calc(1280px/3-2rem)] h-[calc(1280px/3-2rem)]">
+                <li className="relative w-[calc(1280px/4-2rem)] h-[calc(1280px/4-2rem)]">
                   <Image
                     src="/starbucks_logo.png"
                     alt="starbucks_logo"
@@ -167,7 +167,7 @@ const page = async () => {
                     quality={100}
                   />
                 </li>
-                <li className="relative w-[calc(1280px/3-2rem)] h-[calc(1280px/3-2rem)]">
+                <li className="relative w-[calc(1280px/4-2rem)] h-[calc(1280px/4-2rem)]">
                   <Image
                     src="/krispy_kreme_logo.png"
                     alt="krispy_kreme_logo"
@@ -180,10 +180,59 @@ const page = async () => {
             <div className="animate-drip w-screen h-[32rem] bg-contain bg-repeat-x bg-[url('/brands_bezier_curve_2.svg')]" />
           </section>
         ) : null}
-
         {!userSession || userType?.mode === userRole.customer ? (
-          <section className="relative w-screen"></section>
+          <section className="relative w-screen mb-20">
+            <div className="w-[min(90%,1280px)] max-w-[1280px] mx-auto pl-10 pt-10 bg-secondary flex flex-wrap justify-between items-end rounded-lg">
+              <div className="relative w-[45%] h-full aspect-square">
+                <Image
+                  src="/sprinkla_restaurant.jpg"
+                  alt="sprinkla_restaurant"
+                  fill
+                  className="absolute pb-10"
+                />
+              </div>
+              <article className="flex flex-col justify-end items-start w-[45%] h-full gap-6">
+                <h1 className="text-tertiary-dark text-5xl font-bold">
+                  Contact Us
+                </h1>
+                <ul className="relative w-full border-l-2 border-t-2 p-10 border-tertiary-dark right-0 bottom-0 flex justify-between">
+                  <li className="flex flex-col gap-4">
+                    <h5>Contacts</h5>
+                    <h6>Sprinkla_Robinsons@gmail.com</h6>
+                    <h6>Sprinkla_Robinsons@gmail.com</h6>
+                    <h6>Sprinkla_Robinsons@gmail.com</h6>
+                  </li>
+                  <li className="flex flex-col gap-4">
+                    <h5>Based In</h5>
+                    <ul>
+                      <li>Robinsons Galleria, Cebu City</li>
+                      <li>7:30AM - 9:00PM</li>
+                    </ul>
+                    <ul>
+                      <li>Robinsons Galleria, Cebu City</li>
+                      <li>7:30AM - 9:00PM</li>
+                    </ul>
+                    <ul>
+                      <li>Robinsons Galleria, Cebu City</li>
+                      <li>7:30AM - 9:00PM</li>
+                    </ul>
+                  </li>
+                </ul>
+              </article>
+            </div>
+            <div className="animate-slanting-elements-slow absolute -top-[175rem] h-[400rem] w-[20rem] rotate-90 bg-repeat-y overflow-hidden -z-10 bg-[url('/customer_home_circles_2.svg')]" />
+          </section>
         ) : null}
+        <footer className="relative w-screen h-30 bg-secondary-dark">
+          <Image
+            src="/home_donut_3.png"
+            alt="home_donut"
+            width={300}
+            height={300}
+            className="absolute right-0 -top-[130px]"
+          />
+          Hello
+        </footer>
       </main>
     </>
   );

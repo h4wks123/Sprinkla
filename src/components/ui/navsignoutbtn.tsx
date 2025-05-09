@@ -15,7 +15,7 @@ const NavSignOutBtn = () => {
   return (
     <button
       onClick={navigateToSignOutPage}
-      className="cursor-pointer w-28 h-10 rounded-md bg-quinary"
+      className="cursor-pointer w-28 h-10 rounded-md bg-quaternary-dark"
     >
       SIGN OUT
     </button>

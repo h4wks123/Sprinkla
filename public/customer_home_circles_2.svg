@@ -1,17 +1,17 @@
-<svg width="558" height="241" viewBox="0 0 558 241" fill="none" xmlns="http://www.w3.org/2000/svg">
-<ellipse cx="143.952" cy="209.019" rx="32.5262" ry="31.1074" fill="#79DCEE"/>
-<ellipse cx="255.291" cy="209.019" rx="32.5262" ry="31.1074" fill="#79DCEE"/>
-<ellipse cx="366.631" cy="209.019" rx="32.5262" ry="31.1074" fill="#79DCEE"/>
-<ellipse cx="477.97" cy="209.019" rx="32.5262" ry="31.1074" fill="#79DCEE"/>
-<ellipse cx="32.6122" cy="209.019" rx="32.5262" ry="31.1074" fill="#79DCEE"/>
-<ellipse cx="143.952" cy="120.141" rx="32.5262" ry="31.1074" fill="#79DCEE"/>
-<ellipse cx="255.291" cy="120.14" rx="32.5262" ry="31.1074" fill="#79DCEE"/>
-<ellipse cx="366.631" cy="120.14" rx="32.5262" ry="31.1074" fill="#79DCEE"/>
-<ellipse cx="477.97" cy="120.14" rx="32.5262" ry="31.1074" fill="#79DCEE"/>
-<ellipse cx="32.6123" cy="120.14" rx="32.5262" ry="31.1074" fill="#79DCEE"/>
-<ellipse cx="143.952" cy="31.262" rx="32.5262" ry="31.1074" fill="#79DCEE"/>
-<ellipse cx="255.291" cy="31.2622" rx="32.5262" ry="31.1074" fill="#79DCEE"/>
-<ellipse cx="366.631" cy="31.262" rx="32.5262" ry="31.1074" fill="#79DCEE"/>
-<ellipse cx="477.97" cy="31.2622" rx="32.5262" ry="31.1074" fill="#79DCEE"/>
-<ellipse cx="32.6122" cy="31.2622" rx="32.5262" ry="31.1074" fill="#79DCEE"/>
+<svg width="241" height="557" viewBox="0 0 241 557" fill="none" xmlns="http://www.w3.org/2000/svg">
+<ellipse cx="208.864" cy="413.063" rx="32.5262" ry="31.1074" transform="rotate(-90 208.864 413.063)" fill="#E826C8"/>
+<ellipse cx="208.864" cy="301.723" rx="32.5262" ry="31.1074" transform="rotate(-90 208.864 301.723)" fill="#E826C8"/>
+<ellipse cx="208.864" cy="190.384" rx="32.5262" ry="31.1074" transform="rotate(-90 208.864 190.384)" fill="#E826C8"/>
+<ellipse cx="208.864" cy="79.0442" rx="32.5262" ry="31.1074" transform="rotate(-90 208.864 79.0442)" fill="#E826C8"/>
+<ellipse cx="208.865" cy="524.402" rx="32.5262" ry="31.1074" transform="rotate(-90 208.865 524.402)" fill="#E826C8"/>
+<ellipse cx="119.986" cy="413.063" rx="32.5262" ry="31.1074" transform="rotate(-90 119.986 413.063)" fill="#E826C8"/>
+<ellipse cx="119.986" cy="301.723" rx="32.5262" ry="31.1074" transform="rotate(-90 119.986 301.723)" fill="#E826C8"/>
+<ellipse cx="119.986" cy="190.384" rx="32.5262" ry="31.1074" transform="rotate(-90 119.986 190.384)" fill="#E826C8"/>
+<ellipse cx="119.986" cy="79.0442" rx="32.5262" ry="31.1074" transform="rotate(-90 119.986 79.0442)" fill="#E826C8"/>
+<ellipse cx="119.986" cy="524.402" rx="32.5262" ry="31.1074" transform="rotate(-90 119.986 524.402)" fill="#E826C8"/>
+<ellipse cx="31.1074" cy="413.063" rx="32.5262" ry="31.1074" transform="rotate(-90 31.1074 413.063)" fill="#E826C8"/>
+<ellipse cx="31.1077" cy="301.723" rx="32.5262" ry="31.1074" transform="rotate(-90 31.1077 301.723)" fill="#E826C8"/>
+<ellipse cx="31.1074" cy="190.384" rx="32.5262" ry="31.1074" transform="rotate(-90 31.1074 190.384)" fill="#E826C8"/>
+<ellipse cx="31.1077" cy="79.0442" rx="32.5262" ry="31.1074" transform="rotate(-90 31.1077 79.0442)" fill="#E826C8"/>
+<ellipse cx="31.1077" cy="524.402" rx="32.5262" ry="31.1074" transform="rotate(-90 31.1077 524.402)" fill="#E826C8"/>
 </svg>

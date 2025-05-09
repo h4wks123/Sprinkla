@@ -5,18 +5,20 @@
 @theme {
   --color-primary: #e2e9f5;
   --color-secondary: #dbb093;
+  --color-secondary-dark: #a34c32;
   --color-tertiary: #ecbce4;
+  --color-tertiary-dark: #e826c8;
   --color-quaternary: #79dcee;
-  --color-quinary: #58c7db;
+  --color-quaternary-dark: #58c7db;
   --color-white: #ffffff;
   --color-purple-logo: #e826c8;
   --color-brown-logo: #d8b093;
   --color-blue-logo: #79dcee;
-  --font-satisfy: "Satisfy", cursive;
   --font-poppins: "Poppins", sans-serif;
   --font-playfair: "Playfair Display", serif;
 
-  --animate-slanting_elements: slanting_elements 10s linear infinite;
+  --animate-slanting-elements-slow: slanting-elements-slow 30s linear infinite;
+  --animate-slanting-elements-fast: slanting-elements-fast 10s linear infinite;
   --animate-push-extra-large: push-extra-large 10s linear infinite;
   --animate-push-medium: push-medium 10s linear infinite;
   --animate-push-small: push-small 20s linear infinite;
@@ -24,7 +26,16 @@
   --animate-shake-soft: shake-soft 5s linear infinite;
   --animate-shake-hard: shake-hard 10s linear infinite;
 
-  @keyframes slanting_elements {
+  @keyframes slanting-elements-slow {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 0 -175%;
+    }
+  }
+
+  @keyframes slanting-elements-fast {
     0% {
       background-position: 0 0;
     }
@@ -115,14 +126,15 @@
 :root {
   --color-primary: #e2e9f5;
   --color-secondary: #dbb093;
+  --color-secondary-dark: #a34c32;
   --color-tertiary: #ecbce4;
+  --color-tertiary-dark: #e826c8;
   --color-quaternary: #79dcee;
-  --color-quinary: #58c7db;
+  --color-quaternary-dark: #58c7db;
   --color-white: #ffffff;
   --color-purple-logo: #e826c8;
   --color-brown-logo: #d8b093;
   --color-blue-logo: #79dcee;
-  --font-satisfy: "Satisfy", cursive;
   --font-poppins: "Poppins", sans-serif;
   --font-playfair: "Playfair Display", serif;
 }

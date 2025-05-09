@@ -89,7 +89,7 @@ const Register = () => {
           quality={100}
         />
       </div>
-      <div className="animate-slanting_elements fixed hidden h-[170%] w-[20rem] bg-repeat-y overflow-hidden -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-45 bg-[url('/login_triangles.svg')] xl:block" />
+      <div className="animate-slanting-elements-fast fixed hidden h-[170%] w-[20rem] bg-repeat-y overflow-hidden -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-45 bg-[url('/login_triangles.svg')] xl:block" />
       <form
         onSubmit={submitregisterForm}
         className="bg-secondary absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] max-w-[540px] rounded-md flex flex-col items-center pb-12 shadow-xl/30"
@@ -152,7 +152,7 @@ const Register = () => {
         </div>
         <button
           type="submit"
-          className="cursor-pointer w-44 h-10 mt-2 rounded-md bg-quinary hover:scale-110 ease-in-out"
+          className="cursor-pointer w-44 h-10 mt-2 rounded-md bg-quaternary-dark hover:scale-110 ease-in-out"
         >
           Register
         </button>
