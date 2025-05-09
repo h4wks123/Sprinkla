@@ -16,14 +16,98 @@
   --font-poppins: "Poppins", sans-serif;
   --font-playfair: "Playfair Display", serif;
 
-  --animate-login_triangle: login_triangle 10s linear infinite;
+  --animate-slanting_elements: slanting_elements 10s linear infinite;
+  --animate-push-extra-large: push-extra-large 10s linear infinite;
+  --animate-push-medium: push-medium 10s linear infinite;
+  --animate-push-small: push-small 20s linear infinite;
+  --animate-drip: drip 10s linear infinite;
+  --animate-shake-soft: shake-soft 5s linear infinite;
+  --animate-shake-hard: shake-hard 10s linear infinite;
 
-  @keyframes login_triangle {
+  @keyframes slanting_elements {
     0% {
       background-position: 0 0;
     }
     100% {
       background-position: 0 -175%;
+    }
+  }
+
+  @keyframes drip {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  @keyframes shake-soft {
+    0% {
+      transform: rotate(0deg);
+    }
+    33% {
+      transform: rotate(-3deg);
+    }
+    66% {
+      transform: rotate(3deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+
+  @keyframes shake-hard {
+    0% {
+      transform: rotate(0deg);
+    }
+    33% {
+      transform: rotate(-25deg);
+    }
+    66% {
+      transform: rotate(25deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+
+  @keyframes push-extra-large {
+    0% {
+      width: calc(50vw - 640px);
+    }
+    50% {
+      width: calc(50vw - 540px);
+    }
+    100% {
+      width: calc(50vw - 640px);
+    }
+  }
+
+  @keyframes push-medium {
+    0% {
+      margin-right: 15%;
+    }
+    50% {
+      margin-right: 10%;
+    }
+    100% {
+      margin-right: 15%;
+    }
+  }
+
+  @keyframes push-small {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
     }
   }
 }
