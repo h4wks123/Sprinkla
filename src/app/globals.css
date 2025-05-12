@@ -139,6 +139,10 @@
   --font-playfair: "Playfair Display", serif;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   overflow-x: hidden;
   background: var(--color-primary);

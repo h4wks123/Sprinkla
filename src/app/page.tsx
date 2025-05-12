@@ -50,7 +50,10 @@ const page = async () => {
       </header>
       <main className="w-full h-full">
         {!userSession || userType?.mode === userRole.customer ? (
-          <section className="relative w-[100vw] mb-20 h-[calc(42rem+min(175px,20vw))] xl:h-[calc(100dvh-4rem)]">
+          <section
+            id="landing_view_section"
+            className="relative w-[100vw] mb-20 h-[calc(42rem+min(175px,20vw))] xl:h-[calc(100dvh-4rem)]"
+          >
             <div className="relative h-[calc(100%-87.5px)]">
               <Image
                 src="/home_donut_video.gif"
@@ -74,15 +77,30 @@ const page = async () => {
                 className="absolute w-screen left-1/2 -translate-x-1/2 flex justify-center items-center gap-4 md:gap-12"
                 style={{ bottom: "calc(-1 * min(87.5px, 15vw))" }}
               >
-                <div className="w-[min(175px,30vw)] h-[min(175px,30vw)] bg-cover bg-[url('/products_icon_light.svg')] cursor-pointer duration-300 ease-in-out hover:bg-[url('/products_icon_dark.svg')] hover:scale-125" />
-                <div className="w-[min(175px,30vw)] h-[min(175px,30vw)] bg-cover bg-[url('/brands_icon_light.svg')] cursor-pointer duration-300 ease-in-out hover:bg-[url('/brands_icon_dark.svg')] hover:scale-125" />
-                <div className="w-[min(175px,30vw)] h-[min(175px,30vw)] bg-cover bg-[url('/contact_icon_light.svg')] cursor-pointer duration-300 ease-in-out hover:bg-[url('/contact_icon_dark.svg')] hover:scale-125" />
+                <Link
+                  href="#products_section"
+                  scroll={true}
+                  className="scroll-smooth w-[min(175px,30vw)] h-[min(175px,30vw)] bg-cover bg-[url('/products_icon_light.svg')] cursor-pointer duration-300 ease-in-out hover:bg-[url('/products_icon_dark.svg')] hover:scale-125"
+                />
+                <Link
+                  href="#sponsors_section"
+                  scroll={true}
+                  className="w-[min(175px,30vw)] h-[min(175px,30vw)] bg-cover bg-[url('/brands_icon_light.svg')] cursor-pointer duration-300 ease-in-out hover:bg-[url('/brands_icon_dark.svg')] hover:scale-125"
+                />
+                <Link
+                  href="#contacts_section"
+                  scroll={true}
+                  className="w-[min(175px,30vw)] h-[min(175px,30vw)] bg-cover bg-[url('/contact_icon_light.svg')] cursor-pointer duration-300 ease-in-out hover:bg-[url('/contact_icon_dark.svg')] hover:scale-125"
+                />
               </div>
             </div>
           </section>
         ) : null}
         {!userSession || userType?.mode === userRole.customer ? (
-          <section className="relative w-screen flex flex-col justify-center mb-20 xl:flex-row xl:justify-start">
+          <section
+            id="slogan_section"
+            className="relative w-screen flex flex-col justify-center mb-20 xl:flex-row xl:justify-start"
+          >
             <div className="relative flex">
               <div className="relative bg-tertiary  md:w-full md:h-[40rem] xl:animate-push-extra-large xl:w-[calc(50vw-640px)]" />
               <div className="animate-push-small relative w-[85vw] h-[85vw] aspect-square mr-[15%] md:w-[40rem] md:h-[40rem] md:animate-push-medium xl:animate-none">
@@ -119,7 +137,7 @@ const page = async () => {
           </section>
         ) : null}
         {!userSession || userType?.mode === userRole.customer ? (
-          <section className="relative w-screen mb-20">
+          <section id="products_section" className="relative w-screen mb-20">
             <div className="relative w-full max-w-[1280px] h-[50rem] mx-auto flex flex-col justify-center items-center rounded-none bg-secondary xl:rounded-md">
               <ul className="w-[90%] h-[5rem] mx-auto flex justify-start items-center gap-8 overflow-x-auto text-black font-bold">
                 <li>PROMOS</li>
@@ -133,7 +151,7 @@ const page = async () => {
           </section>
         ) : null}
         {!userSession || userType?.mode === userRole.customer ? (
-          <section className="relative w-screen mb-20">
+          <section id="sponsors_section" className="relative w-screen mb-20">
             <div className="flex justify-start">
               <div className="bg-quaternary relative w-[calc(50%-640px)] h-[12rem]" />
               <div className="bg-quaternary w-full max-w-[1280px] h-[12rem] bg-top bg-contain bg-no-repeat bg-[url('/brands_bezier_curve_1.svg')]">
@@ -182,7 +200,7 @@ const page = async () => {
           </section>
         ) : null}
         {!userSession || userType?.mode === userRole.customer ? (
-          <section className="relative w-screen mb-20">
+          <section id="contacts_section" className="relative w-screen mb-20">
             <div className="w-[min(90%,1280px)] max-w-[1280px] mx-auto bg-secondary flex flex-col justify-between items-center rounded-lg lg:flex-row lg:pr-10">
               <div className="relative w-full h-full aspect-square">
                 <Image
