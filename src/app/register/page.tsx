@@ -113,7 +113,7 @@ const Register = () => {
           }}
         />
         <div className="w-[80%] h-18 mt-6">
-          <h6>Email</h6>
+          <h6>Email Address</h6>
           <input
             type="text"
             name="email"

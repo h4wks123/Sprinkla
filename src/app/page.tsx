@@ -9,10 +9,10 @@ import { getSession } from "@/libs/auth/session";
 
 import checkUserRole from "@/libs/database/queries/users/checkUserRole";
 
-const userRole = {
-  customer: "customer",
-  admin: "admin",
-};
+enum userRole {
+  customer = "customer",
+  admin = "admin",
+}
 
 const page = async () => {
   const userSession = await getSession();
@@ -119,12 +119,12 @@ const page = async () => {
         ) : null}
         {!userSession || userType?.mode === userRole.customer ? (
           <section className="relative w-screen mb-20">
-            <div className="relative w-[min(90%,1280px)] max-w-[1280px] h-[50rem] mx-auto flex flex-col justify-center items-center rounded-md bg-secondary">
-              <ul className="w-[90%] h-[5rem] mx-auto flex justify-start items-center gap-8 overflow-x-auto">
+            <div className="relative w-full max-w-[1280px] h-[50rem] mx-auto flex flex-col justify-center items-center rounded-none bg-secondary xl:rounded-md">
+              <ul className="w-[90%] h-[5rem] mx-auto flex justify-start items-center gap-8 overflow-x-auto text-black font-bold">
                 <li>PROMOS</li>
                 <li>DOUGHNUTS</li>
               </ul>
-              <div className="w-full h-full rounded-md border-8 border-secondary bg-white">
+              <div className="w-full h-full rounded-none border-secondary bg-primary xl:border-8 xl:rounded-md">
                 Hello
               </div>
               <div className="animate-slanting-elements-slow absolute -top-[175rem] h-[400rem] w-[20rem] rotate-80 bg-repeat-y overflow-hidden -z-10 bg-[url('/customer_home_circles_1.svg')]" />
@@ -134,8 +134,8 @@ const page = async () => {
         {!userSession || userType?.mode === userRole.customer ? (
           <section className="relative w-screen mb-20">
             <div className="flex justify-start">
-              <div className="bg-quaternary relative w-[calc(50%-640px)] h-[16rem]" />
-              <div className="bg-quaternary w-full max-w-[1280px] h-[16rem] bg-top bg-contain bg-no-repeat bg-[url('/brands_bezier_curve_1.svg')]">
+              <div className="bg-quaternary relative w-[calc(50%-640px)] h-[12rem]" />
+              <div className="bg-quaternary w-full max-w-[1280px] h-[12rem] bg-top bg-contain bg-no-repeat bg-[url('/brands_bezier_curve_1.svg')]">
                 <Image
                   src="/home_donut_1.png"
                   alt="home_donut_1"
@@ -144,10 +144,10 @@ const page = async () => {
                   className="animate-shake-hard absolute -top-[8rem] left-0"
                 />
               </div>
-              <div className="bg-quaternary w-[calc(50%-640px)] h-[16rem]" />
+              <div className="bg-quaternary w-[calc(50%-640px)] h-[12rem]" />
             </div>
             <article className="w-screen bg-quaternary pb-20 flex flex-col gap-10">
-              <h3 className="w-[min(90%,1280px)] max-w-[1280px] mx-auto text-brown-logo font-bold text-center text-7xl">
+              <h3 className="w-[min(90%,1280px)] max-w-[1280px] mx-auto text-tertiary-dark font-bold text-center text-7xl">
                 SPONSORS
               </h3>
               <ul className="w-[min(90%,1280px)] max-w-[1280px] mx-auto flex flex-wrap justify-center gap-10">
@@ -177,61 +177,96 @@ const page = async () => {
                 </li>
               </ul>
             </article>
-            <div className="animate-drip w-screen h-[32rem] bg-contain bg-repeat-x bg-[url('/brands_bezier_curve_2.svg')]" />
+            <div className="animate-drip w-screen h-[20rem] bg-contain bg-repeat-x bg-[url('/brands_bezier_curve_2.svg')]" />
           </section>
         ) : null}
         {!userSession || userType?.mode === userRole.customer ? (
           <section className="relative w-screen mb-20">
-            <div className="w-[min(90%,1280px)] max-w-[1280px] mx-auto pl-10 pt-10 bg-secondary flex flex-wrap justify-between items-end rounded-lg">
-              <div className="relative w-[45%] h-full aspect-square">
+            <div className="w-[min(90%,1280px)] max-w-[1280px] mx-auto bg-secondary flex flex-col justify-between items-center rounded-lg lg:flex-row lg:pr-10">
+              <div className="relative w-full h-full aspect-square">
                 <Image
                   src="/sprinkla_restaurant.jpg"
                   alt="sprinkla_restaurant"
                   fill
-                  className="absolute pb-10"
+                  className="absolute"
                 />
               </div>
-              <article className="flex flex-col justify-end items-start w-[45%] h-full gap-6">
-                <h1 className="text-tertiary-dark text-5xl font-bold">
-                  Contact Us
-                </h1>
-                <ul className="relative w-full border-l-2 border-t-2 p-10 border-tertiary-dark right-0 bottom-0 flex justify-between">
-                  <li className="flex flex-col gap-4">
-                    <h5>Contacts</h5>
-                    <h6>Sprinkla_Robinsons@gmail.com</h6>
-                    <h6>Sprinkla_Robinsons@gmail.com</h6>
-                    <h6>Sprinkla_Robinsons@gmail.com</h6>
+              <article className="w-full max-w-[640px] text-black flex flex-col items-left justify-center gap-4 p-10 lg:max-w-none lg:pl-20">
+                <div className="flex items-center gap-3">
+                  <Image
+                    src="/touch_icon.svg"
+                    alt="touch_icon"
+                    width={35}
+                    height={35}
+                  />
+                  <h3 className="font-bold text-xl">Let's Get In Touch</h3>
+                </div>
+                <h6>Or just reach me out to ivannebayer@gmail.com</h6>
+                <div className="flex items-center gap-3">
+                  <Image
+                    src="/phone_icon.svg"
+                    alt="phone_icon"
+                    width={35}
+                    height={35}
+                  />
+                  <h3 className="font-bold text-xl">Delivery Numbers</h3>
+                </div>
+                <ul className="flex flex-wrap gap-x-8 gap-y-4">
+                  <li>
+                    <div className="text-tertiary-dark font-semibold">
+                      Robinsons Galleria, Cebu City
+                    </div>
+                    <div>(32) 123-79000</div>
                   </li>
-                  <li className="flex flex-col gap-4">
-                    <h5>Based In</h5>
-                    <ul>
-                      <li>Robinsons Galleria, Cebu City</li>
-                      <li>7:30AM - 9:00PM</li>
-                    </ul>
-                    <ul>
-                      <li>Robinsons Galleria, Cebu City</li>
-                      <li>7:30AM - 9:00PM</li>
-                    </ul>
-                    <ul>
-                      <li>Robinsons Galleria, Cebu City</li>
-                      <li>7:30AM - 9:00PM</li>
-                    </ul>
+                  <li>
+                    <div className="text-tertiary-dark font-semibold">
+                      SM Seaside, Cebu City
+                    </div>
+                    <div>(32) 777-50001</div>
+                  </li>
+                  <li>
+                    <div className="text-tertiary-dark font-semibold">
+                      Ayala Malls, Cebu City
+                    </div>
+                    <div>(32) 123-79000</div>
                   </li>
                 </ul>
+                <p className="font-light">
+                  Delivery service for Sprinkla is available in Cebu only. A
+                  minimum order of Php 350 is required to proceed with any
+                  transaction
+                </p>
               </article>
             </div>
             <div className="animate-slanting-elements-slow absolute -top-[175rem] h-[400rem] w-[20rem] rotate-90 bg-repeat-y overflow-hidden -z-10 bg-[url('/customer_home_circles_2.svg')]" />
           </section>
         ) : null}
-        <footer className="relative w-screen h-30 bg-secondary-dark">
+
+        <footer className="relative w-screen min-h-30 bg-secondary-dark flex items-center">
           <Image
             src="/home_donut_3.png"
             alt="home_donut"
             width={300}
             height={300}
-            className="absolute right-0 -top-[130px]"
+            className="absolute left-0 -top-[130px]"
           />
-          Hello
+          <ul className="w-[min(90%,1280px)] max-w-[1280px] mx-auto flex justify-end items-center gap-6">
+            <h5 className="font-bold text-xl">Follow Us</h5>
+            <Image
+              src="/linkedin_icon.svg"
+              alt="linkedin_icon"
+              width={35}
+              height={35}
+              className="cursor-pointer"
+            />
+            <Image
+              src="/github_icon.svg"
+              alt="github_icon"
+              width={35}
+              height={35}
+              className="cursor-pointer"
+            />
+          </ul>
         </footer>
       </main>
     </>

@@ -109,7 +109,7 @@ const Login = () => {
           }}
         />
         <div className="w-[80%] h-18 mt-6">
-          <label>Email</label>
+          <label>Email Address</label>
           <input
             type="text"
             name="email"
