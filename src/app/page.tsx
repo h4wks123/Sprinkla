@@ -176,6 +176,7 @@ const page = async () => {
                     alt="dunkin_donuts_logo"
                     fill
                     quality={100}
+                    className="cursor-pointer duration-300 ease-in-out hover:scale-110"
                   />
                 </li>
                 <li className="relative w-[calc(1280px/4-2rem)] h-[calc(1280px/4-2rem)]">
@@ -184,6 +185,7 @@ const page = async () => {
                     alt="starbucks_logo"
                     fill
                     quality={100}
+                    className="cursor-pointer duration-300 ease-in-out hover:scale-110"
                   />
                 </li>
                 <li className="relative w-[calc(1280px/4-2rem)] h-[calc(1280px/4-2rem)]">
@@ -192,6 +194,7 @@ const page = async () => {
                     alt="krispy_kreme_logo"
                     fill
                     quality={100}
+                    className="cursor-pointer duration-300 ease-in-out hover:scale-110"
                   />
                 </li>
               </ul>

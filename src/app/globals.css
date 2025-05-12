@@ -143,6 +143,16 @@ html {
   scroll-behavior: smooth;
 }
 
+html::-webkit-scrollbar {
+  background-color: var(--color-primary);
+  width: 10px;
+}
+
+html::-webkit-scrollbar-thumb {
+  background-color: var(--color-quaternary-dark);
+  border-radius: 10;
+}
+
 body {
   overflow-x: hidden;
   background: var(--color-primary);
