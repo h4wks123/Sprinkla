@@ -161,7 +161,7 @@ const Register = () => {
           <Link
             href="/login"
             onClick={(e) => e.stopPropagation()}
-            className="ml-2 text-blue-400 hover:underline"
+            className="ml-2 text-blue-700 hover:underline"
           >
             Sign In
           </Link>

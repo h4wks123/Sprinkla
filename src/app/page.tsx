@@ -4,6 +4,7 @@ import NavSignInBtn from "@/components/ui/navsigninbtn";
 import NavSignOutBtn from "@/components/ui/navsignoutbtn";
 
 import Image from "next/image";
+import Link from "next/link";
 
 import { getSession } from "@/libs/auth/session";
 
@@ -188,10 +189,10 @@ const page = async () => {
                   src="/sprinkla_restaurant.jpg"
                   alt="sprinkla_restaurant"
                   fill
-                  className="absolute"
+                  className="absolute rounded-t-md lg:rounded-l-md lg:rounded-t-none"
                 />
               </div>
-              <article className="w-full max-w-[640px] text-black flex flex-col items-left justify-center gap-4 p-10 lg:max-w-none lg:pl-20">
+              <article className="w-full max-w-[640px] text-black flex flex-col items-left justify-center gap-4 p-10 pb-20 lg:max-w-none lg:pl-15 lg:py-10 lg:pr-0 ">
                 <div className="flex items-center gap-3">
                   <Image
                     src="/touch_icon.svg"
@@ -201,7 +202,15 @@ const page = async () => {
                   />
                   <h3 className="font-bold text-xl">Let's Get In Touch</h3>
                 </div>
-                <h6>Or just reach me out to ivannebayer@gmail.com</h6>
+                <h6>
+                  Or just reach me out to{" "}
+                  <Link
+                    href="mailto:ivannebayer@gmail.com"
+                    className="cursor-pointer text-blue-700 border-b-1"
+                  >
+                    ivannebayer@gmail.com
+                  </Link>
+                </h6>
                 <div className="flex items-center gap-3">
                   <Image
                     src="/phone_icon.svg"
@@ -252,20 +261,27 @@ const page = async () => {
           />
           <ul className="w-[min(90%,1280px)] max-w-[1280px] mx-auto flex justify-end items-center gap-6">
             <h5 className="font-bold text-xl">Follow Us</h5>
-            <Image
-              src="/linkedin_icon.svg"
-              alt="linkedin_icon"
-              width={35}
-              height={35}
-              className="cursor-pointer"
-            />
-            <Image
-              src="/github_icon.svg"
-              alt="github_icon"
-              width={35}
-              height={35}
-              className="cursor-pointer"
-            />
+            <Link
+              href="https://www.linkedin.com/in/ivanne-dave-bayer-a23b30302/"
+              target="_blank"
+            >
+              <Image
+                src="/linkedin_icon.svg"
+                alt="linkedin_icon"
+                width={35}
+                height={35}
+                className="cursor-pointer"
+              />
+            </Link>
+            <Link href="https://github.com/h4wks123" target="_blank">
+              <Image
+                src="/github_icon.svg"
+                alt="github_icon"
+                width={35}
+                height={35}
+                className="cursor-pointer"
+              />
+            </Link>
           </ul>
         </footer>
       </main>
