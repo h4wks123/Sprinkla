@@ -147,15 +147,15 @@ const page = async () => {
               <div className="w-full h-full rounded-none border-secondary bg-primary xl:border-8 xl:rounded-md">
                 Hello
               </div>
-              <div className="animate-slanting-elements-slow absolute -top-[175rem] h-[400rem] w-[20rem] rotate-80 bg-repeat-y overflow-hidden -z-10 bg-[url('/customer_home_circles_1.svg')]" />
+              <div className="absolute overflow-hidden -z-10 h-full w-dvw before:absolute before:animate-slanting-elements-slow before:h-[200dvw] before:w-[20rem] before:rotate-85 before:aspect-auto before:right-1/2 before:-top-[calc(100dvw-25rem)] before:bg-repeat-y before:overflow-hidden before:bg-[url('/customer_home_circles_1.svg')]" />
             </div>
           </section>
         ) : null}
         {!userSession || userType?.mode === userRole.customer ? (
           <section id="sponsors_section" className="relative w-screen mb-20">
-            <div className="flex justify-start">
+            <div className="flex justify-start overflow-y-visible overflow-x-clip">
               <div className="bg-quaternary relative w-[calc(50%-640px)] h-[12rem]" />
-              <div className="bg-quaternary w-full max-w-[1280px] h-[12rem] bg-top bg-contain bg-no-repeat bg-[url('/brands_bezier_curve_1.svg')]">
+              <div className="relative bg-quaternary w-full max-w-[1280px] h-[12rem] bg-top bg-contain bg-no-repeat bg-[url('/brands_bezier_curve_1.svg')]">
                 <Image
                   src="/home_donut_1.png"
                   alt="home_donut_1"
@@ -167,7 +167,7 @@ const page = async () => {
               <div className="bg-quaternary w-[calc(50%-640px)] h-[12rem]" />
             </div>
             <article className="w-screen bg-quaternary pb-20 flex flex-col gap-10">
-              <h3 className="w-[min(90%,1280px)] max-w-[1280px] mx-auto text-tertiary-dark font-bold text-center text-7xl">
+              <h3 className="w-[min(90%,1280px)] max-w-[1280px] mx-auto text-tertiary-dark font-bold text-center text-5xl sm:text-7xl">
                 SPONSORS
               </h3>
               <ul className="w-[min(90%,1280px)] max-w-[1280px] mx-auto flex flex-wrap justify-center gap-10">
@@ -200,11 +200,14 @@ const page = async () => {
                 </li>
               </ul>
             </article>
-            <div className="animate-drip w-screen h-[20rem] bg-contain bg-repeat-x bg-[url('/brands_bezier_curve_2.svg')]" />
+            <div className="relative overflow-hidden h-[20rem] w-dvw before:absolute before:h-full before:w-full before:bg-contain before:bg-repeat-x before:animate-drip before:bg-[url('/brands_bezier_curve_2.svg')]" />
           </section>
         ) : null}
         {!userSession || userType?.mode === userRole.customer ? (
-          <section id="contacts_section" className="relative w-screen mb-20">
+          <section
+            id="contacts_section"
+            className="relative w-screen mb-20 flex justify-center"
+          >
             <div className="w-[min(90%,1280px)] max-w-[1280px] mx-auto bg-secondary flex flex-col justify-between items-center rounded-lg lg:flex-row lg:pr-10">
               <div className="relative w-full h-full aspect-square">
                 <Image
@@ -269,11 +272,11 @@ const page = async () => {
                 </p>
               </article>
             </div>
-            <div className="animate-slanting-elements-slow absolute -top-[175rem] h-[400rem] w-[20rem] rotate-90 bg-repeat-y overflow-hidden -z-10 bg-[url('/customer_home_circles_2.svg')]" />
+            <div className="absolute overflow-hidden -z-10 h-full w-dvw before:absolute before:animate-slanting-elements-slow before:h-[200dvw] before:w-[20rem] before:rotate-90 before:aspect-auto before:right-1/2 before:-top-[calc(100dvw-25rem)] before:bg-repeat-y before:overflow-hidden before:bg-[url('/customer_home_circles_2.svg')]" />
           </section>
         ) : null}
 
-        <footer className="relative w-screen min-h-30 bg-secondary-dark flex items-center">
+        <footer className="relative w-screen min-h-30  bg-secondary-dark flex items-center">
           <Image
             src="/home_donut_3.png"
             alt="home_donut"
