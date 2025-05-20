@@ -200,7 +200,7 @@ const page = async () => {
                 </li>
               </ul>
             </article>
-            <div className="relative overflow-hidden h-[20rem] w-dvw before:absolute before:h-full before:w-full before:bg-contain before:bg-repeat-x before:animate-drip before:bg-[url('/brands_bezier_curve_2.svg')]" />
+            <div className="relative overflow-x-clip overflow-y-visible h-[20rem] w-dvw before:absolute before:h-full before:w-full before:bg-contain before:bg-repeat-x before:animate-drip before:bg-[url('/brands_bezier_curve_2.svg')]" />
           </section>
         ) : null}
         {!userSession || userType?.mode === userRole.customer ? (
