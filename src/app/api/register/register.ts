@@ -1,4 +1,4 @@
-"use server";
+"use client";
 
 import { Dispatch, FormEvent, SetStateAction } from "react";
 
@@ -76,9 +76,9 @@ export function RegisterForm(
       contactNumberInput
     );
 
-    setEmailInputMessage(null),
-      setPasswordInputMessage(null),
-      setContactNumberInputMessage(null);
+    setEmailInputMessage(null);
+    setPasswordInputMessage(null);
+    setContactNumberInputMessage(null);
 
     toaster(registerStatus.status, registerStatus.message);
 

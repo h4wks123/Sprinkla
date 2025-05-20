@@ -1,4 +1,4 @@
-"use server";
+"use client";
 
 import { Dispatch, FormEvent, SetStateAction } from "react";
 import { useRouter } from "next/navigation";
@@ -46,7 +46,10 @@ export function LoginForm(
 
     const loginStatus = await loginUser(emailInput, passwordInput);
 
-    setEmailInputMessage(null), setPasswordInputMessage(null);
+    
+    setEmailInputMessage(null);
+    setPasswordInputMessage(null);
+    
     toaster(loginStatus.status, loginStatus.message);
 
     if (loginStatus.status === 200) {
