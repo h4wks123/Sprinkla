@@ -1,10 +1,12 @@
-import React, { Dispatch, FormEvent, SetStateAction } from "react";
+"use server";
+
+import { Dispatch, FormEvent, SetStateAction } from "react";
 
 import registerUser from "@/libs/database/queries/users/createUsers";
 import toaster from "@/components/ui/toaster";
 import { useRouter } from "next/navigation";
 
-export function registerForm(
+export function RegisterForm(
   setEmailInputMessage: Dispatch<SetStateAction<string | null>>,
   setPasswordInputMessage: Dispatch<SetStateAction<string | null>>,
   setContactNumberInputMessage: Dispatch<SetStateAction<string | null>>

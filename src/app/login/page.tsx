@@ -8,10 +8,12 @@ import Image from "next/image";
 import { LoginForm } from "../api/login/login";
 
 const Login = () => {
-  let [emailInputMessage, setEmailInputMessage] = useState<string | null>(null);
-  let [passwordInputMessage, setPasswordInputMessage] = useState<string | null>(
+  const [emailInputMessage, setEmailInputMessage] = useState<string | null>(
     null
   );
+  const [passwordInputMessage, setPasswordInputMessage] = useState<
+    string | null
+  >(null);
   const submitLoginForm = LoginForm(
     setEmailInputMessage,
     setPasswordInputMessage

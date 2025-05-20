@@ -5,17 +5,19 @@ import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-import { registerForm } from "@/app/api/register/register";
+import { RegisterForm } from "@/app/api/register/register";
 
 const Register = () => {
-  let [emailInputMessage, setEmailInputMessage] = useState<string | null>(null);
-  let [passwordInputMessage, setPasswordInputMessage] = useState<string | null>(
+  const [emailInputMessage, setEmailInputMessage] = useState<string | null>(
     null
   );
-  let [contactNumberInputMessage, setContactNumberInputMessage] = useState<
+  const [passwordInputMessage, setPasswordInputMessage] = useState<
     string | null
   >(null);
-  const submitregisterForm = registerForm(
+  const [contactNumberInputMessage, setContactNumberInputMessage] = useState<
+    string | null
+  >(null);
+  const submitregisterForm = RegisterForm(
     setEmailInputMessage,
     setPasswordInputMessage,
     setContactNumberInputMessage

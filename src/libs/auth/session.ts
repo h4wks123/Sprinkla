@@ -7,6 +7,7 @@ import { NextRequest, NextResponse } from "next/server";
 const secretKey = process.env.JWT_SECRET_KEY;
 const key = new TextEncoder().encode(secretKey);
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export async function encrypt(payload: any) {
   return await new SignJWT(payload)
     .setProtectedHeader({ alg: "HS256" })
@@ -15,6 +16,7 @@ export async function encrypt(payload: any) {
     .sign(key);
 }
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export async function decrypt(input: string): Promise<any> {
   const { payload } = await jwtVerify(input, key, {
     algorithms: ["HS256"],

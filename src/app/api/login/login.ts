@@ -1,4 +1,6 @@
-import React, { Dispatch, FormEvent, SetStateAction } from "react";
+"use server";
+
+import { Dispatch, FormEvent, SetStateAction } from "react";
 import { useRouter } from "next/navigation";
 
 import toaster from "@/components/ui/toaster";
@@ -15,8 +17,8 @@ export function LoginForm(
     e.preventDefault();
 
     const formData = new FormData(e.currentTarget);
-    let emailInput = formData.get("email") as string;
-    let passwordInput = formData.get("password") as string;
+    const emailInput = formData.get("email") as string;
+    const passwordInput = formData.get("password") as string;
 
     let hasError = false;
 

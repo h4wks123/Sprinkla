@@ -35,13 +35,14 @@ const page = async () => {
               alt="cart_icon"
               width={30}
               height={30}
-              className="ml-auto"
+              className="cursor-pointer"
             />
             <Image
               src="/side_bar_icon.svg"
               alt="side_bar_icon"
               width={30}
               height={30}
+              className="cursor-pointer"
             />
           </div>
         ) : (
@@ -221,7 +222,7 @@ const page = async () => {
                     width={35}
                     height={35}
                   />
-                  <h3 className="font-bold text-xl">Let's Get In Touch</h3>
+                  <h3 className="font-bold text-xl">Let`s Get In Touch</h3>
                 </div>
                 <h6>
                   Or just reach me out to{" "}
