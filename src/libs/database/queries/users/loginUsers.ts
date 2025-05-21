@@ -8,7 +8,7 @@ import { login } from "@/libs/auth/session";
 export default async function loginUser(
   emailInput: string,
   passwordInput: string
-): Promise<{ status: number; message: string }> {
+) {
   try {
     const [result, userRole, setCookies] = await Promise.all([
       db
@@ -37,10 +37,10 @@ export default async function loginUser(
       };
     }
 
-    console.log(setCookies, "setCookies");
     return {
       status: 200,
       message: "Login successful!",
+      mode: userRole[0].field5,
     };
   } catch (error) {
     console.error("Error user could not log in: ", error);

@@ -5,18 +5,12 @@ import React from "react";
 import NavSignInBtn from "@/components/ui/navsigninbtn";
 import NavSignOutBtn from "@/components/ui/navsignoutbtn";
 
-
 import Image from "next/image";
 import Link from "next/link";
 
 import { getSession } from "@/libs/auth/session";
 
 import checkUserRole from "@/libs/database/queries/users/checkUserRole";
-
-enum userRole {
-  customer = "customer",
-  admin = "admin",
-}
 
 const page = async () => {
   const userSession = await getSession();
@@ -220,7 +214,7 @@ const page = async () => {
                 <h3 className="font-bold text-xl">Let`s Get In Touch</h3>
               </div>
               <h6>
-                Or just reach me out to
+                Or just reach me out to{" "}
                 <Link
                   href="mailto:ivannebayer@gmail.com"
                   className="cursor-pointer text-blue-700 border-b-1"
@@ -265,18 +259,6 @@ const page = async () => {
             </article>
           </div>
           <div className="absolute overflow-hidden -z-10 h-full w-dvw before:absolute before:animate-slanting-elements-slow before:h-[200dvw] before:w-[20rem] before:rotate-90 before:aspect-auto before:right-1/2 before:-top-[calc(100dvw-25rem)] before:bg-repeat-y before:overflow-hidden before:bg-[url('/customer_home_circles_2.svg')]" />
-        </section>
-        <section className="relative w-screen mb-20">
-          <div className="relative w-full max-w-[1280px] h-[50rem] mx-auto flex flex-col justify-center items-center rounded-none bg-secondary xl:rounded-md">
-            <ul className="w-[90%] h-[5rem] mx-auto flex justify-start items-center gap-8 overflow-x-auto text-black font-bold">
-              <li>PROMOS</li>
-              <li>DOUGHNUTS</li>
-            </ul>
-            <div className="w-full h-full rounded-none border-secondary bg-primary xl:border-8 xl:rounded-md">
-              Hello
-            </div>
-            <div className="absolute overflow-hidden -z-10 h-full w-dvw before:absolute before:animate-slanting-elements-slow before:h-[200dvw] before:w-[20rem] before:rotate-85 before:aspect-auto before:right-1/2 before:-top-[calc(100dvw-25rem)] before:bg-repeat-y before:overflow-hidden before:bg-[url('/customer_home_circles_1.svg')]" />
-          </div>
         </section>
       </main>
       <footer className="relative w-screen min-h-30  bg-secondary-dark flex items-center">

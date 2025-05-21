@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import toaster from "@/components/ui/toaster";
 
 import loginUser from "@/libs/database/queries/users/loginUsers";
+import { login } from "@/libs/auth/session";
 
 export async function LoginForm(
   e: FormEvent<HTMLFormElement>,
@@ -43,15 +44,18 @@ export async function LoginForm(
 
   e.currentTarget.reset();
 
-  const loginStatus = await loginUser(emailInput, passwordInput);
+  let loginStatus = await loginUser(emailInput, passwordInput);
 
   setEmailInputMessage(null);
   setPasswordInputMessage(null);
 
   toaster(loginStatus.status, loginStatus.message);
 
-  if (loginStatus.status === 200) {
+  if (loginStatus.status === 200 && loginStatus.mode === "customer") {
     router.push("/");
+  }
+  if (loginStatus.status === 200 && loginStatus.mode === "admin") {
+    router.push("/admin/users");
   }
 
   return;
