@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-import { RegisterForm } from "@/app/api/register/register";
+import { RegisterForm } from "@/app/handlers/register/register";
 
 const Register = () => {
   const [emailInputMessage, setEmailInputMessage] = useState<string | null>(

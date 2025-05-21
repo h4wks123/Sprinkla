@@ -31,7 +31,7 @@ export default async function registerUser(
 
     return {
       status: 200,
-      message: "Login successful!",
+      message: "Registration successful!",
     };
   } catch (err) {
     console.error("Error inserting values into the database: ", err);

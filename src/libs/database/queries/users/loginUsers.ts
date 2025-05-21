@@ -3,14 +3,14 @@
 import { eq, and } from "drizzle-orm";
 import { db } from "../..";
 import { usersTable } from "../../schema/users";
-import { loginCookies } from "@/libs/auth/middleware";
+import { login } from "@/libs/auth/session";
 
 export default async function loginUser(
   emailInput: string,
   passwordInput: string
 ): Promise<{ status: number; message: string }> {
   try {
-    const [result, setCookies] = await Promise.all([
+    const [result, userRole, setCookies] = await Promise.all([
       db
         .select({
           field2: usersTable.email,
@@ -23,7 +23,11 @@ export default async function loginUser(
             eq(usersTable.password, passwordInput)
           )
         ),
-      loginCookies(emailInput),
+      db
+        .select({ field5: usersTable.user_type })
+        .from(usersTable)
+        .where(eq(usersTable.email, emailInput)),
+      login(emailInput),
     ]);
 
     if (!result || result.length === 0) {
