@@ -15,7 +15,7 @@ export default async function checkUserRole(emailInput: string) {
       return {
         status: 200,
         message: "User role is an admin",
-        mode: "customer",
+        mode: "admin",
       };
     } else if (userRole[0].field5 === "customer") {
       return {

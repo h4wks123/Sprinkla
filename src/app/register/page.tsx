@@ -4,8 +4,9 @@ import React, { useState } from "react";
 
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
-import { RegisterForm } from "@/app/api/register/register";
+import { RegisterForm } from "@/app/handlers/register/register";
 
 const Register = () => {
   const [emailInputMessage, setEmailInputMessage] = useState<string | null>(
@@ -17,11 +18,7 @@ const Register = () => {
   const [contactNumberInputMessage, setContactNumberInputMessage] = useState<
     string | null
   >(null);
-  const submitregisterForm = RegisterForm(
-    setEmailInputMessage,
-    setPasswordInputMessage,
-    setContactNumberInputMessage
-  );
+  const router = useRouter();
 
   return (
     <section className="w-full h-[100dvh]">
@@ -93,7 +90,15 @@ const Register = () => {
       </div>
       <div className="animate-slanting-elements-fast fixed hidden h-[170%] w-[20rem] bg-repeat-y overflow-hidden -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-45 bg-[url('/login_triangles.svg')] xl:block" />
       <form
-        onSubmit={submitregisterForm}
+        onSubmit={(e) =>
+          RegisterForm(
+            e,
+            setEmailInputMessage,
+            setPasswordInputMessage,
+            setContactNumberInputMessage,
+            router
+          )
+        }
         className="bg-secondary absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] max-w-[540px] rounded-md flex flex-col items-center pb-12 shadow-xl/30"
       >
         <div className="relative w-full h-64">
