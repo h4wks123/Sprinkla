@@ -335,13 +335,9 @@ const page = async () => {
         </section>
       </main>
       <footer className="relative w-screen min-h-30  bg-secondary-dark flex items-center">
-        <Image
-          src="/home_donut_3.png"
-          alt="home_donut"
-          width={300}
-          height={300}
-          className="w-[150px] h-[150px] aspect-square absolute left-0 -top-[130px] lg:w-[300px] lg:h-[300px]"
-        />
+        <div className="absolute w-50 h-40 -top-25 left-0 sm:w-60 sm:h-45 sm:-top-25 lg:w-85 lg:h-60 lg:-top-35">
+          <Image src="/home_donut_3.png" alt="home_donut" fill />
+        </div>
         <ul className="w-[min(90%,1280px)] max-w-[1280px] mx-auto flex justify-end items-center gap-6">
           <h5 className="font-bold text-xl">Follow Us</h5>
           <Link
