@@ -69,6 +69,7 @@ const Login = () => {
           animationDuration: "40s",
           animationIterationCount: "infinite",
         }}
+        className="hidden lg:block"
       />
       <div
         className="fixed w-[18rem] h-[18rem] -bottom-5 -left-7.5 lg:w-[30rem] lg:h-[30rem]"

@@ -27,7 +27,7 @@ const Admin = () => {
         </div>
       </header>
       <main className="w-full h-full">
-        <section className="relative w-screen mb-20">
+        <section className="relative w-screen">
           <div className="relative w-full max-w-[1280px] h-[50rem] mx-auto flex flex-col justify-center items-center bg-secondary">
             <div className="w-full h-full rounded-none border-secondary bg-primary xl:border-8 xl:rounded-md"></div>
           </div>

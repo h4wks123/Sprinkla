@@ -6,7 +6,6 @@ import { useRouter } from "next/navigation";
 import toaster from "@/components/ui/toaster";
 
 import loginUser from "@/libs/database/queries/users/loginUsers";
-import { login } from "@/libs/auth/session";
 
 export async function LoginForm(
   e: FormEvent<HTMLFormElement>,
