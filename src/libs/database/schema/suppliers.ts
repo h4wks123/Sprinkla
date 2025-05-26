@@ -1,4 +1,4 @@
-import { integer, sqliteTable, text, real } from "drizzle-orm/sqlite-core";
+import { integer, sqliteTable, text } from "drizzle-orm/sqlite-core";
 import { timestamps } from "./helpers";
 
 export const suppliersTable = sqliteTable("suppliers", {

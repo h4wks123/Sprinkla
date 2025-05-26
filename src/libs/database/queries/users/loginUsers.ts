@@ -10,7 +10,7 @@ export default async function loginUser(
   passwordInput: string
 ) {
   try {
-    const [result, userRole, setCookies] = await Promise.all([
+    const [result, userRole] = await Promise.all([
       db
         .select({
           field2: usersTable.email,
@@ -27,7 +27,6 @@ export default async function loginUser(
         .select({ field5: usersTable.user_type })
         .from(usersTable)
         .where(eq(usersTable.email, emailInput)),
-      login(emailInput),
     ]);
 
     if (!result || result.length === 0) {
@@ -36,6 +35,8 @@ export default async function loginUser(
         message: "Email or password is incorrect!",
       };
     }
+
+    login(emailInput);
 
     return {
       status: 200,

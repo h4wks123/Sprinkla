@@ -43,7 +43,7 @@ export async function LoginForm(
 
   e.currentTarget.reset();
 
-  let loginStatus = await loginUser(emailInput, passwordInput);
+  const loginStatus = await loginUser(emailInput, passwordInput);
 
   setEmailInputMessage(null);
   setPasswordInputMessage(null);

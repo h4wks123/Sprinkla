@@ -10,14 +10,8 @@ import Link from "next/link";
 
 import { getSession } from "@/libs/auth/session";
 
-import checkUserRole from "@/libs/database/queries/users/checkUserRole";
-
 const page = async () => {
   const userSession = await getSession();
-  let userType = null;
-  if (userSession !== null) {
-    userType = await checkUserRole(userSession.email);
-  }
 
   return (
     <>
@@ -128,16 +122,95 @@ const page = async () => {
             </h3>
           </article>
         </section>
-        <section id="products_section" className="relative w-screen mb-20">
+        <section id="products_section" className="relative w-screen mb-30">
           <div className="relative w-full max-w-[1280px] h-[50rem] mx-auto flex flex-col justify-center items-center rounded-none bg-secondary xl:rounded-md">
-            <ul className="w-[90%] h-[5rem] mx-auto flex justify-start items-center gap-8 overflow-x-auto text-black font-bold">
+            <ul className="w-[90%] h-[5rem] mx-auto flex justify-start items-center gap-8 text-black font-bold">
               <li>PROMOS</li>
               <li>DOUGHNUTS</li>
             </ul>
-            <div className="w-full h-full rounded-none border-secondary bg-primary xl:border-8 xl:rounded-md">
-              Hello
+            <div className="w-full h-full overflow-y-scroll flex flex-wrap items-start justify-center rounded-none p-6 gap-6 border-secondary border-b-8 bg-primary xl:border-8 xl:rounded-md">
+              <div className="flex flex-col w-[calc(1280px/4-56px)] justify-center items-left gap-2">
+                <Image
+                  src="/donut_sale.png"
+                  alt="donut sale"
+                  width={200}
+                  height={200}
+                  className="mx-auto"
+                />
+                <h5 className="text-quaternary text-2xl font-bold">
+                  One Dozen Mixed Donuts
+                </h5>
+                <p className="text-red-500 text-lg">PHP 500.00</p>
+                <button className="bg-quaternary-dark mx-auto w-60 h-10 rounded-lg flex justify-center items-center cursor-pointer text-white">
+                  ORDER NOW
+                </button>
+              </div>
+              <div className="flex flex-col w-[calc(1280px/4-56px)] justify-center items-left gap-2">
+                <Image
+                  src="/donut_sale.png"
+                  alt="donut sale"
+                  width={200}
+                  height={200}
+                  className="mx-auto"
+                />
+                <h5 className="text-quaternary text-2xl font-bold">
+                  One Dozen Mixed Donuts
+                </h5>
+                <p className="text-red-500 text-lg">PHP 500.00</p>
+                <button className="bg-quaternary-dark mx-auto w-60 h-10 rounded-lg flex justify-center items-center cursor-pointer text-white">
+                  ORDER NOW
+                </button>
+              </div>
+              <div className="flex flex-col w-[calc(1280px/4-56px)] justify-center items-left gap-2">
+                <Image
+                  src="/donut_sale.png"
+                  alt="donut sale"
+                  width={200}
+                  height={200}
+                  className="mx-auto"
+                />
+                <h5 className="text-quaternary text-2xl font-bold">
+                  One Dozen Mixed Donuts
+                </h5>
+                <p className="text-red-500 text-lg">PHP 500.00</p>
+                <button className="bg-quaternary-dark mx-auto w-60 h-10 rounded-lg flex justify-center items-center cursor-pointer text-white">
+                  ORDER NOW
+                </button>
+              </div>
+              <div className="flex flex-col w-[calc(1280px/4-56px)] justify-center items-left gap-2">
+                <Image
+                  src="/donut_sale.png"
+                  alt="donut sale"
+                  width={200}
+                  height={200}
+                  className="mx-auto"
+                />
+                <h5 className="text-quaternary text-2xl font-bold">
+                  One Dozen Mixed Donuts
+                </h5>
+                <p className="text-red-500 text-lg">PHP 500.00</p>
+                <button className="bg-quaternary-dark mx-auto w-60 h-10 rounded-lg flex justify-center items-center cursor-pointer text-white">
+                  ORDER NOW
+                </button>
+              </div>
+              <div className="flex flex-col w-[calc(1280px/4-56px)] justify-center items-left gap-2">
+                <Image
+                  src="/donut_sale.png"
+                  alt="donut sale"
+                  width={200}
+                  height={200}
+                  className="mx-auto"
+                />
+                <h5 className="text-quaternary text-2xl font-bold">
+                  One Dozen Mixed Donuts
+                </h5>
+                <p className="text-red-500 text-lg">PHP 500.00</p>
+                <button className="bg-quaternary-dark mx-auto w-60 h-10 rounded-lg flex justify-center items-center cursor-pointer text-white">
+                  ORDER NOW
+                </button>
+              </div>
             </div>
-            <div className="absolute overflow-hidden -z-10 h-full w-dvw before:absolute before:animate-slanting-elements-slow before:h-[200dvw] before:w-[20rem] before:rotate-85 before:aspect-auto before:right-1/2 before:-top-[calc(100dvw-25rem)] before:bg-repeat-y before:overflow-hidden before:bg-[url('/customer_home_circles_1.svg')]" />
+            <div className="hidden absolute overflow-hidden -z-10 h-full w-dvw xl:block before:absolute before:animate-slanting-elements-slow before:h-[200dvw] before:w-[20rem] before:rotate-85 before:aspect-auto before:right-1/2 before:-top-[calc(100dvw-25rem)] before:bg-repeat-y before:overflow-hidden before:bg-[url('/customer_home_circles_1.svg')]" />
           </div>
         </section>
         <section id="sponsors_section" className="relative w-screen mb-20">
@@ -188,7 +261,7 @@ const page = async () => {
               </li>
             </ul>
           </article>
-          <div className="relative overflow-x-clip overflow-y-visible h-[20rem] w-dvw before:absolute before:h-full before:w-full before:bg-contain before:bg-repeat-x before:animate-drip before:bg-[url('/brands_bezier_curve_2.svg')]" />
+          <div className="relative h-[20rem] w-dvw bg-repeat-x bg-contain bg-[url('/brands_bezier_curve_2.svg')]" />
         </section>
         <section
           id="contacts_section"
@@ -258,7 +331,7 @@ const page = async () => {
               </p>
             </article>
           </div>
-          <div className="absolute overflow-hidden -z-10 h-full w-dvw before:absolute before:animate-slanting-elements-slow before:h-[200dvw] before:w-[20rem] before:rotate-90 before:aspect-auto before:right-1/2 before:-top-[calc(100dvw-25rem)] before:bg-repeat-y before:overflow-hidden before:bg-[url('/customer_home_circles_2.svg')]" />
+          <div className="hidden absolute overflow-hidden -z-10 h-full w-dvw xl:block before:absolute before:animate-slanting-elements-slow before:h-[200dvw] before:w-[20rem] before:rotate-90 before:aspect-auto before:right-1/2 before:-top-[calc(100dvw-25rem)] before:bg-repeat-y before:overflow-hidden before:bg-[url('/customer_home_circles_2.svg')]" />
         </section>
       </main>
       <footer className="relative w-screen min-h-30  bg-secondary-dark flex items-center">
@@ -267,7 +340,7 @@ const page = async () => {
           alt="home_donut"
           width={300}
           height={300}
-          className="absolute left-0 -top-[130px]"
+          className="w-[150px] h-[150px] aspect-square absolute left-0 -top-[130px] lg:w-[300px] lg:h-[300px]"
         />
         <ul className="w-[min(90%,1280px)] max-w-[1280px] mx-auto flex justify-end items-center gap-6">
           <h5 className="font-bold text-xl">Follow Us</h5>
