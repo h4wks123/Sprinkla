@@ -2,7 +2,6 @@
 
 import { Dispatch, FormEvent, SetStateAction } from "react";
 
-import registerUser from "@/libs/database/queries/users/createUsers";
 import toaster from "@/components/ui/toaster";
 import { useRouter } from "next/navigation";
 

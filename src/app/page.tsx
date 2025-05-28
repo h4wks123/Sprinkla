@@ -2,25 +2,24 @@
 
 import React from "react";
 
-import NavSignInBtn from "@/components/ui/navsigninbtn";
-import NavSignOutBtn from "@/components/ui/navsignoutbtn";
-
 import Image from "next/image";
 import Link from "next/link";
 
-import { getSession } from "@/libs/auth/session";
-
 const page = async () => {
-  const userSession = await getSession();
+  const session = true;
 
   return (
     <>
       <header className="w-[min(90%,1280px)] max-w-[1280px] h-[4rem] mx-auto flex justify-end items-center">
-        {!userSession ? (
-          <NavSignInBtn />
+        {session ? (
+          <button className="cursor-pointer w-28 h-10 rounded-md bg-quaternary-dark">
+            SIGN IN
+          </button>
         ) : (
           <div className="flex justify-center items-center gap-6">
-            <NavSignOutBtn />
+            <button className="cursor-pointer w-28 h-10 rounded-md bg-quaternary-dark">
+              SIGN OUT
+            </button>
             <Image
               src="/cart_icon.svg"
               alt="cart_icon"

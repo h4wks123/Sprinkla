@@ -3,7 +3,6 @@
 import { eq, and } from "drizzle-orm";
 import { db } from "../..";
 import { usersTable } from "../../schema/users";
-import { login } from "@/libs/auth/session";
 
 export default async function loginUser(
   emailInput: string,
@@ -35,8 +34,6 @@ export default async function loginUser(
         message: "Email or password is incorrect!",
       };
     }
-
-    login(emailInput);
 
     return {
       status: 200,
