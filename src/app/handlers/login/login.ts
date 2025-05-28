@@ -5,8 +5,6 @@ import { useRouter } from "next/navigation";
 
 import toaster from "@/components/ui/toaster";
 
-import loginUser from "@/libs/database/queries/users/loginUsers";
-
 export async function LoginForm(
   e: FormEvent<HTMLFormElement>,
   setEmailInputMessage: Dispatch<SetStateAction<string | null>>,
@@ -21,7 +19,6 @@ export async function LoginForm(
 
   let hasError = false;
 
-  //check email
   if (!emailInput) {
     setEmailInputMessage("Email input cannot be empty!");
     hasError = true;
@@ -29,7 +26,6 @@ export async function LoginForm(
     setEmailInputMessage(null);
   }
 
-  //check password
   if (!passwordInput) {
     setPasswordInputMessage("Password input cannot be empty!");
     hasError = true;
@@ -43,17 +39,26 @@ export async function LoginForm(
 
   e.currentTarget.reset();
 
-  const loginStatus = await loginUser(emailInput, passwordInput);
+  const loginStatus = await fetch("/api/login", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ emailInput, passwordInput }),
+  });
+  
+  const data = await loginStatus.json();
 
   setEmailInputMessage(null);
   setPasswordInputMessage(null);
 
-  toaster(loginStatus.status, loginStatus.message);
+  toaster(data.status, data.message);
 
-  if (loginStatus.status === 200 && loginStatus.mode === "customer") {
+  if (data.status === 200 && data.mode === "customer") {
     router.push("/");
   }
-  if (loginStatus.status === 200 && loginStatus.mode === "admin") {
+
+  if (data.status === 200 && data.mode === "admin") {
     router.push("/admin/users");
   }
 

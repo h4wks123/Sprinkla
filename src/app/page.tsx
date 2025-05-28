@@ -122,7 +122,7 @@ const page = async () => {
             </h3>
           </article>
         </section>
-        <section id="products_section" className="relative w-screen mb-30">
+        <section id="products_section" className="relative w-screen mb-20">
           <div className="relative w-full max-w-[1280px] h-[50rem] mx-auto flex flex-col justify-center items-center rounded-none bg-secondary xl:rounded-md">
             <ul className="w-[90%] h-[5rem] mx-auto flex justify-start items-center gap-8 text-black font-bold">
               <li>PROMOS</li>

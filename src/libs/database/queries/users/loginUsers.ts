@@ -11,7 +11,7 @@ export default async function loginUser(
 ) {
   try {
     const [result, userRole] = await Promise.all([
-      db
+      db  
         .select({
           field2: usersTable.email,
           field3: usersTable.password,

@@ -20,68 +20,44 @@ export async function RegisterForm(
   const passwordInput = formData.get("password") as string;
   const contactNumberInput = Number(formData.get("contactNumber"));
 
-  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-  const passwordRegex = /^(?=.*[0-9])[A-Za-z0-9!@#$%^&*]{6,}$/;
-  const contactNumberRegex = /^\d{10}$/;
+  const responseValidation = await fetch("/api/dataValidation", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ emailInput, passwordInput, contactNumberInput }),
+  });
 
-  let hasError = false;
+  const dataValidation = await responseValidation.json();
 
-  // Check email
-  if (!emailInput) {
-    setEmailInputMessage("Email input cannot be empty!");
-    hasError = true;
-  } else if (!emailRegex.test(emailInput)) {
-    setEmailInputMessage("Invalid email format!");
-    hasError = true;
-  } else {
-    setEmailInputMessage(null);
-  }
-
-  // Check password
-  if (!passwordInput) {
-    setPasswordInputMessage("Password input cannot be empty!");
-    hasError = true;
-  } else if (!passwordRegex.test(passwordInput)) {
-    setPasswordInputMessage(
-      "Invalid password, must contain at least 1 number, and no less than 6 letters!"
-    );
-    hasError = true;
-  } else {
-    setPasswordInputMessage(null);
-  }
-
-  // Check contact number
-  if (!contactNumberInput) {
-    setContactNumberInputMessage("Contact number input cannot be empty!");
-    hasError = true;
-  } else if (!contactNumberRegex.test(contactNumberInput.toString())) {
-    setContactNumberInputMessage(
-      "Invalid contact number, must be exactly 10 digits!"
-    );
-    hasError = true;
-  } else {
-    setContactNumberInputMessage(null);
-  }
-
-  if (hasError) {
+  if (!responseValidation.ok && dataValidation.errors) {
+    setEmailInputMessage(dataValidation.errors.email || null);
+    setPasswordInputMessage(dataValidation.errors.password || null);
+    setContactNumberInputMessage(dataValidation.errors.contact || null);
     return;
   }
 
-  e.currentTarget.reset();
+  const responseRegister = await fetch("api/register", {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ emailInput, passwordInput, contactNumberInput }),
+  });
 
-  const registerStatus = await registerUser(
-    emailInput,
-    passwordInput,
-    contactNumberInput
-  );
+  const dataRegister = await responseRegister.json();
+
+  if (e.currentTarget instanceof HTMLFormElement) {
+    e.currentTarget.reset();
+  }
 
   setEmailInputMessage(null);
   setPasswordInputMessage(null);
   setContactNumberInputMessage(null);
 
-  toaster(registerStatus.status, registerStatus.message);
+  toaster(dataRegister.status, dataRegister.message);
 
-  if (registerStatus.status === 200) {
+  if (dataRegister.status === 200) {
     router.push("/login");
   }
 
