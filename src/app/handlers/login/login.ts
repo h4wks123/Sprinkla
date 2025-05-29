@@ -2,6 +2,7 @@
 
 import { Dispatch, FormEvent, SetStateAction } from "react";
 import { useRouter } from "next/navigation";
+import { signIn } from "next-auth/react";
 
 import toaster from "@/components/ui/toaster";
 
@@ -39,28 +40,25 @@ export async function LoginForm(
 
   e.currentTarget.reset();
 
-  const loginStatus = await fetch("/api/login", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ emailInput, passwordInput }),
+  const result = await signIn("credentials", {
+    email: emailInput,
+    password: passwordInput,
+    redirect: false,
   });
-  
-  const data = await loginStatus.json();
 
+  console.log(result);
   setEmailInputMessage(null);
   setPasswordInputMessage(null);
 
-  toaster(data.status, data.message);
+  // toaster(data.status, data.message);
 
-  if (data.status === 200 && data.mode === "customer") {
-    router.push("/");
-  }
+  // if (data.status === 200 && data.mode === "customer") {
+  //   router.push("/");
+  // }
 
-  if (data.status === 200 && data.mode === "admin") {
-    router.push("/admin/users");
-  }
+  // if (data.status === 200 && data.mode === "admin") {
+  //   router.push("/admin/users");
+  // }
 
   return;
 }

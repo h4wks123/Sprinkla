@@ -10,8 +10,9 @@ export default async function loginUser(
 ) {
   try {
     const [result, userRole] = await Promise.all([
-      db  
+      db
         .select({
+          field1: usersTable.user_id,
           field2: usersTable.email,
           field3: usersTable.password,
         })
@@ -27,18 +28,25 @@ export default async function loginUser(
         .from(usersTable)
         .where(eq(usersTable.email, emailInput)),
     ]);
-
+    
     if (!result || result.length === 0) {
       return {
         status: 404,
         message: "Email or password is incorrect!",
+        id: null,
+        mode: null,
+        email: null,
+        password: null,
       };
     }
 
     return {
       status: 200,
       message: "Login successful!",
+      id: result[0].field1,
       mode: userRole[0].field5,
+      email: result[0].field2,
+      password: result[0].field3,
     };
   } catch (error) {
     console.error("Error user could not log in: ", error);
@@ -46,6 +54,10 @@ export default async function loginUser(
     return {
       status: 500,
       message: "Internal server error during login.",
+      id: null,
+      mode: null,
+      email: null,
+      password: null,
     };
   }
 }
