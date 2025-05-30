@@ -46,11 +46,13 @@ export async function LoginForm(
     redirect: false,
   });
 
-  console.log(result);
   setEmailInputMessage(null);
   setPasswordInputMessage(null);
 
   // toaster(data.status, data.message);
+  if (result?.status === 200) {
+    router.push("/");
+  }
 
   // if (data.status === 200 && data.mode === "customer") {
   //   router.push("/");

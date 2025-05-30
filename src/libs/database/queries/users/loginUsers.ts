@@ -28,15 +28,14 @@ export default async function loginUser(
         .from(usersTable)
         .where(eq(usersTable.email, emailInput)),
     ]);
-    
+
     if (!result || result.length === 0) {
       return {
         status: 404,
         message: "Email or password is incorrect!",
         id: null,
-        mode: null,
+        role: null,
         email: null,
-        password: null,
       };
     }
 
@@ -44,9 +43,8 @@ export default async function loginUser(
       status: 200,
       message: "Login successful!",
       id: result[0].field1,
-      mode: userRole[0].field5,
+      role: userRole[0].field5,
       email: result[0].field2,
-      password: result[0].field3,
     };
   } catch (error) {
     console.error("Error user could not log in: ", error);
@@ -55,9 +53,8 @@ export default async function loginUser(
       status: 500,
       message: "Internal server error during login.",
       id: null,
-      mode: null,
+      role: null,
       email: null,
-      password: null,
     };
   }
 }
