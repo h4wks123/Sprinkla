@@ -6,6 +6,8 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { Header } from "@/components/(header)/header";
+import Footer from "@/components/(footer)/footer";
+
 const page = async () => {
   return (
     <>
@@ -305,6 +307,7 @@ const page = async () => {
           </div>
           <div className="hidden absolute overflow-hidden -z-10 h-full w-dvw xl:block before:absolute before:animate-slanting-elements-slow before:h-[200dvw] before:w-[20rem] before:rotate-90 before:aspect-auto before:right-1/2 before:-top-[calc(100dvw-25rem)] before:bg-repeat-y before:overflow-hidden before:bg-[url('/customer_home_circles_2.svg')]" />
         </section>
+        <Footer />
       </main>
     </>
   );
