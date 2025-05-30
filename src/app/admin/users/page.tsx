@@ -2,14 +2,11 @@
 
 import Image from "next/image";
 
-import NavSignOutBtn from "@/components/ui/navsignoutbtn";
-
 const Admin = () => {
   return (
     <>
       <header className="w-[min(90%,1280px)] max-w-[1280px] h-[4rem] mx-auto flex justify-end items-center">
         <div className="flex justify-center items-center gap-6">
-          <NavSignOutBtn />
           <Image
             src="/cart_icon.svg"
             alt="cart_icon"

@@ -5,8 +5,8 @@ import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useSession } from "next-auth/react";
 import { LoginForm } from "../handlers/login/login";
+import { useSession } from "next-auth/react";
 
 const Login = () => {
   const [emailInputMessage, setEmailInputMessage] = useState<string | null>(
@@ -16,7 +16,6 @@ const Login = () => {
     string | null
   >(null);
   const router = useRouter();
-  const { data: session } = useSession();
 
   return (
     <section className="w-full h-[100dvh]">

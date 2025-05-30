@@ -3,7 +3,7 @@
 import { Dispatch, FormEvent, SetStateAction } from "react";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
-
+import { getSession } from "next-auth/react";
 import toaster from "@/components/ui/toaster";
 
 export async function LoginForm(
@@ -46,21 +46,26 @@ export async function LoginForm(
     redirect: false,
   });
 
-  setEmailInputMessage(null);
-  setPasswordInputMessage(null);
+  const session = await getSession();
+  console.log(session);
+  if (session!.user!.toaster!.status === 200) {
+    toaster(
+      session!.user!.toaster!.status,
+      session!.user!.email + " " + session!.user!.toaster!.message
+    );
+    if (session?.user?.role === "customer") {
+      router.push("/");
+    }
 
-  // toaster(data.status, data.message);
-  if (result?.status === 200) {
-    router.push("/");
+    if (session?.user?.role === "admin") {
+      router.push("/admin/users");
+    }
+  } else {
+    toaster(session!.user!.toaster!.status, session!.user!.toaster!.message);
   }
 
-  // if (data.status === 200 && data.mode === "customer") {
-  //   router.push("/");
-  // }
-
-  // if (data.status === 200 && data.mode === "admin") {
-  //   router.push("/admin/users");
-  // }
+  setEmailInputMessage(null);
+  setPasswordInputMessage(null);
 
   return;
 }

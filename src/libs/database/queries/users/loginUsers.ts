@@ -41,7 +41,7 @@ export default async function loginUser(
 
     return {
       status: 200,
-      message: "Login successful!",
+      message: "has succesfully logged in!",
       id: result[0].field1,
       role: userRole[0].field5,
       email: result[0].field2,

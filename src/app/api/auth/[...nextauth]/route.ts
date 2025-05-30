@@ -1,13 +1,6 @@
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import bcrypt from "bcryptjs";
 import loginUser from "@/libs/database/queries/users/loginUsers";
-
-export type User = {
-  id: string;
-  email: string | null;
-  role: string | null;
-};
 
 export const authOptions = {
   providers: [
@@ -17,13 +10,18 @@ export const authOptions = {
         email: { label: "Email", type: "email", placeholder: "jsmith" },
         password: { label: "Password", type: "password" },
       },
-      authorize: async (credentials, req): Promise<User | null> => {
+      authorize: async (credentials, req) => {
         const user = await loginUser(credentials!.email, credentials!.password);
-        if (user.status === 200) {
+
+        if (user !== null) {
           return {
             id: `${user.id}`,
             email: user.email,
             role: user.role,
+            toaster: {
+              status: user.status,
+              message: user.message,
+            },
           };
         }
         return null;
@@ -35,11 +33,13 @@ export const authOptions = {
     jwt({ token, user }: { token: any; user: any }) {
       if (user) {
         token.role = user.role;
+        token.toaster = user.toaster;
       }
       return token;
     },
     session({ session, token }: { session: any; token: any }) {
       session.user.role = token.role;
+      session.user.toaster = token.toaster;
       return session;
     },
   },
