@@ -5,6 +5,8 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
+import { Button } from "@/components/ui/buttons";
+
 const page = async () => {
   const session = true;
 
@@ -12,14 +14,10 @@ const page = async () => {
     <>
       <header className="w-[min(90%,1280px)] max-w-[1280px] h-[4rem] mx-auto flex justify-end items-center">
         {session ? (
-          <button className="cursor-pointer w-28 h-10 rounded-md bg-quaternary-dark">
-            SIGN IN
-          </button>
+          <Button size="small">SIGN IN</Button>
         ) : (
           <div className="flex justify-center items-center gap-6">
-            <button className="cursor-pointer w-28 h-10 rounded-md bg-quaternary-dark">
-              SIGN OUT
-            </button>
+            <Button size="small">SIGN OUT</Button>
             <Image
               src="/cart_icon.svg"
               alt="cart_icon"

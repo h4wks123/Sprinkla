@@ -6,8 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { LoginForm } from "../handlers/login/login";
-import { useSession } from "next-auth/react";
-
+import { Button } from "@/components/ui/buttons";
 const Login = () => {
   const [emailInputMessage, setEmailInputMessage] = useState<string | null>(
     null
@@ -135,12 +134,7 @@ const Login = () => {
             <h6 className="text-red-600 text-xs">{passwordInputMessage}</h6>
           ) : null}
         </div>
-        <button
-          type="submit"
-          className="cursor-pointer w-44 h-10 mt-2 rounded-md bg-quaternary-dark hover:scale-110 ease-in-out"
-        >
-          Login
-        </button>
+        <Button type="submit">Login</Button> 
         <h6 className="font-light text-sm mt-6">
           Not a member?
           <Link

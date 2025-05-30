@@ -7,6 +7,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 import { RegisterForm } from "@/app/handlers/register/register";
+import { Button } from "@/components/ui/buttons";
 
 const Register = () => {
   const [emailInputMessage, setEmailInputMessage] = useState<string | null>(
@@ -157,12 +158,7 @@ const Register = () => {
             </h6>
           ) : null}
         </div>
-        <button
-          type="submit"
-          className="cursor-pointer w-44 h-10 mt-2 rounded-md bg-quaternary-dark hover:scale-110 ease-in-out"
-        >
-          Register
-        </button>
+        <Button type="submit">Register</Button>
         <h6 className="font-light text-sm mt-6">
           Already a member?
           <Link
