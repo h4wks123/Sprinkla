@@ -11,11 +11,11 @@ export default async function checkUserRole(emailInput: string) {
       .from(usersTable)
       .where(eq(usersTable.email, emailInput));
 
-    if (userRole[0].field5 === "admin") {
+    if (userRole[0].field5 === "employee") {
       return {
         status: 200,
-        message: "User role is an admin",
-        mode: "admin",
+        message: "User role is an employee",
+        mode: "employee",
       };
     } else if (userRole[0].field5 === "customer") {
       return {
@@ -34,7 +34,7 @@ export default async function checkUserRole(emailInput: string) {
 
     return {
       status: 500,
-      message: "Internal server error during user role administration.",
+      message: "Internal server error during user role employeeistration.",
     };
   }
 }

@@ -23,7 +23,7 @@ const Login = () => {
       }
       className="bg-secondary absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] max-w-[540px] rounded-md flex flex-col items-center pb-12 shadow-xl/30"
     >
-      <div className="relative w-full h-64">
+      <div className="relative w-full h-48 lg:h-64">
         <Image
           src="/login_modal_image.png"
           alt="login modal image"

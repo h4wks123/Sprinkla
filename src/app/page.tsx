@@ -235,7 +235,7 @@ const page = async () => {
               </li>
             </ul>
           </article>
-          <div className="relative h-[20rem] w-dvw bg-repeat-x bg-contain bg-[url('/brands_bezier_curve_2.svg')]" />
+          <div className="relative w-dvw max-h-[20rem] aspect-[4/1] bg-contain bg-repeat-x bg-[url('/brands_bezier_curve_2.svg')]" />
         </section>
         <section
           id="contacts_section"

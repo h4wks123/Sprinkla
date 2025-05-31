@@ -9,15 +9,16 @@ export async function middleware(request: NextRequest) {
   });
 
   const path = request.nextUrl.pathname;
-  const isAdminPage = path.startsWith("/users") || path.startsWith("/orders");
+  const isEmployeePage =
+    path.startsWith("/users") || path.startsWith("/orders");
 
-  // 1. Block customer or unauthenticated users from accessing admin pages
-  if ((!token || token.role === "customer") && isAdminPage) {
+  // 1. Block customer or unauthenticated users from accessing Employee pages
+  if ((!token || token.role === "customer") && isEmployeePage) {
     return NextResponse.redirect(new URL("/", request.url));
   }
 
-  // 2. If admin visits home, redirect to admin dashboard
-  if (token?.role === "admin" && path === "/") {
+  // 2. If Employee visits home, redirect to Employee dashboard
+  if (token?.role === "employee" && path === "/") {
     return NextResponse.redirect(new URL("/users", request.url));
   }
 

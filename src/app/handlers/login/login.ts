@@ -2,7 +2,7 @@
 
 import { Dispatch, FormEvent, SetStateAction } from "react";
 import { useRouter } from "next/navigation";
-import { signIn, signOut } from "next-auth/react";
+import { signIn } from "next-auth/react";
 import { getSession } from "next-auth/react";
 import toaster from "@/components/ui/toaster";
 
@@ -56,7 +56,7 @@ export async function LoginForm(
       router.push("/");
     }
 
-    if (session?.user?.role === "admin") {
+    if (session?.user?.role === "employee") {
       router.push("/users");
     }
   } else {

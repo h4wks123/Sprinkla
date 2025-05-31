@@ -10,10 +10,15 @@ export default async function registerUser(
   contactNumberInput: number
 ) {
   try {
-    const checkEmail = await db
-      .select({ field2: usersTable.email })
-      .from(usersTable)
-      .where(eq(usersTable.email, emailInput));
+    const bcrypt = require("bcrypt");
+    const saltRounds = 10;
+    const [checkEmail, hashedPassword] = await Promise.all([
+      await db
+        .select({ field2: usersTable.email })
+        .from(usersTable)
+        .where(eq(usersTable.email, emailInput)),
+      await bcrypt.hash(passwordInput, saltRounds),
+    ]);
 
     if (checkEmail.length > 0) {
       return {
@@ -24,7 +29,7 @@ export default async function registerUser(
 
     await db.insert(usersTable).values({
       email: emailInput,
-      password: passwordInput,
+      password: hashedPassword,
       contact_number: contactNumberInput,
       user_type: "customer",
     });

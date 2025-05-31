@@ -9,27 +9,21 @@ export default async function loginUser(
   passwordInput: string
 ) {
   try {
-    const [result, userRole] = await Promise.all([
-      db
-        .select({
-          field1: usersTable.user_id,
-          field2: usersTable.email,
-          field3: usersTable.password,
-        })
-        .from(usersTable)
-        .where(
-          and(
-            eq(usersTable.email, emailInput),
-            eq(usersTable.password, passwordInput)
-          )
-        ),
-      db
-        .select({ field5: usersTable.user_type })
-        .from(usersTable)
-        .where(eq(usersTable.email, emailInput)),
-    ]);
+    const bcrypt = require("bcrypt");
+    const result = await db
+      .select({
+        field1: usersTable.user_id,
+        field2: usersTable.email,
+        field3: usersTable.password,
+        field5: usersTable.user_type,
+      })
+      .from(usersTable)
+      .where(eq(usersTable.email, emailInput));
 
-    if (!result || result.length === 0) {
+    const user = result[0];
+    const isValid = user && (await bcrypt.compare(passwordInput, user.field3));
+
+    if (!isValid) {
       return {
         status: 404,
         message: "Email or password is incorrect!",
@@ -43,7 +37,7 @@ export default async function loginUser(
       status: 200,
       message: "has succesfully logged in!",
       id: result[0].field1,
-      role: userRole[0].field5,
+      role: result[0].field5,
       email: result[0].field2,
     };
   } catch (error) {
