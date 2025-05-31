@@ -10,7 +10,9 @@ export async function middleware(request: NextRequest) {
 
   const path = request.nextUrl.pathname;
   const isEmployeePage =
-    path.startsWith("/users") || path.startsWith("/orders");
+    path.startsWith("/users") ||
+    path.startsWith("/orders") ||
+    path.startsWith("/products");
 
   // 1. Block customer or unauthenticated users from accessing Employee pages
   if ((!token || token.role === "customer") && isEmployeePage) {

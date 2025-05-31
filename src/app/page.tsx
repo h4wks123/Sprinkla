@@ -5,8 +5,8 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-import { Header } from "@/components/(header)/header";
-import Footer from "@/components/(footer)/footer";
+import { Header } from "@/components/header/header";
+import Footer from "@/components/footer/footer";
 
 const page = async () => {
   return (

@@ -34,7 +34,7 @@ export default async function checkUserRole(emailInput: string) {
 
     return {
       status: 500,
-      message: "Internal server error during user role employeeistration.",
+      message: "Internal server error during user role employee registration.",
     };
   }
 }
