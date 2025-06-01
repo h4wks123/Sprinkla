@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { readProducts } from "@/app/handlers/employee/products/products";
 import { Button } from "@/components/ui/buttons";
+import { createProductForm } from "@/app/handlers/employee/products/products";
 
 type Product = {
   product_id: number;
@@ -59,9 +60,7 @@ const Products = () => {
               onChange={(e) => setSearchText(e.target.value)}
               className="rounded px-4 py-2 text-black"
             />
-            <Button onClick={() => fetchData(1, searchText)} className="ml-2">
-              Search
-            </Button>
+            <Button onClick={() => fetchData(1, searchText)}>Search</Button>
           </li>
           <select
             name="productType"
@@ -81,10 +80,40 @@ const Products = () => {
             ))}
           </select>
         </div>
-        <div className="flex">
-          <li>Search</li>
-          <li>Filter</li>
-        </div>
+        <form
+          onSubmit={(e) => {
+            createProductForm(e);
+          }}
+          className="w-full flex justify-between items-center gap-2"
+        >
+          <input
+            name="productType"
+            type="text"
+            placeholder="Product Type"
+            className="rounded px-4 py-2 text-black"
+          />
+          <input
+            name="productName"
+            type="text"
+            placeholder="Product Name"
+            className="rounded px-4 py-2 text-black"
+          />
+          <input
+            name="quantity"
+            type="number"
+            min="1"
+            placeholder="Quantity"
+            className="rounded px-4 py-2 text-black"
+          />
+          <input
+            name="price"
+            type="number"
+            min="1"
+            placeholder="Price"
+            className="rounded px-4 py-2 text-black"
+          />
+          <Button type="submit">Search</Button>
+        </form>
       </ul>
       <div className="overflow-x-auto h-[calc(100%-21.5rem)]">
         <table className="min-w-full table-auto text-left">

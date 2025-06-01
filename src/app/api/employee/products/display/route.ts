@@ -1,4 +1,4 @@
-import printProducts from "@/libs/database/queries/products/printProducts";
+import printProducts from "@/libs/database/queries/products/displayProducts";
 import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
