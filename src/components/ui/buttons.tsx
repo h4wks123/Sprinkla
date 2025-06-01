@@ -16,6 +16,7 @@ const buttonVariants = cva(
       // size, margins, and paddings
       size: {
         default: "w-44 h-10 text-md font-semibold tracking-wide",
+        icon: "w-10 h-10 text-md font-md tracking-wide",
         small: "w-28 h-10 text-md font-lg tracking-wide",
         ghost: "",
       },
