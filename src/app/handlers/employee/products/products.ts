@@ -1,7 +1,8 @@
 "use client";
 import toaster from "@/components/ui/toaster";
+import { toast } from "react-toastify";
 
-export async function readProducts(
+export async function readProduct(
   start: number,
   end: number,
   search: string,
@@ -41,15 +42,15 @@ export async function createProductForm(e: React.FormEvent<HTMLFormElement>) {
   const price = formData.get("price")?.toString() || "";
 
   try {
-    const res = await fetch("/api/employee/products/create", {
+    const response = await fetch("/api/employee/products/create", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ productType, productName, quantity, price }),
     });
 
-    const data = await res.json();
+    const data = await response.json();
 
-    if (!res.ok) {
+    if (!response.ok) {
       toaster(500, data.message);
       return;
     }
@@ -58,5 +59,28 @@ export async function createProductForm(e: React.FormEvent<HTMLFormElement>) {
     e.currentTarget.reset();
   } catch (err) {
     toaster(500, `Error creating product: ${err}`);
+  }
+}
+
+export async function deleteProduct(productID: number, productName: string) {
+  if (confirm(`Are you sure you want to delete ${productName}`)) {
+    try {
+      const response = await fetch("api/employee/products/delete", {
+        method: "DELETE",
+        headers: { "Content-type": "application/json" },
+        body: JSON.stringify({ productID, productName }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        toaster(500, data.message);
+        return;
+      }
+
+      toaster(200, data.message);
+    } catch (err) {
+      toaster(500, `Error creating product: ${err}`);
+    }
   }
 }

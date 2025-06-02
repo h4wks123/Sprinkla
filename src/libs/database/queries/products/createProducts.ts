@@ -16,7 +16,6 @@ export default async function createProducts({
   price: number;
 }) {
   try {
-    console.log(quantity, price);
     if (
       !productType.trim() ||
       !productName.trim() ||
@@ -60,7 +59,6 @@ export default async function createProducts({
       message: "Product created successfully.",
     };
   } catch (error) {
-    console.error(error);
     return {
       status: 500,
       message: "Failed to create product.",

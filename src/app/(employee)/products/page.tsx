@@ -1,9 +1,12 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { readProducts } from "@/app/handlers/employee/products/products";
+import {
+  readProduct,
+  createProductForm,
+  deleteProduct,
+} from "@/app/handlers/employee/products/products";
 import { Button } from "@/components/ui/buttons";
-import { createProductForm } from "@/app/handlers/employee/products/products";
 import FormPopups from "@/components/popups/popups";
 import Image from "next/image";
 
@@ -36,7 +39,7 @@ const Products = () => {
       (document.getElementById("productType") as HTMLSelectElement)?.value ||
       "";
 
-    const data = await readProducts(start, end, search, selectedType);
+    const data = await readProduct(start, end, search, selectedType);
     if (!data) return;
 
     const [results, count, productTypes] = data;
@@ -141,7 +144,14 @@ const Products = () => {
                   </Button>
                 </td>
                 <td className="px-4  w-[10%] text-white">
-                  <Button size="small" variant="delete">
+                  <Button
+                    onClick={() => {
+                      deleteProduct(product.product_id, product.product),
+                        fetchData(1, searchText);
+                    }}
+                    size="small"
+                    variant="delete"
+                  >
                     Delete
                   </Button>
                 </td>
