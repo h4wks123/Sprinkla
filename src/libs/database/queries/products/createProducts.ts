@@ -16,6 +16,7 @@ export default async function createProducts({
   price: number;
 }) {
   try {
+    console.log(quantity, price);
     if (
       !productType.trim() ||
       !productName.trim() ||
