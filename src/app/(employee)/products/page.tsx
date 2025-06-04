@@ -2,8 +2,7 @@
 
 import { Suspense } from "react";
 import Search from "@/components/ui/search";
-import { Button } from "@/components/ui/buttons";
-import ProductsTable from "@/components/ui/tables/products";
+import ProductsTable from "@/app/(employee)/products/_productsTable/page";
 import Pagination from "@/components/ui/pagination";
 import { fetchProductPages } from "@/libs/database/queries/products/displayProducts";
 
@@ -11,12 +10,14 @@ export default async function Page(props: {
   searchParams?: Promise<{
     query?: string;
     page?: string;
+    productType?: string;
   }>;
 }) {
   const searchParams = await props.searchParams;
   const query = searchParams?.query || "";
+  const productType = searchParams?.productType || "";
   const currentPage = Number(searchParams?.page) || 1;
-  const { totalPages } = await fetchProductPages(query);
+  const { totalPages } = await fetchProductPages(query, productType);
 
   return (
     <div className="w-full">
@@ -27,10 +28,14 @@ export default async function Page(props: {
         <Search placeholder="Search a product..." />
       </div>
       <Suspense
-        key={query + currentPage}
+        key={query + currentPage + productType}
         fallback={<h1 className="text-black">Loading....</h1>}
       >
-        <ProductsTable query={query} currentPage={currentPage} />
+        <ProductsTable
+          query={query}
+          currentPage={currentPage}
+          productType={productType}
+        />
       </Suspense>
       <div className="mt-5 flex w-full justify-center">
         <Pagination totalPages={totalPages} />
