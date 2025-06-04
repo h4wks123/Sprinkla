@@ -4,13 +4,13 @@ import { db } from "../..";
 import { productsTable } from "../../schema/products";
 import { eq, and, ne } from "drizzle-orm";
 
-export default async function updateProducts(
-  productID: number,
-  productType: string,
-  productName: string,
-  quantity: number,
-  price: number
-) {
+export default async function updateProducts(formData: FormData) {
+  const productID = Number(formData.get("productId"));
+  const productType = formData.get("productType") as string;
+  const productName = formData.get("productName") as string;
+  const quantity = Number(formData.get("quantity"));
+  const price = Number(formData.get("price"));
+
   try {
     if (
       !productType?.trim() ||
