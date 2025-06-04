@@ -3,6 +3,7 @@
 import { eq } from "drizzle-orm";
 import { db } from "../..";
 import { usersTable } from "../../schema/users";
+import bcrypt from "bcryptjs";
 
 export default async function registerUser(
   emailInput: string,
@@ -10,7 +11,7 @@ export default async function registerUser(
   contactNumberInput: number
 ) {
   try {
-    const bcrypt = require("bcrypt");
+
     const saltRounds = 10;
     const [checkEmail, hashedPassword] = await Promise.all([
       await db

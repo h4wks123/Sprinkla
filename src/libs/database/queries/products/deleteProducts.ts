@@ -39,7 +39,7 @@ export default async function deleteProducts(
   } catch (error) {
     return {
       status: 500,
-      message: `An error occurred while deleting ${productName}.`,
+      message: `An error occurred while deleting ${productName}: ${error}`,
     };
   }
 }

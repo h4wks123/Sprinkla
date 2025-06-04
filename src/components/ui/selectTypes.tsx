@@ -4,10 +4,8 @@ import { useSearchParams, usePathname, useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 
 export default function SelectTypes({
-  label,
   options,
 }: {
-  label: string;
   options: string[];
 }) {
   const pathname = usePathname();

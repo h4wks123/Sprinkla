@@ -20,7 +20,6 @@ export default async function ProductsTable({
         <tr>
           <th className="px-4 py-2">
             <SelectTypes
-              label="Product Type"
               options={products.productTypes.map((type) => type)}
             />
           </th>
@@ -31,7 +30,7 @@ export default async function ProductsTable({
         </tr>
       </thead>
       <tbody>
-        {products.products.map((product: any) => (
+        {products.products.map((product) => (
           <tr key={product.product_id} className="border-t">
             <td className="px-4 py-2">{product.product_type}</td>
             <td className="px-4 py-2">{product.product}</td>

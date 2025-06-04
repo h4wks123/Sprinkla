@@ -39,13 +39,14 @@ export async function printProducts(
       status: 200,
       products: products,
       productTypes: productTypes.map((pt) => pt.product_type),
+      message: "Succesfully displayed product."
     };
   } catch (error) {
-    console.error(error);
     return {
       status: 500,
-      products: ["Failed to fetch products."],
-      productTypes: ["Failed to fetch product types"],
+      products: [],
+      productTypes: [],
+      message: `Failed to display product: ${error}`
     };
   }
 }
@@ -73,12 +74,13 @@ export async function fetchProductPages(query: string, productType: string) {
     return {
       status: 200,
       totalPages,
+      message: "Sucessfully fetched product pages."
     };
   } catch (error) {
-    console.error("Error fetching product pages:", error);
     return {
       status: 500,
       totalPages: 0,
+      message: `Error fetching product pages: ${error}`
     };
   }
 }

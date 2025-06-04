@@ -9,6 +9,7 @@ import toaster from "./toaster";
 
 interface FormPopupsProps {
   children: ReactNode;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   action?: (formData: FormData) => Promise<any>;
   message: string | null;
   variant: Variant;

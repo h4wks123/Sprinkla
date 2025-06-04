@@ -1,15 +1,16 @@
 "use server";
 
-import { eq, and } from "drizzle-orm";
+import { eq } from "drizzle-orm";
 import { db } from "../..";
 import { usersTable } from "../../schema/users";
+import bcrypt from "bcryptjs";
 
 export default async function loginUser(
   emailInput: string,
   passwordInput: string
 ) {
   try {
-    const bcrypt = require("bcrypt");
+
     const result = await db
       .select({
         field1: usersTable.user_id,

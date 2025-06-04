@@ -10,7 +10,7 @@ export const authOptions = {
         email: { label: "Email", type: "email", placeholder: "jsmith" },
         password: { label: "Password", type: "password" },
       },
-      authorize: async (credentials, req) => {
+      authorize: async (credentials) => {
         const user = await loginUser(credentials!.email, credentials!.password);
 
         if (user !== null) {
@@ -31,6 +31,7 @@ export const authOptions = {
   strategy: "jwt",
   secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     jwt({ token, user }: { token: any; user: any }) {
       if (user) {
         token.role = user.role;
@@ -38,6 +39,7 @@ export const authOptions = {
       }
       return token;
     },
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     session({ session, token }: { session: any; token: any }) {
       session.user.role = token.role;
       session.user.toaster = token.toaster;

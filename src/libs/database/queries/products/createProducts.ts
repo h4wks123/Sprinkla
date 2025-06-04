@@ -56,7 +56,7 @@ export default async function createProducts(formData: FormData) {
   } catch (error) {
     return {
       status: 500,
-      message: "Failed to create product.",
+      message: `Failed to create product: ${error}`,
     };
   }
 }
