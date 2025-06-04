@@ -2,7 +2,7 @@ import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import loginUser from "@/libs/database/queries/users/loginUsers";
 
-export const authOptions = {
+const handler = NextAuth({
   providers: [
     CredentialsProvider({
       name: "Credentials",
@@ -28,7 +28,9 @@ export const authOptions = {
       },
     }),
   ],
-  strategy: "jwt",
+  session: {
+    strategy: "jwt",
+  },
   secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -46,7 +48,6 @@ export const authOptions = {
       return session;
     },
   },
-};
+});
 
-const handler = NextAuth(authOptions);
 export { handler as GET, handler as POST };
