@@ -2,7 +2,7 @@
 
 import { Suspense } from "react";
 import Search from "@/components/ui/search";
-import ProductsTable from "@/app/(employee)/products/_productsTable/page";
+import ProductsTable from "@/components/ui/tables/page";
 import Pagination from "@/components/ui/pagination";
 import { fetchProductPages } from "@/libs/database/queries/products/displayProducts";
 import createProducts from "@/libs/database/queries/products/createProducts";

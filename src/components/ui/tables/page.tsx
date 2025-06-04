@@ -1,7 +1,7 @@
 "use server";
 
 import { printProducts } from "@/libs/database/queries/products/displayProducts";
-import SelectTypes from "../../../../components/ui/selectTypes";
+import SelectTypes from "../selectTypes";
 
 export default async function ProductsTable({
   query,
@@ -19,9 +19,7 @@ export default async function ProductsTable({
       <thead className="bg-gray-200">
         <tr>
           <th className="px-4 py-2">
-            <SelectTypes
-              options={products.productTypes.map((type) => type)}
-            />
+            <SelectTypes options={products.productTypes.map((type) => type)} />
           </th>
           <th className="px-4 py-2">Product Name</th>
           <th className="px-4 py-2">Quantity</th>
