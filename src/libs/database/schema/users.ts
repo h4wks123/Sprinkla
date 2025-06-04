@@ -6,7 +6,7 @@ export const usersTable = sqliteTable("users", {
   email: text("email").unique().notNull(),
   password: text("password").notNull(),
   contact_number: integer("contact_number").notNull(),
-  user_type: text("user_type", { enum: ["customer", "admin"] })
+  user_type: text("user_type", { enum: ["customer", "employee"] })
     .default("customer")
     .notNull(),
   ...timestamps,
