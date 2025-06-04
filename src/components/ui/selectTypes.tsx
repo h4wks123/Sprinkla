@@ -3,11 +3,7 @@
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 
-export default function SelectTypes({
-  options,
-}: {
-  options: string[];
-}) {
+export default function SelectTypes({ options }: { options: string[] }) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const { replace } = useRouter();
@@ -35,7 +31,7 @@ export default function SelectTypes({
 
   return (
     <select
-      className="border border-gray-300 rounded px-2 py-1 text-sm text-black"
+      className="peer block rounded-md p-2 border-2 border-black"
       value={productType}
       onChange={(e) => handleType(e.target.value)}
     >

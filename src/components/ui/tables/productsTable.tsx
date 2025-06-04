@@ -19,29 +19,32 @@ export default async function ProductsTable({
   const products = await printProducts(query, currentPage, productType);
 
   return (
-    <table className="min-w-full table-auto text-left text-sm text-black">
-      <thead className="bg-gray-200">
-        <tr>
-          <th className="px-4 py-2">
+    <table className="w-full min-w-[1280px] table-auto text-left text-black">
+      <thead className="w-full bg-gray-200">
+        <tr className="w-full h-13">
+          <th className="pl-4 w-[15%]">
             <SelectTypes options={products.productTypes.map((type) => type)} />
           </th>
-          <th className="px-4 py-2">Product Name</th>
-          <th className="px-4 py-2">Quantity</th>
-          <th className="px-4 py-2">Price</th>
-          <th className="px-4 py-2">Date</th>
-          <th className="px-4 py-2">Update</th>
-          <th className="px-4 py-2">Delete</th>
+          <th className="pl-4 w-[30%]">Product Name</th>
+          <th className="pl-4 w-[7.5%]">Quantity</th>
+          <th className="pl-4 w-[7.5%]">Price</th>
+          <th className="pl-4 w-[10%]">Date</th>
+          <th className="pl-4 w-[10%]">Update</th>
+          <th className="pl-4 w-[10%]">Delete</th>
         </tr>
       </thead>
       <tbody>
         {products.products.map((product) => (
-          <tr key={product.product_id} className="border-t">
-            <td className="px-4 py-2">{product.product_type}</td>
-            <td className="px-4 py-2">{product.product}</td>
-            <td className="px-4 py-2">{product.quantity}</td>
-            <td className="px-4 py-2">{product.price}</td>
-            <td className="px-4 py-2">{product.date ?? "—"}</td>
-            <td className="px-4 py-2">
+          <tr
+            key={product.product_id}
+            className="h-13 w-full border-y border-secondary-dark"
+          >
+            <td className="pl-4 w-[15%]">{product.product_type}</td>
+            <td className="pl-4 w-[30%]">{product.product}</td>
+            <td className="pl-4 w-[7.5%]">{product.quantity}</td>
+            <td className="pl-4 w-[7.5%]">{product.price}</td>
+            <td className="pl-4 w-[10%]">{product.date ?? "—"}</td>
+            <td className="pl-4 w-[10%]">
               <FormPopups
                 action={updateProducts}
                 message={"Update"}
@@ -105,7 +108,7 @@ export default async function ProductsTable({
                 </Button>
               </FormPopups>
             </td>
-            <td className="px-4 py-2">
+            <td className="pl-4 w-[10%]">
               <FormPopups
                 action={deleteProducts}
                 message={"Delete"}

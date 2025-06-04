@@ -8,6 +8,7 @@ import { fetchProductPages } from "@/libs/database/queries/products/displayProdu
 import createProducts from "@/libs/database/queries/products/createProducts";
 import FormPopups from "@/components/ui/popups";
 import { Button } from "@/components/ui/buttons";
+import Image from "next/image";
 
 export default async function Page(props: {
   searchParams?: Promise<{
@@ -24,23 +25,33 @@ export default async function Page(props: {
 
   return (
     <div className="w-full">
-      <div className="flex w-full items-center justify-between">
-        <h1 className="text-black font-bold">Products</h1>
-      </div>
-      <div className="mt-4 flex items-center justify-between gap-2 md:mt-8">
+      <div className="w-full bg-secondary flex flex-wrap items-center justify-between rounded-t-lg p-6 gap-6">
+        <h1 className="text-3xl text-black font-bold">PRODUCTS</h1>
         <Search placeholder="Search a product..." />
       </div>
-      <Suspense
-        key={query + currentPage + productType}
-        fallback={<h1 className="text-black">Loading....</h1>}
-      >
-        <ProductsTable
-          query={query}
-          currentPage={currentPage}
-          productType={productType}
-        />
-      </Suspense>
-      <div className="mt-5 flex w-full justify-between items-center">
+      <div className="h-[620px] border-secondary-dark border-t overflow-x-auto">
+        <Suspense
+          key={query + currentPage + productType}
+          fallback={
+            <div className="w-full h-full flex justify-center items-center">
+              <Image
+                src="/loader.gif"
+                alt="loader"
+                width={75}
+                height={75}
+                className="mx-auto"
+              />
+            </div>
+          }
+        >
+          <ProductsTable
+            query={query}
+            currentPage={currentPage}
+            productType={productType}
+          />
+        </Suspense>
+      </div>
+      <div className="w-full flex flex-wrap justify-between items-center p-6 gap-6">
         <FormPopups
           action={createProducts}
           message={"Create Product"}
