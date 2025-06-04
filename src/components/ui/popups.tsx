@@ -2,25 +2,42 @@
 
 import React, { useState, ReactNode } from "react";
 import Popup from "reactjs-popup";
-import { Button } from "../ui/buttons";
+import { Button } from "./ui/buttons";
 
 interface FormPopupsProps {
   children: ReactNode;
   onSubmit?: (e: React.FormEvent<HTMLFormElement>) => void;
-  message: string;
+  message: string | null;
+  variant:
+    | "default"
+    | "success"
+    | "update"
+    | "delete"
+    | "white"
+    | "ghost"
+    | null
+    | undefined;
+  size: "default" | "ghost" | "small" | "icon" | null | undefined;
 }
 
 const FormPopups: React.FC<FormPopupsProps> = ({
   children,
   onSubmit,
   message,
+  variant,
+  size,
 }) => {
   const [open, setOpen] = useState(false);
   const closeModal = () => setOpen(false);
 
   return (
     <div>
-      <Button type="button" variant="success" onClick={() => setOpen(true)}>
+      <Button
+        type="button"
+        variant={variant}
+        size={size}
+        onClick={() => setOpen(true)}
+      >
         {message}
       </Button>
 

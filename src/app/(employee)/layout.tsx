@@ -1,6 +1,6 @@
 "use server";
 
-import { Header } from "@/components/header/header";
+import { Header } from "@/components/ui/entry/header";
 
 export default async function RootLayout({
   children,
@@ -10,7 +10,9 @@ export default async function RootLayout({
   return (
     <main className="w-full h-full">
       <Header />
-      {children}
+      <section className="relative bg-white  w-[90%] max-w-[1640px] mx-auto border-2 border-secondary-dark rounded-lg mb-10">
+        {children}
+      </section>
     </main>
   );
 }

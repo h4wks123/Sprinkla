@@ -4,9 +4,9 @@ import React from "react";
 
 import { useSession, signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { Button } from "../ui/buttons";
+import { Button } from "../buttons";
 import Image from "next/image";
-import toaster from "../ui/toaster";
+import toaster from "../toaster";
 
 export function Header() {
   const { data: session } = useSession();

@@ -2,53 +2,53 @@
 
 import { db } from "../..";
 import { productsTable } from "../../schema/products";
-import { and, count, like, eq } from "drizzle-orm";
+import { count, like } from "drizzle-orm";
 
-export default async function printProducts(
-  start: number,
-  end: number,
-  search: string,
-  filterProductType: string
-) {
+const PAGE_SIZE = 10;
+
+export async function printProducts(query: string, currentPage: number) {
   try {
-    const limit = end - start + 1;
-    const offset = start - 1;
+    const offset = (currentPage - 1) * PAGE_SIZE;
 
-    const baseConditions = [like(productsTable.product, `%${search}%`)];
-
-    if (filterProductType !== "") {
-      baseConditions.push(eq(productsTable.product_type, filterProductType));
-    }
-
-    const [products, countResult, productType] = await Promise.all([
-      db
-        .select()
-        .from(productsTable)
-        .where(and(...baseConditions))
-        .limit(limit)
-        .offset(offset),
-      db
-        .select({ count: count() })
-        .from(productsTable)
-        .where(and(...baseConditions)),
-      db
-        .selectDistinct({ product_type: productsTable.product_type })
-        .from(productsTable),
-    ]);
+    const products = await db
+      .select()
+      .from(productsTable)
+      .where(like(productsTable.product, `%${query}%`))
+      .limit(PAGE_SIZE)
+      .offset(offset);
 
     return {
       status: 200,
       message: products,
-      count: countResult[0].count,
-      productTypes: productType,
     };
   } catch (error) {
     console.error(error);
     return {
       status: 500,
-      message: "Internal server error in getting products.",
-      count: 1,
-      productTypes: [],
+      message: ["Failed to fetch products."],
+    };
+  }
+}
+
+export async function fetchProductPages(query: string) {
+  try {
+    const result = await db
+      .select({ total: count(productsTable.product_id) })
+      .from(productsTable)
+      .where(like(productsTable.product, `%${query}%`));
+
+    const totalItems = result[0]?.total ?? 0;
+    const totalPages = Math.ceil(totalItems / PAGE_SIZE);
+
+    return {
+      status: 200,
+      totalPages,
+    };
+  } catch (error) {
+    console.error(error);
+    return {
+      status: 500,
+      totalPages: 0,
     };
   }
 }

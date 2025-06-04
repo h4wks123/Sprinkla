@@ -28,10 +28,10 @@ export default async function createProducts({
       };
     }
 
-    if (quantity < 0 || price < 0) {
+    if (quantity <= 0 || price <= 0) {
       return {
         status: 400,
-        message: "Quantity and price must not be negative.",
+        message: "Quantity and price must not be negative or zero.",
       };
     }
 
