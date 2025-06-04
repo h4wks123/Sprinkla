@@ -1,34 +1,51 @@
 "use client";
 
-import React, { useState, ReactNode } from "react";
+import React, { useState, ReactNode, FormEvent } from "react";
+import { useSearchParams, usePathname, useRouter } from "next/navigation";
 import Popup from "reactjs-popup";
-import { Button } from "./ui/buttons";
+import { Button } from "./buttons";
+import type { Variant, Size } from "../../../types/types";
+import toaster from "./toaster";
 
 interface FormPopupsProps {
   children: ReactNode;
-  onSubmit?: (e: React.FormEvent<HTMLFormElement>) => void;
+  action?: (formData: FormData) => Promise<any>;
   message: string | null;
-  variant:
-    | "default"
-    | "success"
-    | "update"
-    | "delete"
-    | "white"
-    | "ghost"
-    | null
-    | undefined;
-  size: "default" | "ghost" | "small" | "icon" | null | undefined;
+  variant: Variant;
+  size: Size;
 }
 
 const FormPopups: React.FC<FormPopupsProps> = ({
   children,
-  onSubmit,
+  action,
   message,
   variant,
   size,
 }) => {
   const [open, setOpen] = useState(false);
   const closeModal = () => setOpen(false);
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
+  const { replace } = useRouter();
+
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    if (!action) return;
+
+    const formData = new FormData(e.currentTarget);
+    const params = new URLSearchParams(searchParams);
+    const result = await action(formData);
+
+    toaster(result?.status, result?.message);
+
+    if (result?.status === 200) {
+      setOpen(false);
+      params.set("page", "1");
+      params.delete("query");
+      params.delete("productType");
+      replace(`${pathname}?${params.toString()}`);
+    }
+  }
 
   return (
     <div>
@@ -49,7 +66,7 @@ const FormPopups: React.FC<FormPopupsProps> = ({
         overlayStyle={{ background: "rgba(0, 0, 0, 0.5)" }}
       >
         <form
-          onSubmit={onSubmit}
+          onSubmit={handleSubmit}
           className="relative bg-white p-6 rounded-xl shadow-md max-w-md mx-auto flex flex-col gap-4"
         >
           <button

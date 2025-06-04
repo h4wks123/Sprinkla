@@ -1,9 +1,11 @@
-export type Product = {
-  product_id: number;
-  product_type: string;
-  product: string;
-  quantity: number;
-  price: number;
-  date: string;
-  time: string;
-};
+export type Variant =
+  | "default"
+  | "success"
+  | "update"
+  | "delete"
+  | "white"
+  | "ghost"
+  | null
+  | undefined;
+
+export type Size = "default" | "ghost" | "small" | "icon" | null | undefined;
