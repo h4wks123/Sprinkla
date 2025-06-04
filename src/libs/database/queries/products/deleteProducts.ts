@@ -4,12 +4,12 @@ import { db } from "../..";
 import { productsTable } from "../../schema/products";
 import { eq } from "drizzle-orm";
 
-export default async function deleteProducts(
-  productId: number,
-  productName: string
-) {
+export default async function deleteProducts(formData: FormData) {
+  const productID = Number(formData.get("productId"));
+  const productName = formData.get("productName") as string;
+
   try {
-    if (!productId) {
+    if (!productID) {
       return {
         status: 400,
         message: "Product ID is required for deletion.",
@@ -19,7 +19,7 @@ export default async function deleteProducts(
     const existingProduct = await db
       .select()
       .from(productsTable)
-      .where(eq(productsTable.product_id, productId));
+      .where(eq(productsTable.product_id, productID));
 
     if (existingProduct.length === 0) {
       return {
@@ -30,7 +30,7 @@ export default async function deleteProducts(
 
     await db
       .delete(productsTable)
-      .where(eq(productsTable.product_id, productId));
+      .where(eq(productsTable.product_id, productID));
 
     return {
       status: 200,

@@ -5,6 +5,7 @@ import SelectTypes from "../selectTypes";
 import FormPopups from "@/components/ui/popups";
 import { Button } from "../buttons";
 import updateProducts from "@/libs/database/queries/products/updateProducts";
+import deleteProducts from "@/libs/database/queries/products/deleteProducts";
 
 export default async function ProductsTable({
   query,
@@ -100,11 +101,35 @@ export default async function ProductsTable({
                   interaction="ghost"
                   className="mx-auto"
                 >
-                  Update Product
+                  Update
                 </Button>
               </FormPopups>
             </td>
-            <td className="px-4 py-2"></td>
+            <td className="px-4 py-2">
+              <FormPopups
+                action={deleteProducts}
+                message={"Delete"}
+                variant={"delete"}
+                size={"small"}
+              >
+                <input
+                  type="hidden"
+                  name="productId"
+                  value={product.product_id}
+                />
+                <input
+                  type="hidden"
+                  name="productName"
+                  value={product.product}
+                />
+                <h4 className="text-black font-semibold">
+                  Are you sure you want to delete {product.product}?
+                </h4>
+                <Button size="small" variant="delete">
+                  Delete
+                </Button>
+              </FormPopups>
+            </td>
           </tr>
         ))}
       </tbody>

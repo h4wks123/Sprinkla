@@ -54,6 +54,7 @@ const FormPopups: React.FC<FormPopupsProps> = ({
         type="button"
         variant={variant}
         size={size}
+        className="text-white"
         onClick={() => setOpen(true)}
       >
         {message}
