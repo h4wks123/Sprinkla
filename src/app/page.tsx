@@ -43,7 +43,7 @@ const page = async () => {
               <Link
                 href="#products_section"
                 scroll={true}
-                className="scroll-smooth w-[min(175px,30vw)] h-[min(175px,30vw)] bg-cover bg-[url('/products_icon_light.svg')] cursor-pointer duration-300 ease-in-out hover:bg-[url('/products_icon_dark.svg')] hover:scale-125"
+                className="w-[min(175px,30vw)] h-[min(175px,30vw)] bg-cover bg-[url('/product_icon_light.svg')] cursor-pointer duration-300 ease-in-out hover:bg-[url('/product_icon_dark.svg')] hover:scale-125"
               />
               <Link
                 href="#sponsors_section"

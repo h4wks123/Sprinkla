@@ -18,7 +18,7 @@ export default async function UsersTable({
   const users = await printUsers(query, currentPage, userType);
 
   return (
-    <table className="w-full min-w-[1280px] table-auto text-left text-black">
+    <table className="w-full min-w-[1380px] table-auto text-left text-black">
       <thead className="w-full bg-gray-200">
         <tr className="w-full h-13">
           <th className="pl-4 w-[15%]">
@@ -28,8 +28,8 @@ export default async function UsersTable({
               passedParams={"userType"}
             />
           </th>
-          <th className="pl-4 w-[25%]">Email</th>
-          <th className="pl-4 w-[25%]">Password</th>
+          <th className="pl-4 w-[20%]">Email</th>
+          <th className="pl-4 w-[30%]">Password</th>
           <th className="pl-4 w-[15%]">Contact Number</th>
           <th className="pl-4 w-[10%]">Date</th>
           <th className="pl-4 w-[10%]">Update</th>
@@ -42,8 +42,8 @@ export default async function UsersTable({
             className="h-13 w-full border-y border-secondary-dark hover:bg-gray-100"
           >
             <td className="pl-4 w-[15%]">{user.user_type}</td>
-            <td className="pl-4 w-[25%]">{user.email}</td>
-            <td className="pl-4 w-[25%]">{user.password}</td>
+            <td className="pl-4 w-[20%]">{user.email}</td>
+            <td className="pl-4 w-[30%]">{user.password}</td>
             <td className="pl-4 w-[15%]">{user.contact_number}</td>
             <td className="pl-4 w-[10%]">{user.date ?? "—"}</td>
             <td className="pl-4 w-[10%]">
