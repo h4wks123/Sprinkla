@@ -9,13 +9,19 @@ export default async function updateUsers(formData: FormData) {
   const userType = formData.get("userType") as "customer" | "employee";
   const email = formData.get("email") as string;
   const contactNumber = Number(formData.get("contactNumber"));
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
   try {
-    if (!userType?.trim() || !email?.trim() || contactNumber != 10) {
+    if (
+      !userType?.trim() ||
+      !email?.trim() ||
+      !emailRegex.test(email) ||
+      contactNumber.toString().length != 10
+    ) {
       return {
         status: 400,
         message:
-          "Invalid data. Please provide user type, email, and at least 10 contact number digits.",
+          "Invalid data. Please provide user type, correct email format, and at least 10 contact number digits.",
       };
     }
 

@@ -4,7 +4,7 @@ import { printUsers } from "@/libs/database/queries/users/displayUsers";
 import SelectTypes from "../selectTypes";
 import FormPopups from "../popups";
 import { Button } from "../buttons";
-import updateProducts from "@/libs/database/queries/products/updateProducts";
+import updateUsers from "@/libs/database/queries/users/updateUsers";
 
 export default async function UsersTable({
   query,
@@ -15,7 +15,6 @@ export default async function UsersTable({
   currentPage: number;
   userType: string;
 }) {
-
   const users = await printUsers(query, currentPage, userType);
 
   return (
@@ -49,21 +48,25 @@ export default async function UsersTable({
             <td className="pl-4 w-[10%]">{user.date ?? "—"}</td>
             <td className="pl-4 w-[10%]">
               <FormPopups
-                action={updateProducts}
+                action={updateUsers}
                 message={"Update"}
                 variant={"update"}
                 size={"small"}
               >
                 <input type="hidden" name="userId" value={user.user_id} />
                 <div>
-                  <h6 className="text-black">User Type</h6>
-                  <input
+                  <h6 className="text-black">Product Types</h6>
+                  <select
                     name="userType"
-                    type="text"
-                    placeholder={user.user_type}
                     defaultValue={user.user_type}
-                    className="h-10 text-black border-black border-2 rounded-md px-4"
-                  />
+                    className="w-full peer block rounded-md p-2 border-2 border-black text-black"
+                  >
+                    {["customer", "employee"].map((type) => (
+                      <option key={type} value={type} className="text-black">
+                        {type.charAt(0).toUpperCase() + type.slice(1)}
+                      </option>
+                    ))}
+                  </select>
                 </div>
                 <div>
                   <h6 className="text-black">Email</h6>
