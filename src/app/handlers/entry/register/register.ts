@@ -19,7 +19,7 @@ export async function RegisterForm(
   const passwordInput = formData.get("password") as string;
   const contactNumberInput = Number(formData.get("contactNumber"));
 
-  const responseValidation = await fetch("/api/dataValidation", {
+  const responseValidation = await fetch("api/entry/dataValidation", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -36,7 +36,7 @@ export async function RegisterForm(
     return;
   }
 
-  const responseRegister = await fetch("api/register", {
+  const responseRegister = await fetch("api/entry/register", {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",

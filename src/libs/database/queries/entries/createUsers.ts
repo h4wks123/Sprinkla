@@ -40,7 +40,6 @@ export default async function registerUser(
       message: "Registration successful!",
     };
   } catch (err) {
-    console.error("Error inserting values into the database: ", err);
 
     return {
       status: 500,

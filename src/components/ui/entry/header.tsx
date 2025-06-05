@@ -41,13 +41,6 @@ export function Header() {
             height={30}
             className="cursor-pointer"
           />
-          <Image
-            src="/side_bar_icon.svg"
-            alt="side_bar_icon"
-            width={30}
-            height={30}
-            className="cursor-pointer"
-          />
         </div>
       ) : (
         <div className="flex justify-center items-center gap-6">
@@ -61,8 +54,31 @@ export function Header() {
             SIGN OUT
           </Button>
           <Image
-            src="/side_bar_icon.svg"
-            alt="side_bar_icon"
+            onClick={() => {
+              router.push("/users");
+            }}
+            src="/users.svg"
+            alt="users"
+            width={30}
+            height={30}
+            className="cursor-pointer"
+          />
+          <Image
+            onClick={() => {
+              router.push("/products");
+            }}
+            src="/products.svg"
+            alt="products"
+            width={30}
+            height={30}
+            className="cursor-pointer"
+          />
+          <Image
+            onClick={() => {
+              router.push("/orders");
+            }}
+            src="/orders.svg"
+            alt="orders"
             width={30}
             height={30}
             className="cursor-pointer"

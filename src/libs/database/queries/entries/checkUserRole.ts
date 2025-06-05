@@ -30,7 +30,6 @@ export default async function checkUserRole(emailInput: string) {
       };
     }
   } catch (error) {
-    console.error(error);
 
     return {
       status: 500,

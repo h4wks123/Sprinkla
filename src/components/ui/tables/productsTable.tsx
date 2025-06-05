@@ -23,7 +23,11 @@ export default async function ProductsTable({
       <thead className="w-full bg-gray-200">
         <tr className="w-full h-13">
           <th className="pl-4 w-[15%]">
-            <SelectTypes options={products.productTypes.map((type) => type)} />
+            <SelectTypes
+              options={products.productTypes.map((type) => type)}
+              message={"Product Types"}
+              passedParams={"productType"}
+            />
           </th>
           <th className="pl-4 w-[30%]">Product Name</th>
           <th className="pl-4 w-[7.5%]">Quantity</th>
@@ -37,7 +41,7 @@ export default async function ProductsTable({
         {products.products.map((product) => (
           <tr
             key={product.product_id}
-            className="h-13 w-full border-y border-secondary-dark"
+            className="h-13 w-full border-y border-secondary-dark hover:bg-gray-100"
           >
             <td className="pl-4 w-[15%]">{product.product_type}</td>
             <td className="pl-4 w-[30%]">{product.product}</td>

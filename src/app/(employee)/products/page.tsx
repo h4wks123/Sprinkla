@@ -24,7 +24,7 @@ export default async function Page(props: {
   const { totalPages } = await fetchProductPages(query, productType);
 
   return (
-    <div className="w-full">
+    <section className="w-full">
       <div className="w-full bg-secondary flex flex-wrap items-center justify-between rounded-t-lg p-6 gap-6">
         <h1 className="text-3xl text-black font-bold">PRODUCTS</h1>
         <Search placeholder="Search a product..." />
@@ -107,6 +107,6 @@ export default async function Page(props: {
         </FormPopups>
         <Pagination totalPages={totalPages} />
       </div>
-    </div>
+    </section>
   );
 }

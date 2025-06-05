@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import registerUser from "@/libs/database/queries/users/createUsers";
+import registerUser from "@/libs/database/queries/entries/createUsers";
 
 export async function PUT(request: Request) {
   const { emailInput, passwordInput, contactNumberInput } =

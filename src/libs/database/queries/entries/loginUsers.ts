@@ -42,7 +42,6 @@ export default async function loginUser(
       email: result[0].field2,
     };
   } catch (error) {
-    console.error("Error user could not log in: ", error);
 
     return {
       status: 500,

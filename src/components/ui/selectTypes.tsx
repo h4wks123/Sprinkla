@@ -3,27 +3,35 @@
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 
-export default function SelectTypes({ options }: { options: string[] }) {
+export default function SelectTypes({
+  options,
+  message,
+  passedParams,
+}: {
+  options: string[];
+  message: string;
+  passedParams: string;
+}) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const { replace } = useRouter();
 
-  const [productType, setProductType] = useState("");
+  const [type, setType] = useState("");
 
   useEffect(() => {
-    const currentType = searchParams.get("productType") || "";
-    setProductType(currentType);
+    const currentType = searchParams.get(`${passedParams}`) || "";
+    setType(currentType);
   }, [searchParams]);
 
   function handleType(value: string) {
-    setProductType(value);
+    setType(value);
     const params = new URLSearchParams(searchParams);
     params.set("page", "1");
 
     if (value) {
-      params.set("productType", value);
+      params.set(`${passedParams}`, value);
     } else {
-      params.delete("productType");
+      params.delete(`${passedParams}`);
     }
 
     replace(`${pathname}?${params.toString()}`);
@@ -32,10 +40,10 @@ export default function SelectTypes({ options }: { options: string[] }) {
   return (
     <select
       className="peer block rounded-md p-2 border-2 border-black"
-      value={productType}
+      value={type}
       onChange={(e) => handleType(e.target.value)}
     >
-      <option value="">All</option>
+      <option value="">{message}</option>
       {options.map((option, index) => (
         <option key={index} value={option}>
           {option}
