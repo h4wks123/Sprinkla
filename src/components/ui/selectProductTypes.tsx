@@ -1,14 +1,15 @@
 "use client";
 
-import { useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 export default function SelectProductTypes({
   productTypes,
 }: {
   productTypes: string[];
 }) {
-  const router = useRouter();
+  const pathname = usePathname();
   const searchParams = useSearchParams();
+  const { replace } = useRouter();
   const currentType = searchParams.get("productType");
 
   function handleClick(type: string) {
@@ -18,17 +19,19 @@ export default function SelectProductTypes({
     } else {
       newParams.set("productType", type);
     }
-    router.push(`?${newParams.toString()}#products_section`);
+    replace(`${pathname}?${newParams.toString()}#products_section`);
   }
 
   return (
-    <ul className="w-[90%] h-[5rem] mx-auto flex justify-start items-center gap-8 text-black font-bold">
+    <ul className="w-[90%] h-[5rem] mx-auto flex justify-start items-center text-black font-bold overflow-x-auto">
       {productTypes.map((type) => (
         <li
           key={type}
           onClick={() => handleClick(type)}
-          className={`cursor-pointer ${
-            currentType === type ? "underline text-primary" : ""
+          className={`h-full flex justify-center items-center cursor-pointer px-8 ${
+            currentType === type || (currentType === null && type === "Donuts")
+              ? "bg-tertiary text-tertiary-dark"
+              : ""
           }`}
         >
           {type}

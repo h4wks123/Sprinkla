@@ -39,14 +39,45 @@ export async function printProducts(
       status: 200,
       products: products,
       productTypes: productTypes.map((pt) => pt.product_type),
-      message: "Succesfully displayed product."
+      message: "Succesfully displayed product.",
     };
   } catch (error) {
     return {
       status: 500,
       products: [],
       productTypes: [],
-      message: `Failed to display product: ${error}`
+      message: `Failed to display product: ${error}`,
+    };
+  }
+}
+
+export async function printProductsByProductType(productType?: string) {
+  try {
+    const productTypesResult = await db
+      .selectDistinct({ product_type: productsTable.product_type })
+      .from(productsTable);
+
+    const productTypes = productTypesResult.map((pt) => pt.product_type);
+
+    const finalProductType = productType || productTypes[0];
+
+    const products = await db
+      .select()
+      .from(productsTable)
+      .where(eq(productsTable.product_type, finalProductType));
+
+    return {
+      status: 200,
+      products,
+      productTypes,
+      message: "Successfully displayed product.",
+    };
+  } catch (error) {
+    return {
+      status: 500,
+      products: [],
+      productTypes: [],
+      message: `Failed to display product: ${error}`,
     };
   }
 }
@@ -74,13 +105,13 @@ export async function fetchProductPages(query: string, productType: string) {
     return {
       status: 200,
       totalPages,
-      message: "Sucessfully fetched product pages."
+      message: "Sucessfully fetched product pages.",
     };
   } catch (error) {
     return {
       status: 500,
       totalPages: 0,
-      message: `Error fetching product pages: ${error}`
+      message: `Error fetching product pages: ${error}`,
     };
   }
 }

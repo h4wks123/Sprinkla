@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { Button } from "../buttons";
 import Image from "next/image";
 import toaster from "../toaster";
+import FormPopups from "../popups";
 
 export function Header() {
   const { data: session } = useSession();
@@ -25,40 +26,58 @@ export function Header() {
         </Button>
       ) : session!.user!.role === "customer" ? (
         <div className="flex justify-center items-center gap-6">
-          <Button
-            onClick={async () => {
-              toaster(300, `${session.user.email} has successfully logged out`);
-              await signOut({ redirect: false });
-            }}
-            size="small"
-          >
-            SIGN OUT
-          </Button>
           <Image
+            onClick={() => {
+              router.push("/");
+            }}
+            src="/home_icon.svg"
+            alt="home_icon"
+            width={30}
+            height={30}
+            className="cursor-pointer"
+          />
+          <Image
+            onClick={() => {
+              router.push("/cart");
+            }}
             src="/cart_icon.svg"
             alt="cart_icon"
             width={30}
             height={30}
             className="cursor-pointer"
           />
+          <Image
+            onClick={() => {
+              router.push("/purchases");
+            }}
+            src="/purchases_icon.svg"
+            alt="purchases_icon"
+            width={30}
+            height={30}
+            className="cursor-pointer"
+          />
+          <FormPopups message={"Users"} variant={"update"} size={"small"}>
+            <Button
+              onClick={async () => {
+                toaster(
+                  300,
+                  `${session.user.email} has successfully logged out`
+                );
+                await signOut({ redirect: false });
+              }}
+            >
+              SIGN OUT
+            </Button>
+          </FormPopups>
         </div>
       ) : (
         <div className="flex justify-center items-center gap-6">
-          <Button
-            onClick={async () => {
-              toaster(300, `${session.user.email} has successfully logged out`);
-              await signOut({ redirect: false });
-            }}
-            size="small"
-          >
-            SIGN OUT
-          </Button>
           <Image
             onClick={() => {
               router.push("/users");
             }}
-            src="/users.svg"
-            alt="users"
+            src="/users_icon.svg"
+            alt="users_icon"
             width={30}
             height={30}
             className="cursor-pointer"
@@ -77,12 +96,21 @@ export function Header() {
             onClick={() => {
               router.push("/orders");
             }}
-            src="/orders.svg"
-            alt="orders"
+            src="/orders_icon.svg"
+            alt="orders_icon"
             width={30}
             height={30}
             className="cursor-pointer"
           />
+          <Button
+            onClick={async () => {
+              toaster(300, `${session.user.email} has successfully logged out`);
+              await signOut({ redirect: false });
+            }}
+            size="small"
+          >
+            SIGN OUT
+          </Button>
         </div>
       )}
     </header>

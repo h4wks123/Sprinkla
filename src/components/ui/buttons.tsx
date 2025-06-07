@@ -22,6 +22,7 @@ const buttonVariants = cva(
         default: "w-44 h-10 font-semibold tracking-wide",
         icon: "w-10 h-10 tracking-wide rounded-full",
         small: "w-28 h-10 tracking-wide",
+        full: "w-full h-10 tracking-wide",
         ghost: "",
       },
       text: {

@@ -1,15 +1,23 @@
 "use server";
 
-import React from "react";
+import React, { Suspense } from "react";
 
 import Image from "next/image";
 import Link from "next/link";
 
 import { Header } from "@/components/ui/entry/header";
 import Footer from "@/components/ui/entry/footer";
-import CustomersTable from "@/components/ui/tables/customersTable";
 
-const page = async () => {
+import CustomerProductsTable from "@/components/ui/tables/customerProductsTable";
+
+const page = async (props: {
+  searchParams?: Promise<{
+    productType?: string;
+  }>;
+}) => {
+  const searchParams = await props.searchParams;
+  const productType = searchParams?.productType || "";
+
   return (
     <>
       <Header />
@@ -97,7 +105,27 @@ const page = async () => {
             </h3>
           </article>
         </section>
-        <CustomersTable />
+        <section id="products_section" className="relative w-screen mb-20">
+          <div className="relative w-full max-w-[1280px] h-[50rem] mx-auto flex flex-col justify-center items-center rounded-none bg-secondary xl:rounded-md">
+            <Suspense
+              key={productType}
+              fallback={
+                <div className="w-full h-full bg-primary border-secondary border-b-8 xl:border-8 xl:rounded-md flex justify-center items-center">
+                  <Image
+                    src="/loader.gif"
+                    alt="loader"
+                    width={75}
+                    height={75}
+                    className="mx-auto"
+                  />
+                </div>
+              }
+            >
+              <CustomerProductsTable productType={productType} />
+            </Suspense>
+            <div className="hidden absolute overflow-hidden -z-10 h-full w-dvw xl:block before:absolute before:animate-slanting-elements-slow before:h-[200dvw] before:w-[20rem] before:rotate-85 before:aspect-auto before:right-1/2 before:-top-[calc(100dvw-25rem)] before:bg-repeat-y before:overflow-hidden before:bg-[url('/customer_home_circles_1.svg')]" />
+          </div>
+        </section>
         <section id="sponsors_section" className="relative w-screen mb-20">
           <div className="flex justify-start overflow-y-visible overflow-x-clip">
             <div className="bg-quaternary relative w-[calc(50%-640px)] h-[12rem]" />

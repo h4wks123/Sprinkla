@@ -6,14 +6,15 @@ import Popup from "reactjs-popup";
 import { Button } from "./buttons";
 import type { Variant, Size } from "../../../types/types";
 import toaster from "./toaster";
+import Image from "next/image";
 
 interface FormPopupsProps {
   children: ReactNode;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   action?: (formData: FormData) => Promise<any>;
-  message: string | null;
-  variant: Variant;
-  size: Size;
+  message?: string;
+  variant?: Variant;
+  size?: Size;
 }
 
 const FormPopups: React.FC<FormPopupsProps> = ({
@@ -50,15 +51,26 @@ const FormPopups: React.FC<FormPopupsProps> = ({
 
   return (
     <div>
-      <Button
-        type="button"
-        variant={variant}
-        size={size}
-        className="text-white"
-        onClick={() => setOpen(true)}
-      >
-        {message}
-      </Button>
+      {message === "Users" ? (
+        <Image
+          src="/user-circle_icon.svg"
+          alt="users_circle"
+          width={30}
+          height={30}
+          className="cursor-pointer"
+          onClick={() => setOpen(true)}
+        />
+      ) : (
+        <Button
+          type="button"
+          variant={variant}
+          size={size}
+          className="text-white"
+          onClick={() => setOpen(true)}
+        >
+          {message}
+        </Button>
+      )}
 
       <Popup
         open={open}
