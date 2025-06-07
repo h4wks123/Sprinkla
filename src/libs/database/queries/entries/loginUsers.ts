@@ -10,12 +10,12 @@ export default async function loginUser(
   passwordInput: string
 ) {
   try {
-
     const result = await db
       .select({
         field1: usersTable.user_id,
         field2: usersTable.email,
         field3: usersTable.password,
+        field4: usersTable.contact_number,
         field5: usersTable.user_type,
       })
       .from(usersTable)
@@ -31,6 +31,7 @@ export default async function loginUser(
         id: null,
         role: null,
         email: null,
+        contactNumber: null,
       };
     }
 
@@ -40,15 +41,16 @@ export default async function loginUser(
       id: result[0].field1,
       role: result[0].field5,
       email: result[0].field2,
+      contactNumber: result[0].field4,
     };
   } catch (error) {
-
     return {
       status: 500,
       message: "Internal server error during login.",
       id: null,
       role: null,
       email: null,
+      contactNumber: null,
     };
   }
 }

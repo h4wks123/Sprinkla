@@ -18,6 +18,7 @@ const handler = NextAuth({
             id: `${user.id}`,
             email: user.email,
             role: user.role,
+            contactNumber: user.contactNumber,
             toaster: {
               status: user.status,
               message: user.message,
@@ -37,6 +38,7 @@ const handler = NextAuth({
     jwt({ token, user }: { token: any; user: any }) {
       if (user) {
         token.role = user.role;
+        token.contactNumber = user.contactNumber;
         token.toaster = user.toaster;
       }
       return token;
@@ -44,7 +46,9 @@ const handler = NextAuth({
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     session({ session, token }: { session: any; token: any }) {
       session.user.role = token.role;
+      session.user.contactNumber = token.contactNumber;
       session.user.toaster = token.toaster;
+
       return session;
     },
   },

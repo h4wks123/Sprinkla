@@ -6,6 +6,7 @@ declare module "next-auth" {
       id: string;
       email: string;
       role: string;
+      contactNumber: number;
       toaster: {
         status: number;
         message: string;
@@ -17,6 +18,7 @@ declare module "next-auth" {
     id: string;
     email: string | null;
     role: string | null;
+    contactNumber: number | null;
     toaster: {
       status: number;
       message: string;
@@ -27,6 +29,7 @@ declare module "next-auth" {
     id: string;
     email: string;
     role: string;
+    contactNumber: number;
     toaster?: {
       status: number;
       message: string;

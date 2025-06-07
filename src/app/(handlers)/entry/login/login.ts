@@ -47,6 +47,7 @@ export async function LoginForm(
   });
 
   const session = await getSession();
+
   if (session!.user!.toaster!.status === 200) {
     toaster(
       session!.user!.toaster!.status,
