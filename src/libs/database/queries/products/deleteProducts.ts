@@ -18,7 +18,7 @@ export default async function deleteProducts(formData: FormData) {
 
     const existingProduct = await db
       .select()
-      .from(productsTable)
+      .from(productsTable)  
       .where(eq(productsTable.product_id, productID));
 
     if (existingProduct.length === 0) {

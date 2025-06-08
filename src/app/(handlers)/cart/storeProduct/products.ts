@@ -14,7 +14,6 @@ export async function SubmitProductsForm(e: FormEvent<HTMLFormElement>) {
     const productQuantity = Number(formData.get("productQuantity"));
     const productPrice = Number(formData.get("productPrice"));
 
-    console.log(productID, productName, productQuantity, productPrice);
 
     const response = await fetch("api/cart/storeProducts", {
       method: "POST",
