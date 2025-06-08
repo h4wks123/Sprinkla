@@ -70,6 +70,7 @@ export async function printProductsByProductType(productType?: string) {
       status: 200,
       products,
       productTypes,
+      finalProductType,
       message: "Successfully displayed product.",
     };
   } catch (error) {
@@ -77,6 +78,7 @@ export async function printProductsByProductType(productType?: string) {
       status: 500,
       products: [],
       productTypes: [],
+      finalProductType: "",
       message: `Failed to display product: ${error}`,
     };
   }

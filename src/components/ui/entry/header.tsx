@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import { Button } from "../buttons";
 import Image from "next/image";
 import toaster from "../toaster";
-import FormPopups from "../popups";
+import UserFormPopups from "../formPopups/userPopup";
 
 export function Header() {
   const { data: session } = useSession();
@@ -56,52 +56,13 @@ export function Header() {
             height={30}
             className="cursor-pointer"
           />
-          <FormPopups message={"Users"} variant={"update"} size={"small"}>
-            <Image
-              src="/profile.png"
-              alt="profile"
-              width={200}
-              height={200}
-              className="aspect-square rounded-full mx-auto border-2 border-black"
-            />
-            <div>
-              <h6 className="text-black">Role</h6>
-              <input
-                placeholder={session.user.role}
-                readOnly
-                className="h-10 placeholder-black border-black border-2 rounded-md px-4"
-              />
-            </div>
-            <div>
-              <h1 className="text-black">Email:</h1>
-              <input
-                placeholder={session.user.email}
-                readOnly
-                className="h-10 placeholder-black border-black border-2 rounded-md px-4"
-              />
-            </div>
-            <div>
-              <h1 className="text-black">Contact Number:</h1>
-              <input
-                type="tel"
-                value={session.user.contactNumber}
-                readOnly
-                className="h-10 text-black border-black border-2 rounded-md px-4"
-              />
-            </div>
-            <Button
-              onClick={async () => {
-                toaster(
-                  300,
-                  `${session.user.email} has successfully logged out`
-                );
-                await signOut({ redirect: false });
-              }}
-              className="mx-auto"
-            >
-              SIGN OUT
-            </Button>
-          </FormPopups>
+
+          <UserFormPopups
+            onSignOut={async () => {
+              await signOut({ redirect: false });
+              toaster(300, `${session.user.email} has successfully logged out`);
+            }}
+          />
         </div>
       ) : (
         <div className="flex justify-center items-center gap-6">
@@ -135,52 +96,12 @@ export function Header() {
             height={30}
             className="cursor-pointer"
           />
-          <FormPopups message={"Users"} variant={"update"} size={"small"}>
-            <Image
-              src="/profile.png"
-              alt="profile"
-              width={200}
-              height={200}
-              className="aspect-square rounded-full mx-auto border-2 border-black"
-            />
-            <div>
-              <h6 className="text-black">Role</h6>
-              <input
-                placeholder={session.user.role}
-                readOnly
-                className="h-10 placeholder-black border-black border-2 rounded-md px-4"
-              />
-            </div>
-            <div>
-              <h1 className="text-black">Email:</h1>
-              <input
-                placeholder={session.user.email}
-                readOnly
-                className="h-10 placeholder-black border-black border-2 rounded-md px-4"
-              />
-            </div>
-            <div>
-              <h1 className="text-black">Contact Number:</h1>
-              <input
-                type="tel"
-                value={session.user.contactNumber}
-                readOnly
-                className="h-10 text-black border-black border-2 rounded-md px-4"
-              />
-            </div>
-            <Button
-              onClick={async () => {
-                toaster(
-                  300,
-                  `${session.user.email} has successfully logged out`
-                );
-                await signOut({ redirect: false });
-              }}
-              className="mx-auto"
-            >
-              SIGN OUT
-            </Button>
-          </FormPopups>
+          <UserFormPopups
+            onSignOut={async () => {
+              await signOut({ redirect: false });
+              toaster(300, `${session.user.email} has successfully logged out`);
+            }}
+          />
         </div>
       )}
     </header>

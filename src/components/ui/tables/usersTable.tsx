@@ -2,7 +2,7 @@
 
 import { printUsers } from "@/libs/database/queries/users/displayUsers";
 import SelectTypes from "../selectTypes";
-import FormPopups from "../popups";
+import ActionFormPopups from "../formPopups/actionPopup";
 import { Button } from "../buttons";
 import updateUsers from "@/libs/database/queries/users/updateUsers";
 
@@ -47,7 +47,7 @@ export default async function UsersTable({
             <td className="pl-4 w-[15%]">{user.contact_number}</td>
             <td className="pl-4 w-[10%]">{user.date ?? "—"}</td>
             <td className="pl-4 w-[10%]">
-              <FormPopups
+              <ActionFormPopups
                 action={updateUsers}
                 message={"Update"}
                 variant={"update"}
@@ -97,7 +97,7 @@ export default async function UsersTable({
                 >
                   Update
                 </Button>
-              </FormPopups>
+              </ActionFormPopups>
             </td>
           </tr>
         ))}

@@ -2,7 +2,7 @@
 
 import { printProducts } from "@/libs/database/queries/products/displayProducts";
 import SelectTypes from "../selectTypes";
-import FormPopups from "@/components/ui/popups";
+import ActionFormPopups from "../formPopups/actionPopup";
 import { Button } from "../buttons";
 import updateProducts from "@/libs/database/queries/products/updateProducts";
 import deleteProducts from "@/libs/database/queries/products/deleteProducts";
@@ -49,7 +49,7 @@ export default async function ProductsTable({
             <td className="pl-4 w-[7.5%]">{product.price}</td>
             <td className="pl-4 w-[10%]">{product.date ?? "—"}</td>
             <td className="pl-4 w-[10%]">
-              <FormPopups
+              <ActionFormPopups
                 action={updateProducts}
                 message={"Update"}
                 variant={"update"}
@@ -110,10 +110,10 @@ export default async function ProductsTable({
                 >
                   Update
                 </Button>
-              </FormPopups>
+              </ActionFormPopups>
             </td>
             <td className="pl-4 w-[10%]">
-              <FormPopups
+              <ActionFormPopups
                 action={deleteProducts}
                 message={"Delete"}
                 variant={"delete"}
@@ -135,7 +135,7 @@ export default async function ProductsTable({
                 <Button size="small" variant="delete">
                   Delete
                 </Button>
-              </FormPopups>
+              </ActionFormPopups>
             </td>
           </tr>
         ))}

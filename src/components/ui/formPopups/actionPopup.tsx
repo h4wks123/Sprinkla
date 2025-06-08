@@ -1,14 +1,18 @@
 "use client";
 
+// The issue for updating products here is handler, I should make separate
+// popups for handlers, actions, and session logout
+// session logout works if I close the modal first before redirecting
+
 import React, { useState, ReactNode, FormEvent } from "react";
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
 import Popup from "reactjs-popup";
-import { Button } from "./buttons";
-import type { Variant, Size } from "../../../types/types";
-import toaster from "./toaster";
+import { Button } from "../buttons";
+import type { Variant, Size } from "../../../../types/types";
+import toaster from "../toaster";
 import Image from "next/image";
 
-interface FormPopupsProps {
+interface ActionPopupsProps {
   children: ReactNode;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   action?: (formData: FormData) => Promise<any>;
@@ -17,7 +21,7 @@ interface FormPopupsProps {
   size?: Size;
 }
 
-const FormPopups: React.FC<FormPopupsProps> = ({
+const ActionFormPopups: React.FC<ActionPopupsProps> = ({
   children,
   action,
   message,
@@ -97,4 +101,4 @@ const FormPopups: React.FC<FormPopupsProps> = ({
   );
 };
 
-export default FormPopups;
+export default ActionFormPopups;

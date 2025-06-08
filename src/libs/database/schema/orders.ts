@@ -12,14 +12,15 @@ export const ordersTable = sqliteTable("orders", {
   product_id: integer("product_id")
     .references(() => productsTable.product_id)
     .notNull(),
-  address: text("address").notNull(),
+  address: text("address"),
   ...timestamps,
-  status: text("user_type", {
+  status: text("status", {
     enum: ["queued", "dispatched", "delivered", "cancelled"],
   })
     .default("queued")
     .notNull(),
   total_price: real("total_price").notNull(),
+  ...timestamps,
 });
 
 export const ordersRelations = relations(ordersTable, ({ one, many }) => ({
@@ -31,5 +32,4 @@ export const ordersRelations = relations(ordersTable, ({ one, many }) => ({
 }));
 
 export type InsertOrders = typeof ordersTable.$inferInsert;
-export type UpdateOrders = typeof ordersTable.$inferInsert;
 export type SelectOrders = typeof ordersTable.$inferSelect;

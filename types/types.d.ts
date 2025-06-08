@@ -8,4 +8,11 @@ export type Variant =
   | null
   | undefined;
 
-export type Size = "default" | "ghost" | "small" | "icon" | null | undefined;
+export type Size =
+  | "default"
+  | "ghost"
+  | "small"
+  | "icon"
+  | "full"
+  | null
+  | undefined;

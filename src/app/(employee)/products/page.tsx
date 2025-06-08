@@ -6,7 +6,7 @@ import ProductsTable from "@/components/ui/tables/productsTable";
 import Pagination from "@/components/ui/pagination";
 import { fetchProductPages } from "@/libs/database/queries/products/displayProducts";
 import createProducts from "@/libs/database/queries/products/createProducts";
-import FormPopups from "@/components/ui/popups";
+import ActionFormPopups from "@/components/ui/formPopups/actionPopup";
 import { Button } from "@/components/ui/buttons";
 import Image from "next/image";
 
@@ -52,7 +52,7 @@ export default async function Page(props: {
         </Suspense>
       </div>
       <div className="w-full flex flex-wrap justify-between items-center p-6 gap-6">
-        <FormPopups
+        <ActionFormPopups
           action={createProducts}
           message={"Create Product"}
           variant={"success"}
@@ -104,7 +104,7 @@ export default async function Page(props: {
           >
             Create Product
           </Button>
-        </FormPopups>
+        </ActionFormPopups>
         <Pagination totalPages={totalPages} />
       </div>
     </section>
