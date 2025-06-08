@@ -19,6 +19,7 @@ export default function NumberPicker({
         <h6 className="text-black">Quantity</h6>
         <div className="flex items-center gap-4">
           <Button
+            type="button"
             onClick={() => {
               setNumber(number > 1 ? number - 1 : number);
             }}
@@ -41,6 +42,7 @@ export default function NumberPicker({
             className="w-5 text-black flex items-center justify-center outline-0"
           />
           <Button
+            type="button"
             onClick={() => {
               setNumber(number < maxQuantity ? number + 1 : number);
             }}

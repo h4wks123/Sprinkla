@@ -1,6 +1,6 @@
 "use server";
 
-import { getSession } from "next-auth/react";
+import { getServerSession } from "next-auth";
 import { db } from "../..";
 import { cartsTable } from "../../schema/carts";
 import { productsTable } from "../../schema/products";
@@ -14,7 +14,7 @@ export default async function insertCart(
   productPrice: number
 ) {
   try {
-    const session = await getSession();
+    const session = await getServerSession();
 
     if (!session || !session.user?.email) {
       return {
@@ -23,24 +23,25 @@ export default async function insertCart(
       };
     }
 
-    const user = await db
-      .select()
-      .from(usersTable)
-      .where(eq(usersTable.email, session.user.email));
+    const [user, existingProduct] = await Promise.all([
+      db
+        .select()
+        .from(usersTable)
+        .where(eq(usersTable.email, session.user.email)),
+      db
+        .select()
+        .from(productsTable)
+        .where(eq(productsTable.product_id, productID)),
+    ]);
 
     if (user.length === 0) {
       return { status: 404, message: "User not found." };
     }
 
-    const existingProduct = await db
-      .select()
-      .from(productsTable)
-      .where(eq(productsTable.product_id, productID));
-
     if (existingProduct.length === 0) {
       return {
         status: 400,
-        message: "Cannot add to cart, product does not exist.",
+        message: `Cannot add to cart, ${productName} does not exist.`,
       };
     }
 
@@ -57,7 +58,7 @@ export default async function insertCart(
     if (existingCart) {
       return {
         status: 400,
-        message: "Product already exists in cart.",
+        message: `${productName} already exists in cart.`,
       };
     } else {
       await db.insert(cartsTable).values({
@@ -70,12 +71,12 @@ export default async function insertCart(
 
     return {
       status: 200,
-      message: "Product added to cart.",
+      message: `${productName} added to cart.`,
     };
   } catch (error) {
     return {
       status: 500,
-      message: `Failed to insert product into cart: ${error}`,
+      message: `Failed to insert ${productName} into cart: ${error}`,
     };
   }
 }

@@ -1,4 +1,4 @@
-import insertCart from "@/libs/database/queries/orders/insertCart";
+import insertCart from "@/libs/database/queries/carts/insertCart";
 import { NextResponse } from "next/server";
 import { resourceLimits } from "worker_threads";
 
