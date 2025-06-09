@@ -4,7 +4,7 @@ import { timestamps } from "./helpers";
 export const productsTable = sqliteTable("products", {
   product_id: integer("id").primaryKey({ autoIncrement: true }),
   product_type: text("product_type").notNull(),
-  product: text("product").unique().notNull(),
+  product_name: text("product_name").unique().notNull(),
   price: real("price").notNull(),
   quantity: integer("quantity").notNull(),
   ...timestamps,

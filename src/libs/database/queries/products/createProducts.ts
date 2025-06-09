@@ -33,7 +33,7 @@ export default async function createProducts(formData: FormData) {
     const existingProduct = await db
       .select()
       .from(productsTable)
-      .where(eq(productsTable.product, productName));
+      .where(eq(productsTable.product_name, productName));
 
     if (existingProduct.length > 0) {
       return {
@@ -44,7 +44,7 @@ export default async function createProducts(formData: FormData) {
 
     await db.insert(productsTable).values({
       product_type: productType,
-      product: productName,
+      product_name: productName,
       quantity,
       price,
     });

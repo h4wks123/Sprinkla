@@ -1,5 +1,4 @@
-import { integer, real, unique } from "drizzle-orm/sqlite-core";
-import { sqliteTable } from "drizzle-orm/sqlite-core";
+import { sqliteTable, integer, real, unique } from "drizzle-orm/sqlite-core";
 import { usersTable } from "./users";
 import { productsTable } from "./products";
 import { relations } from "drizzle-orm";
@@ -18,10 +17,7 @@ export const cartsTable = sqliteTable(
     quantity: integer("quantity").notNull(),
     total_price: real("total_price").notNull(),
     ...timestamps,
-  },
-  (table) => ({
-    uniqueUserProduct: unique().on(table.user_id, table.product_id),
-  })
+  }
 );
 
 export const cartsRelations = relations(cartsTable, ({ one }) => ({

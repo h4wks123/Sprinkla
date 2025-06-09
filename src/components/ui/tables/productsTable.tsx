@@ -44,7 +44,7 @@ export default async function ProductsTable({
             className="h-13 w-full border-y border-secondary-dark hover:bg-gray-100"
           >
             <td className="pl-4 w-[15%]">{product.product_type}</td>
-            <td className="pl-4 w-[30%]">{product.product}</td>
+            <td className="pl-4 w-[30%]">{product.product_name}</td>
             <td className="pl-4 w-[7.5%]">{product.quantity}</td>
             <td className="pl-4 w-[7.5%]">{product.price}</td>
             <td className="pl-4 w-[10%]">{product.date ?? "—"}</td>
@@ -75,8 +75,8 @@ export default async function ProductsTable({
                   <input
                     name="productName"
                     type="text"
-                    placeholder={product.product}
-                    defaultValue={product.product}
+                    placeholder={product.product_name}
+                    defaultValue={product.product_name}
                     className="h-10 text-black border-black border-2 rounded-md px-4"
                   />
                 </div>
@@ -127,10 +127,10 @@ export default async function ProductsTable({
                 <input
                   type="hidden"
                   name="productName"
-                  value={product.product}
+                  value={product.product_name}
                 />
                 <h4 className="text-black font-semibold">
-                  Are you sure you want to delete {product.product}?
+                  Are you sure you want to delete {product.product_name}?
                 </h4>
                 <Button size="small" variant="delete">
                   Delete

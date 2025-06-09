@@ -16,7 +16,7 @@ export async function printProducts(
     const whereConditions = [];
 
     if (query) {
-      whereConditions.push(like(productsTable.product, `%${query}%`));
+      whereConditions.push(like(productsTable.product_name, `%${query}%`));
     }
 
     if (productType) {
@@ -89,7 +89,7 @@ export async function fetchProductPages(query: string, productType: string) {
     const whereConditions = [];
 
     if (query) {
-      whereConditions.push(like(productsTable.product, `%${query}%`));
+      whereConditions.push(like(productsTable.product_name, `%${query}%`));
     }
 
     if (productType) {

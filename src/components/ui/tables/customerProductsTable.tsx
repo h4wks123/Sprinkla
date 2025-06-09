@@ -37,9 +37,9 @@ export default async function CustomerProductsTable({
               className="mx-auto"
             />
             <h5 className="h-20 text-xl text-quaternary font-bold sm:h-16 sm:text-2xl">
-              {product.product.length > 25
-                ? product.product.substring(0, 25) + "..."
-                : product.product}
+              {product.product_name.length > 25
+                ? product.product_name.substring(0, 25) + "..."
+                : product.product_name}
             </h5>
             <p className="text-red-500 text-md sm:text-lg">
               PHP{" "}
@@ -68,7 +68,7 @@ export default async function CustomerProductsTable({
                   <h6 className="text-black">Product Name</h6>
                   <input
                     name="productName"
-                    value={product.product}
+                    value={product.product_name}
                     readOnly
                     className="h-10 text-black border-black border-2 rounded-md px-4"
                   />

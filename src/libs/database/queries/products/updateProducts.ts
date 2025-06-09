@@ -30,7 +30,7 @@ export default async function updateProducts(formData: FormData) {
       .from(productsTable)
       .where(
         and(
-          eq(productsTable.product, productName),
+          eq(productsTable.product_name, productName),
           ne(productsTable.product_id, productID)
         )
       );
@@ -46,7 +46,7 @@ export default async function updateProducts(formData: FormData) {
       .update(productsTable)
       .set({
         product_type: productType,
-        product: productName,
+        product_name: productName,
         quantity,
         price,
       })

@@ -37,7 +37,7 @@ export default async function getCartProducts() {
         cart_id: cartsTable.cart_id,
         cart_quantity: cartsTable.quantity,
         product_id: productsTable.product_id,
-        product_name: productsTable.product,
+        product_name: productsTable.product_name,
         product_type: productsTable.product_type,
         product_quantity: productsTable.quantity,
         product_price: productsTable.price,

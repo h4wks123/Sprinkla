@@ -1,5 +1,6 @@
 "use server";
 
+import { getServerSession } from "next-auth";
 import { db } from "../..";
 import { cartsTable } from "../../schema/carts";
 import { eq } from "drizzle-orm";
@@ -9,6 +10,15 @@ export async function deleteCart(formData: FormData) {
   const productName = formData.get("productName") as string;
 
   try {
+    const session = await getServerSession();
+
+    if (!session || !session.user?.email) {
+      return {
+        status: 400,
+        message: "User must be authenticated or logged in.",
+      };
+    }
+
     if (!cartID) {
       return {
         status: 400,

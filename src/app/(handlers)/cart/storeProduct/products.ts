@@ -2,7 +2,6 @@
 
 import { FormEvent } from "react";
 import toaster from "@/components/ui/toaster";
-import { toast } from "react-toastify";
 
 export async function SubmitProductsForm(e: FormEvent<HTMLFormElement>) {
   e.preventDefault();
