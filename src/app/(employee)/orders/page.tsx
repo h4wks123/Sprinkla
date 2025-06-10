@@ -1,15 +1,50 @@
 "use server";
 
-import React from "react";
+import React, { Suspense } from "react";
+import Search from "@/components/ui/search";
+import Image from "next/image";
+import Pagination from "@/components/ui/pagination";
+import { fetchOrderPages } from "@/libs/database/queries/orders/displayOrders";
+import OrdersTable from "@/components/ui/tables/ordersTable";
 
-const Orders = () => {
+export default async function Page(props: {
+  searchParams?: Promise<{
+    query?: string;
+    page?: string;
+  }>;
+}) {
+  const searchParams = await props.searchParams;
+  const query = searchParams?.query || "";
+  const currentPage = Number(searchParams?.page) || 1;
+  const { totalPages } = await fetchOrderPages(query);
+
   return (
-    <section className="relative w-screen mb-20">
-      <div className="relative w-full max-w-[1280px] h-[50rem] mx-auto flex flex-col justify-center items-center bg-secondary">
-        <div className="w-full h-full rounded-none border-secondary bg-primary border-y-8 xl:border-8 xl:rounded-md"></div>
+    <section className="w-full">
+      <div className="w-full bg-secondary flex flex-wrap items-center justify-between rounded-t-lg p-6 gap-6">
+        <h1 className="text-3xl text-black font-bold">ORDERS</h1>
+        <Search placeholder="Search customer name..." />
+      </div>
+      <div className="h-[620px] border-secondary-dark border-t overflow-x-auto">
+        <Suspense
+          key={query + currentPage}
+          fallback={
+            <div className="w-full h-full flex justify-center items-center">
+              <Image
+                src="/loader.gif"
+                alt="loader"
+                width={75}
+                height={75}
+                className="mx-auto"
+              />
+            </div>
+          }
+        >
+          <OrdersTable query={query} currentPage={currentPage} />
+        </Suspense>
+      </div>
+      <div className="w-full flex flex-wrap justify-end items-center p-6">
+        <Pagination totalPages={totalPages} />
       </div>
     </section>
   );
-};
-
-export default Orders;
+}

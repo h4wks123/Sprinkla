@@ -107,7 +107,7 @@ export async function fetchProductPages(query: string, productType: string) {
     return {
       status: 200,
       totalPages,
-      message: "Sucessfully fetched product pages.",
+      message: "Successfully fetched product pages.",
     };
   } catch (error) {
     return {

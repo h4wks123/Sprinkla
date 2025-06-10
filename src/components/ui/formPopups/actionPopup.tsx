@@ -1,16 +1,11 @@
 "use client";
 
-// The issue for updating products here is handler, I should make separate
-// popups for handlers, actions, and session logout
-// session logout works if I close the modal first before redirecting
-
 import React, { useState, ReactNode, FormEvent } from "react";
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
 import Popup from "reactjs-popup";
 import { Button } from "../buttons";
 import type { Variant, Size } from "../../../../types/types";
 import toaster from "../toaster";
-import Image from "next/image";
 
 interface ActionPopupsProps {
   children: ReactNode;
@@ -19,6 +14,7 @@ interface ActionPopupsProps {
   message?: string;
   variant?: Variant;
   size?: Size;
+  overflow?: boolean;
 }
 
 const ActionFormPopups: React.FC<ActionPopupsProps> = ({
@@ -27,6 +23,7 @@ const ActionFormPopups: React.FC<ActionPopupsProps> = ({
   message,
   variant,
   size,
+  overflow,
 }) => {
   const [open, setOpen] = useState(false);
   const closeModal = () => setOpen(false);
@@ -54,38 +51,32 @@ const ActionFormPopups: React.FC<ActionPopupsProps> = ({
   }
 
   return (
-    <div>
-      {message === "Users" ? (
-        <Image
-          src="/user-circle_icon.svg"
-          alt="users_circle"
-          width={30}
-          height={30}
-          className="cursor-pointer"
-          onClick={() => setOpen(true)}
-        />
-      ) : (
-        <Button
-          type="button"
-          variant={variant}
-          size={size}
-          className="text-white"
-          onClick={() => setOpen(true)}
-        >
-          {message}
-        </Button>
-      )}
+    <div className="overflow-x-auto">
+      <Button
+        type="button"
+        variant={variant}
+        size={size}
+        className="text-white"
+        onClick={() => setOpen(true)}
+      >
+        {message}
+      </Button>
 
       <Popup
         open={open}
         closeOnDocumentClick
         onClose={closeModal}
         modal
-        overlayStyle={{ background: "rgba(0, 0, 0, 0.5)" }}
+        overlayStyle={{
+          background: "rgba(0, 0, 0, 0.5)",
+          overflow: overflow ? "auto" : "",
+        }}
       >
         <form
           onSubmit={handleSubmit}
-          className="relative bg-white p-6 rounded-xl shadow-md max-w-md mx-auto flex flex-col gap-4"
+          className={`relative bg-white p-6 rounded-xl shadow-md mx-auto flex flex-col gap-4 max-w-md ${
+            overflow ? "max-w-[650px]" : ""
+          }`}
         >
           <button
             type="button"
