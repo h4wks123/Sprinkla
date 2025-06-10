@@ -12,6 +12,7 @@ import { eq, inArray } from "drizzle-orm";
 export async function createOrders(formData: FormData) {
   const rawIDs = formData.getAll("cartIDs");
   const cartIDs = rawIDs.map((id) => Number(id)).filter(Boolean);
+  const address = formData.get("address");
 
   try {
     const session = await getServerSession();
@@ -20,6 +21,12 @@ export async function createOrders(formData: FormData) {
       return { status: 400, message: "User not authenticated." };
     }
 
+    if (!address) {
+      return {
+        status: 400,
+        message: "Please input your delivery address before checking out.",
+      };
+    }
     const userResult = await db
       .select()
       .from(usersTable)
@@ -66,11 +73,13 @@ export async function createOrders(formData: FormData) {
       0
     );
 
+    console.log(totalAmount, cartItems);
+
     const [order] = await db
       .insert(ordersTable)
       .values({
         user_id: user.user_id,
-        address: "N/A",
+        address: `${address}`,
         total_price: totalAmount,
         status: "queued",
       })
@@ -82,7 +91,7 @@ export async function createOrders(formData: FormData) {
         order_id: order.order_id,
         product_name: product.product_name,
         product_type: product.product_type,
-        price: product.price,
+        price: product.price * (cart?.quantity ?? 1),
         quantity: cart?.quantity ?? 1,
       };
     });

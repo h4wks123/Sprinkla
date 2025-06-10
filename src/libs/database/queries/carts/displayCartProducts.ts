@@ -55,7 +55,6 @@ export default async function getCartProducts() {
       cartItems,
     };
   } catch (error) {
-    console.error("getCartProducts error:", error);
     return {
       status: 500,
       message: `Failed to fetch cart items`,

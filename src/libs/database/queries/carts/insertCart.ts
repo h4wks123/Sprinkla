@@ -60,14 +60,14 @@ export default async function insertCart(
         status: 400,
         message: `${productName} already exists in cart.`,
       };
-    } else {
-      await db.insert(cartsTable).values({
-        user_id: user[0].user_id,
-        product_id: productID,
-        quantity: productQuantity,
-        total_price: productPrice * productQuantity,
-      });
     }
+
+    await db.insert(cartsTable).values({
+      user_id: user[0].user_id,
+      product_id: productID,
+      quantity: productQuantity,
+      total_price: productPrice,
+    });
 
     return {
       status: 200,
