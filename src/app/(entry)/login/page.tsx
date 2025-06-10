@@ -56,7 +56,7 @@ const Login = () => {
       <div className="w-[80%] h-18">
         <h6>Password</h6>
         <input
-          type="text"
+          type="password"
           name="password"
           className="bg-white w-full text-black rounded-sm"
           placeholder="customer123"

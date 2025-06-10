@@ -313,13 +313,21 @@ const page = async () => {
             </tbody>
           </table>
         </div>
-        <div className="w-full flex flex-wrap items-center justify-end rounded-t-lg p-6 gap-6">
-          <h6 className="text-black">Total Amount:</h6>
-          {!Array.isArray(pendingOrderedItems.currentOrder) && (
-            <p className="font-bold text-black">
-              ₱ {pendingOrderedItems.currentOrder?.total_price}
+        <div className="w-full flex flex-wrap items-center justify-between rounded-t-lg p-6">
+          <div className="flex gap-4">
+            <h6 className="text-black font-bold">Address:</h6>
+            <p className="text-black">
+              {pendingOrderedItems.currentOrder?.address}
             </p>
-          )}
+          </div>
+          <div className="flex gap-4">
+            <h6 className="text-black font-bold">Total Amount:</h6>
+            {!Array.isArray(pendingOrderedItems.currentOrder) && (
+              <p className="text-black">
+                ₱ {pendingOrderedItems.currentOrder?.total_price}
+              </p>
+            )}
+          </div>
         </div>
       </div>
     </section>

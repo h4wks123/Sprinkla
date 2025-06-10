@@ -2,7 +2,6 @@
 
 import { printUserOrder } from "@/libs/database/queries/orders/displayOrders";
 import ActionFormPopups from "../formPopups/actionPopup";
-import { Button } from "../buttons";
 
 export default async function OrderHistoryTable({
   currentPage,

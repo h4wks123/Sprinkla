@@ -36,11 +36,13 @@ export default function NumberPicker({
             />
           </Button>
           <input
-            name="productQuantity"
-            value={number}
+            type="text"
+            value={`${number} / ${maxQuantity}`}
             readOnly
-            className="w-5 text-black flex items-center justify-center outline-0"
+            className="w-[5rem] text-black text-center outline-none bg-transparent"
+            tabIndex={-1}
           />
+          <input type="hidden" name="productQuantity" value={number} />
           <Button
             type="button"
             onClick={() => {

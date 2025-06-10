@@ -95,10 +95,23 @@ export async function printUserOrder(currentPage: number) {
       };
     }
 
+    const user = await db
+      .select()
+      .from(usersTable)
+      .where(eq(usersTable.email, session.user.email));
+
+    if (user.length === 0) {
+      return {
+        status: 404,
+        orders: [],
+        message: "No user found for this query.",
+      };
+    }
+
     const rawOrders = await db
       .select()
       .from(ordersTable)
-      .where(eq(usersTable.user_id, ordersTable.user_id))
+      .where(eq(ordersTable.user_id, user[0].user_id))
       .innerJoin(
         orderItemsTable,
         eq(ordersTable.order_id, orderItemsTable.order_id)

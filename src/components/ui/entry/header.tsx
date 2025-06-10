@@ -8,6 +8,8 @@ import { Button } from "../buttons";
 import Image from "next/image";
 import toaster from "../toaster";
 import UserFormPopups from "../formPopups/userPopup";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export function Header() {
   const { data: session } = useSession();
@@ -105,5 +107,34 @@ export function Header() {
         </div>
       )}
     </header>
+  );
+}
+
+export function PurchasesHeader() {
+  const pathname = usePathname();
+
+  return (
+    <nav className="h-13 w-full flex bg-gray-200 border-y-2 border-secondary-dark">
+      <Link
+        href="/recent"
+        className={`w-1/2 flex justify-end items-center font-bold text-2xl pr-40 ${
+          pathname === "/recent"
+            ? "bg-tertiary-dark text-white"
+            : "bg-gray-200 text-black hover:bg-tertiary"
+        }`}
+      >
+        RECENT
+      </Link>
+      <Link
+        href="/history"
+        className={`w-1/2 flex justify-start items-center font-bold text-2xl pl-40 ${
+          pathname === "/history"
+            ? "bg-tertiary-dark text-white"
+            : "bg-gray-200 text-black hover:bg-tertiary"
+        }`}
+      >
+        HISTORY
+      </Link>
+    </nav>
   );
 }

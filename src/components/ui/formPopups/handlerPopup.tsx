@@ -24,32 +24,18 @@ const HandlerFormPopups: React.FC<HandlerPopupsProps> = ({
 }) => {
   const [open, setOpen] = useState(false);
   const closeModal = () => setOpen(false);
-  const searchParams = useSearchParams();
-  const pathname = usePathname();
-  const { replace } = useRouter();
 
   return (
     <div>
-      {message === "Users" ? (
-        <Image
-          src="/user-circle_icon.svg"
-          alt="users_circle"
-          width={30}
-          height={30}
-          className="cursor-pointer"
-          onClick={() => setOpen(true)}
-        />
-      ) : (
-        <Button
-          type="button"
-          variant={variant}
-          size={size}
-          className="text-white"
-          onClick={() => setOpen(true)}
-        >
-          {message}
-        </Button>
-      )}
+      <Button
+        type="button"
+        variant={variant}
+        size={size}
+        className="text-white"
+        onClick={() => setOpen(true)}
+      >
+        {message}
+      </Button>
 
       <Popup
         open={open}
