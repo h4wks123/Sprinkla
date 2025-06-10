@@ -1,43 +1,26 @@
 "use server";
 
-import React from "react";
-
-import NavSignInBtn from "@/components/ui/navsigninbtn";
-import NavSignOutBtn from "@/components/ui/navsignoutbtn";
+import React, { Suspense } from "react";
 
 import Image from "next/image";
 import Link from "next/link";
 
-import { getSession } from "@/libs/auth/session";
+import { Header } from "@/components/ui/entry/header";
+import Footer from "@/components/ui/entry/footer";
 
-const page = async () => {
-  const userSession = await getSession();
+import CustomerProductsTable from "@/components/ui/tables/customerProductsTable";
+
+const page = async (props: {
+  searchParams?: Promise<{
+    productType?: string;
+  }>;
+}) => {
+  const searchParams = await props.searchParams;
+  const productType = searchParams?.productType || "";
 
   return (
     <>
-      <header className="w-[min(90%,1280px)] max-w-[1280px] h-[4rem] mx-auto flex justify-end items-center">
-        {!userSession ? (
-          <NavSignInBtn />
-        ) : (
-          <div className="flex justify-center items-center gap-6">
-            <NavSignOutBtn />
-            <Image
-              src="/cart_icon.svg"
-              alt="cart_icon"
-              width={30}
-              height={30}
-              className="cursor-pointer"
-            />
-            <Image
-              src="/side_bar_icon.svg"
-              alt="side_bar_icon"
-              width={30}
-              height={30}
-              className="cursor-pointer"
-            />
-          </div>
-        )}
-      </header>
+      <Header />
       <main className="w-full h-full">
         <section
           id="landing_view_section"
@@ -69,7 +52,7 @@ const page = async () => {
               <Link
                 href="#products_section"
                 scroll={true}
-                className="scroll-smooth w-[min(175px,30vw)] h-[min(175px,30vw)] bg-cover bg-[url('/products_icon_light.svg')] cursor-pointer duration-300 ease-in-out hover:bg-[url('/products_icon_dark.svg')] hover:scale-125"
+                className="w-[min(175px,30vw)] h-[min(175px,30vw)] bg-cover bg-[url('/product_icon_light.svg')] cursor-pointer duration-300 ease-in-out hover:bg-[url('/product_icon_dark.svg')] hover:scale-125"
               />
               <Link
                 href="#sponsors_section"
@@ -122,94 +105,27 @@ const page = async () => {
             </h3>
           </article>
         </section>
-        <section id="products_section" className="relative w-screen mb-30">
+        <section id="products_section" className="relative w-screen mb-20">
           <div className="relative w-full max-w-[1280px] h-[50rem] mx-auto flex flex-col justify-center items-center rounded-none bg-secondary xl:rounded-md">
-            <ul className="w-[90%] h-[5rem] mx-auto flex justify-start items-center gap-8 text-black font-bold">
-              <li>PROMOS</li>
-              <li>DOUGHNUTS</li>
-            </ul>
-            <div className="w-full h-full overflow-y-scroll flex flex-wrap items-start justify-center rounded-none p-6 gap-6 border-secondary border-b-8 bg-primary xl:border-8 xl:rounded-md">
-              <div className="flex flex-col w-[calc(1280px/4-56px)] justify-center items-left gap-2">
-                <Image
-                  src="/donut_sale.png"
-                  alt="donut sale"
-                  width={200}
-                  height={200}
-                  className="mx-auto"
-                />
-                <h5 className="text-quaternary text-2xl font-bold">
-                  One Dozen Mixed Donuts
-                </h5>
-                <p className="text-red-500 text-lg">PHP 500.00</p>
-                <button className="bg-quaternary-dark mx-auto w-60 h-10 rounded-lg flex justify-center items-center cursor-pointer text-white">
-                  ORDER NOW
-                </button>
-              </div>
-              <div className="flex flex-col w-[calc(1280px/4-56px)] justify-center items-left gap-2">
-                <Image
-                  src="/donut_sale.png"
-                  alt="donut sale"
-                  width={200}
-                  height={200}
-                  className="mx-auto"
-                />
-                <h5 className="text-quaternary text-2xl font-bold">
-                  One Dozen Mixed Donuts
-                </h5>
-                <p className="text-red-500 text-lg">PHP 500.00</p>
-                <button className="bg-quaternary-dark mx-auto w-60 h-10 rounded-lg flex justify-center items-center cursor-pointer text-white">
-                  ORDER NOW
-                </button>
-              </div>
-              <div className="flex flex-col w-[calc(1280px/4-56px)] justify-center items-left gap-2">
-                <Image
-                  src="/donut_sale.png"
-                  alt="donut sale"
-                  width={200}
-                  height={200}
-                  className="mx-auto"
-                />
-                <h5 className="text-quaternary text-2xl font-bold">
-                  One Dozen Mixed Donuts
-                </h5>
-                <p className="text-red-500 text-lg">PHP 500.00</p>
-                <button className="bg-quaternary-dark mx-auto w-60 h-10 rounded-lg flex justify-center items-center cursor-pointer text-white">
-                  ORDER NOW
-                </button>
-              </div>
-              <div className="flex flex-col w-[calc(1280px/4-56px)] justify-center items-left gap-2">
-                <Image
-                  src="/donut_sale.png"
-                  alt="donut sale"
-                  width={200}
-                  height={200}
-                  className="mx-auto"
-                />
-                <h5 className="text-quaternary text-2xl font-bold">
-                  One Dozen Mixed Donuts
-                </h5>
-                <p className="text-red-500 text-lg">PHP 500.00</p>
-                <button className="bg-quaternary-dark mx-auto w-60 h-10 rounded-lg flex justify-center items-center cursor-pointer text-white">
-                  ORDER NOW
-                </button>
-              </div>
-              <div className="flex flex-col w-[calc(1280px/4-56px)] justify-center items-left gap-2">
-                <Image
-                  src="/donut_sale.png"
-                  alt="donut sale"
-                  width={200}
-                  height={200}
-                  className="mx-auto"
-                />
-                <h5 className="text-quaternary text-2xl font-bold">
-                  One Dozen Mixed Donuts
-                </h5>
-                <p className="text-red-500 text-lg">PHP 500.00</p>
-                <button className="bg-quaternary-dark mx-auto w-60 h-10 rounded-lg flex justify-center items-center cursor-pointer text-white">
-                  ORDER NOW
-                </button>
-              </div>
-            </div>
+            <Suspense
+              key={productType}
+              fallback={
+                <>
+                  <div className="w-full h-[4.5rem] mx-auto flex justify-start items-center text-black font-bold overflow-x-auto" />
+                  <div className="w-full h-full bg-primary border-secondary border-b-8 xl:border-8 xl:rounded-md flex justify-center items-center">
+                    <Image
+                      src="/loader.gif"
+                      alt="loader"
+                      width={75}
+                      height={75}
+                      className="mx-auto"
+                    />
+                  </div>
+                </>
+              }
+            >
+              <CustomerProductsTable productType={productType} />
+            </Suspense>
             <div className="hidden absolute overflow-hidden -z-10 h-full w-dvw xl:block before:absolute before:animate-slanting-elements-slow before:h-[200dvw] before:w-[20rem] before:rotate-85 before:aspect-auto before:right-1/2 before:-top-[calc(100dvw-25rem)] before:bg-repeat-y before:overflow-hidden before:bg-[url('/customer_home_circles_1.svg')]" />
           </div>
         </section>
@@ -261,7 +177,7 @@ const page = async () => {
               </li>
             </ul>
           </article>
-          <div className="relative h-[20rem] w-dvw bg-repeat-x bg-contain bg-[url('/brands_bezier_curve_2.svg')]" />
+          <div className="relative w-dvw max-h-[20rem] aspect-[4/1] bg-contain bg-repeat-x bg-[url('/brands_bezier_curve_2.svg')]" />
         </section>
         <section
           id="contacts_section"
@@ -333,36 +249,8 @@ const page = async () => {
           </div>
           <div className="hidden absolute overflow-hidden -z-10 h-full w-dvw xl:block before:absolute before:animate-slanting-elements-slow before:h-[200dvw] before:w-[20rem] before:rotate-90 before:aspect-auto before:right-1/2 before:-top-[calc(100dvw-25rem)] before:bg-repeat-y before:overflow-hidden before:bg-[url('/customer_home_circles_2.svg')]" />
         </section>
+        <Footer />
       </main>
-      <footer className="relative w-screen min-h-30  bg-secondary-dark flex items-center">
-        <div className="absolute w-50 h-40 -top-25 left-0 sm:w-60 sm:h-45 sm:-top-25 lg:w-85 lg:h-60 lg:-top-35">
-          <Image src="/home_donut_3.png" alt="home_donut" fill />
-        </div>
-        <ul className="w-[min(90%,1280px)] max-w-[1280px] mx-auto flex justify-end items-center gap-6">
-          <h5 className="font-bold text-xl">Follow Us</h5>
-          <Link
-            href="https://www.linkedin.com/in/ivanne-dave-bayer-a23b30302/"
-            target="_blank"
-          >
-            <Image
-              src="/linkedin_icon.svg"
-              alt="linkedin_icon"
-              width={35}
-              height={35}
-              className="cursor-pointer"
-            />
-          </Link>
-          <Link href="https://github.com/h4wks123" target="_blank">
-            <Image
-              src="/github_icon.svg"
-              alt="github_icon"
-              width={35}
-              height={35}
-              className="cursor-pointer"
-            />
-          </Link>
-        </ul>
-      </footer>
     </>
   );
 };

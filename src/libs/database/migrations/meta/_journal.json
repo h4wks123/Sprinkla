@@ -5,29 +5,8 @@
     {
       "idx": 0,
       "version": "6",
-      "when": 1745602598125,
-      "tag": "0000_wild_johnny_storm",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "6",
-      "when": 1745609344262,
-      "tag": "0001_quick_komodo",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "6",
-      "when": 1745863271793,
-      "tag": "0002_broad_tarot",
-      "breakpoints": true
-    },
-    {
-      "idx": 3,
-      "version": "6",
-      "when": 1747768833100,
-      "tag": "0003_conscious_warhawk",
+      "when": 1749455486288,
+      "tag": "0000_wonderful_swordsman",
       "breakpoints": true
     }
   ]
