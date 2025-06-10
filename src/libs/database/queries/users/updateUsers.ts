@@ -3,6 +3,7 @@
 import { db } from "../..";
 import { usersTable } from "../../schema/users";
 import { eq, and, ne } from "drizzle-orm";
+import { getServerSession } from "next-auth";
 
 export default async function updateUsers(formData: FormData) {
   const userID = Number(formData.get("userId"));
@@ -12,6 +13,15 @@ export default async function updateUsers(formData: FormData) {
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
   try {
+    const session = await getServerSession();
+
+    if (!session || !session.user?.email || session.user.role === "customer") {
+      return {
+        status: 400,
+        message: "User must be authenticated or logged in.",
+      };
+    }
+    
     if (
       !userType?.trim() ||
       !email?.trim() ||

@@ -17,8 +17,11 @@ export async function createOrders(formData: FormData) {
   try {
     const session = await getServerSession();
 
-    if (!session || !session.user?.email) {
-      return { status: 400, message: "User not authenticated." };
+    if (!session || !session.user?.email || session.user.role === "customer") {
+      return {
+        status: 400,
+        message: "User must be authenticated or logged in.",
+      };
     }
 
     if (!address) {

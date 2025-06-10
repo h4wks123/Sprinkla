@@ -59,7 +59,7 @@ export function Header() {
 
           <UserFormPopups
             onSignOut={async () => {
-              await signOut({ redirect: false });
+              await signOut({ redirect: true, callbackUrl: "/login" });
               toaster(300, `${session.user.email} has successfully logged out`);
             }}
           />
@@ -98,7 +98,7 @@ export function Header() {
           />
           <UserFormPopups
             onSignOut={async () => {
-              await signOut({ redirect: false });
+              await signOut({ redirect: true, callbackUrl: "/login" });
               toaster(300, `${session.user.email} has successfully logged out`);
             }}
           />

@@ -3,6 +3,7 @@
 import { db } from "../..";
 import { productsTable } from "../../schema/products";
 import { eq, and, ne } from "drizzle-orm";
+import { getServerSession } from "next-auth";
 
 export default async function updateProducts(formData: FormData) {
   const productID = Number(formData.get("productId"));
@@ -12,6 +13,15 @@ export default async function updateProducts(formData: FormData) {
   const price = Number(formData.get("price"));
 
   try {
+    const session = await getServerSession();
+
+    if (!session || !session.user?.email || session.user.role === "customer") {
+      return {
+        status: 400,
+        message: "User must be authenticated or logged in.",
+      };
+    }
+    
     if (
       !productType?.trim() ||
       !productName?.trim() ||

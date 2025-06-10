@@ -16,7 +16,7 @@ export default async function insertCart(
   try {
     const session = await getServerSession();
 
-    if (!session || !session.user?.email) {
+    if (!session || !session.user?.email || session.user.role === "employee") {
       return {
         status: 400,
         message: "User must be authenticated or logged in.",

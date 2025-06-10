@@ -3,6 +3,7 @@
 import { db } from "../..";
 import { productsTable } from "../../schema/products";
 import { count, like, eq, and } from "drizzle-orm";
+import { getServerSession } from "next-auth";
 
 const PAGE_SIZE = 10;
 
@@ -14,6 +15,16 @@ export async function printProducts(
   try {
     const offset = (currentPage - 1) * PAGE_SIZE;
     const whereConditions = [];
+    const session = await getServerSession();
+
+    if (!session || !session.user?.email || session.user.role === "customer") {
+      return {
+        status: 400,
+        products: [],
+        productTypes: [],
+        message: "User must be authenticated or logged in.",
+      };
+    }
 
     if (query) {
       whereConditions.push(like(productsTable.product_name, `%${query}%`));
@@ -87,6 +98,15 @@ export async function printProductsByProductType(productType?: string) {
 export async function fetchProductPages(query: string, productType: string) {
   try {
     const whereConditions = [];
+    const session = await getServerSession();
+
+    if (!session || !session.user?.email || session.user.role === "customer") {
+      return {
+        status: 400,
+        totalPages: 0,
+        message: "User must be authenticated or logged in.",
+      };
+    }
 
     if (query) {
       whereConditions.push(like(productsTable.product_name, `%${query}%`));

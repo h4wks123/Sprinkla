@@ -3,12 +3,22 @@
 import { db } from "../..";
 import { productsTable } from "../../schema/products";
 import { eq } from "drizzle-orm";
+import { getServerSession } from "next-auth";
 
 export default async function deleteProducts(formData: FormData) {
   const productID = Number(formData.get("productId"));
   const productName = formData.get("productName") as string;
 
   try {
+    const session = await getServerSession();
+
+    if (!session || !session.user?.email || session.user.role === "customer") {
+      return {
+        status: 400,
+        message: "User must be authenticated or logged in.",
+      };
+    }
+
     if (!productID) {
       return {
         status: 400,
@@ -18,7 +28,7 @@ export default async function deleteProducts(formData: FormData) {
 
     const existingProduct = await db
       .select()
-      .from(productsTable)  
+      .from(productsTable)
       .where(eq(productsTable.product_id, productID));
 
     if (existingProduct.length === 0) {

@@ -3,6 +3,7 @@
 import { db } from "../..";
 import { usersTable } from "../../schema/users";
 import { count, like, eq, and } from "drizzle-orm";
+import { getServerSession } from "next-auth";
 
 const PAGE_SIZE = 10;
 
@@ -14,6 +15,17 @@ export async function printUsers(
   try {
     const offset = (currentPage - 1) * PAGE_SIZE;
     const whereConditions = [];
+    const session = await getServerSession();
+
+    if (!session || !session.user?.email || session.user.role === "customer") {
+      return {
+        status: 400,
+        users: [],
+        userTypes: [],
+        message: "User must be authenticated or logged in.",
+      };
+    }
+
     if (query) {
       whereConditions.push(like(usersTable.email, `%${query}%`));
     }
@@ -51,6 +63,15 @@ export async function printUsers(
 export async function fetchUserPages(query: string, userType: string) {
   try {
     const whereConditions = [];
+    const session = await getServerSession();
+
+    if (!session || !session.user?.email || session.user.role === "customer") {
+      return {
+        status: 400,
+        totalPages: 0,
+        message: "User must be authenticated or logged in.",
+      };
+    }
 
     if (query) {
       whereConditions.push(like(usersTable.email, `%${query}%`));

@@ -11,7 +11,7 @@ export async function printRecentOrders() {
   try {
     const session = await getServerSession();
 
-    if (!session || !session.user.email) {
+    if (!session || !session.user.email || session.user.role === "customer") {
       return {
         status: 400,
         message: "User must be authenticated or logged in.",

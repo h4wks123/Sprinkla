@@ -110,15 +110,18 @@ const page = async (props: {
             <Suspense
               key={productType}
               fallback={
-                <div className="w-full h-full bg-primary border-secondary border-b-8 xl:border-8 xl:rounded-md flex justify-center items-center">
-                  <Image
-                    src="/loader.gif"
-                    alt="loader"
-                    width={75}
-                    height={75}
-                    className="mx-auto"
-                  />
-                </div>
+                <>
+                  <div className="w-full h-[4.5rem] mx-auto flex justify-start items-center text-black font-bold overflow-x-auto" />
+                  <div className="w-full h-full bg-primary border-secondary border-b-8 xl:border-8 xl:rounded-md flex justify-center items-center">
+                    <Image
+                      src="/loader.gif"
+                      alt="loader"
+                      width={75}
+                      height={75}
+                      className="mx-auto"
+                    />
+                  </div>
+                </>
               }
             >
               <CustomerProductsTable productType={productType} />

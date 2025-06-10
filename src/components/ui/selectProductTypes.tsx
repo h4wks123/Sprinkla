@@ -24,19 +24,22 @@ export default function SelectProductTypes({
 
   return (
     <ul className="w-[90%] h-[5rem] mx-auto flex justify-start items-center text-black font-bold overflow-x-auto">
-      {productTypes.map((type) => (
-        <li
-          key={type}
-          onClick={() => handleClick(type)}
-          className={`h-full flex justify-center items-center cursor-pointer px-8 ${
-            currentType === type || (currentType === null && type === "Donuts")
-              ? "bg-tertiary text-tertiary-dark"
-              : ""
-          }`}
-        >
-          {type}
-        </li>
-      ))}
+      {productTypes.map((type, index) => {
+        const isActive =
+          currentType === type || (currentType === null && index === 0);
+
+        return (
+          <li
+            key={type}
+            onClick={() => handleClick(type)}
+            className={`h-full flex justify-center items-center cursor-pointer px-8 ${
+              isActive ? "bg-tertiary text-tertiary-dark" : ""
+            }`}
+          >
+            {type.toUpperCase()}
+          </li>
+        );
+      })}
     </ul>
   );
 }

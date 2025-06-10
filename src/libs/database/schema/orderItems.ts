@@ -8,7 +8,7 @@ export const orderItemsTable = sqliteTable("order_items", {
     .references(() => ordersTable.order_id)
     .notNull(),
   product_type: text("product_type").notNull(),
-  product_name: text("product_name").unique().notNull(),
+  product_name: text("product_name").notNull(),
   price: real("price").notNull(),
   quantity: integer("quantity").notNull(),
 });

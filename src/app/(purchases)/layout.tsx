@@ -1,6 +1,7 @@
 "use server";
 
 import { Header } from "@/components/ui/entry/header";
+import Link from "next/link";
 
 export default async function RootLayout({
   children,
@@ -12,8 +13,8 @@ export default async function RootLayout({
       <Header />
       <nav className="w-full bg-gray-200 border-y-2 border-secondary-dark">
         <div className="w-[min(90%,1280px)] max-w-[1280px] h-13 mx-auto flex flex-wrap justify-between items-center text-black font-bold">
-          <h6>Recent</h6>
-          <h6>History</h6>
+          <Link href="/recent">Recent</Link>
+          <Link href="/history">History</Link>
         </div>
       </nav>
       <section className="relative bg-white w-[90%] max-w-[1640px] mx-auto mt-[4rem]">
