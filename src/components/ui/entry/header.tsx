@@ -48,7 +48,7 @@ export function Header() {
           />
           <Image
             onClick={() => {
-              router.push("/purchases");
+              router.push("/recent");
             }}
             src="/purchases_icon.svg"
             alt="purchases_icon"
