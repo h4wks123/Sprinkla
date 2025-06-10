@@ -46,7 +46,7 @@ export default async function loginUser(
   } catch (error) {
     return {
       status: 500,
-      message: "Internal server error during login.",
+      message: `Internal server error during login: ${error}`,
       id: null,
       role: null,
       email: null,

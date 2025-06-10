@@ -52,6 +52,7 @@ export async function printOrders(query: string, currentPage: number) {
       .limit(PAGE_SIZE)
       .offset(offset);
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const groupedOrders = new Map<number, any>();
 
     for (const row of rawOrders) {
@@ -120,6 +121,7 @@ export async function printUserOrder(currentPage: number) {
       .limit(PAGE_SIZE)
       .offset(offset);
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const groupedOrders = new Map<number, any>();
 
     for (const row of rawOrders) {

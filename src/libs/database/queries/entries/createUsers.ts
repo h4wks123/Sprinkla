@@ -11,7 +11,6 @@ export default async function registerUser(
   contactNumberInput: number
 ) {
   try {
-
     const saltRounds = 10;
     const [checkEmail, hashedPassword] = await Promise.all([
       await db
@@ -39,11 +38,10 @@ export default async function registerUser(
       status: 200,
       message: "Registration successful!",
     };
-  } catch (err) {
-
+  } catch (error) {
     return {
       status: 500,
-      message: "Internal server error during user registration.",
+      message: `Internal server error during user registration: ${error}`,
     };
   }
 }

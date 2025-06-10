@@ -53,6 +53,7 @@ export default async function OrdersTable({
                     </tr>
                   </thead>
                   <tbody>
+                    {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
                     {order.order_items.map((items: any) => (
                       <tr key={items.id} className="h-13 w-full">
                         <td className="w-[250px]">{items.product_name}</td>

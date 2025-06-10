@@ -1,11 +1,9 @@
 "use client";
 
 import React, { useState, ReactNode, FormEvent } from "react";
-import { useSearchParams, usePathname, useRouter } from "next/navigation";
 import Popup from "reactjs-popup";
 import { Button } from "../buttons";
 import type { Variant, Size } from "../../../../types/types";
-import Image from "next/image";
 
 interface HandlerPopupsProps {
   children: ReactNode;
