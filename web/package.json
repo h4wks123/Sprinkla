@@ -6,6 +6,7 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
+    "sse": "node src/libs/service/statusServer.js",
     "lint": "next lint"
   },
   "dependencies": {
@@ -15,8 +16,10 @@
     "bcryptjs": "^3.0.2",
     "class-variance-authority": "^0.7.1",
     "cookie": "^1.0.2",
+    "cors": "^2.8.5",
     "dotenv": "^16.5.0",
     "drizzle-orm": "^0.43.1",
+    "express": "^5.1.0",
     "jose": "^6.0.10",
     "next": "15.3.1",
     "next-auth": "^4.24.11",
