@@ -20,6 +20,7 @@ export async function printRecentOrders() {
       };
     }
 
+    // Get user
     const user = await db
       .select()
       .from(usersTable)
@@ -34,20 +35,15 @@ export async function printRecentOrders() {
       };
     }
 
-    const recentOrderWithItems = await db
-      .select({
-        order: ordersTable,
-        item: orderItemsTable,
-      })
+    // Get the most recent order only
+    const recentOrder = await db
+      .select()
       .from(ordersTable)
       .where(eq(ordersTable.user_id, user[0].user_id))
       .orderBy(desc(ordersTable.timestamp))
-      .innerJoin(
-        orderItemsTable,
-        eq(orderItemsTable.order_id, ordersTable.order_id)
-      );
+      .limit(1);
 
-    if (recentOrderWithItems.length === 0) {
+    if (recentOrder.length === 0) {
       return {
         status: 200,
         message: "No orders found.",
@@ -56,14 +52,18 @@ export async function printRecentOrders() {
       };
     }
 
-    const order = recentOrderWithItems[0].order;
-    const items = recentOrderWithItems.map((entry) => entry.item);
+    // Get all items for the most recent order
+    const recentOrderId = recentOrder[0].order_id;
+    const orderItems = await db
+      .select()
+      .from(orderItemsTable)
+      .where(eq(orderItemsTable.order_id, recentOrderId));
 
     return {
       status: 200,
       message: "Successfully fetched most recent ordered items.",
-      currentOrder: order,
-      currentOrderItems: items,
+      currentOrder: recentOrder[0],
+      currentOrderItems: orderItems,
     };
   } catch (error) {
     return {

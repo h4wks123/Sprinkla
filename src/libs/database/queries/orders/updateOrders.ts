@@ -48,6 +48,15 @@ export default async function updateOrders(formData: FormData) {
       })
       .where(eq(ordersTable.order_id, orderID));
 
+    await fetch("http://localhost:4000/update-status", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        status: productStatus,
+        deliveryId: orderID,
+      }),
+    });
+
     return {
       status: 200,
       message: `Order ${orderID} is now ${productStatus}`,
