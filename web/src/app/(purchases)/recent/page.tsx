@@ -10,7 +10,7 @@ const page = async () => {
   return (
     <section className="w-full bg-primary flex flex-col flex-wrap justify-start gap-6 lg:flex-row">
       <Stepper
-        deliveryId={pendingOrderedItems.currentOrder?.order_id}
+        orderID={pendingOrderedItems.currentOrder?.order_id}
         fetchedStatus={pendingOrderedItems.currentOrder?.status}
       />
       <div className="w-full lg:w-[calc(100%-344px)] border-2 border-secondary-dark rounded-lg">

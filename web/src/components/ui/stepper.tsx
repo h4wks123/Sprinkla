@@ -1,29 +1,20 @@
 "use client";
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { SSEPurchases } from "@/app/(handlers)/purchases/purchases";
 
 export default function Stepper({
-  deliveryId,
+  orderID,
   fetchedStatus,
 }: {
-  deliveryId: number | undefined;
+  orderID: number | undefined;
   fetchedStatus: string | undefined;
 }) {
   const [status, setStatus] = useState(fetchedStatus);
 
   useEffect(() => {
-    const eventSource = new EventSource(
-      `http://localhost:4000/events/${deliveryId}`
-    );
-
-    eventSource.onmessage = (event) => {
-      const data = JSON.parse(event.data);
-      setStatus(data.status);
-      console.log("Received status update:");
-    };
-
-    return () => eventSource.close();
-  }, [deliveryId]);
+    SSEPurchases(orderID, setStatus);
+  }, [orderID]);
 
   return (
     <>

@@ -48,7 +48,7 @@ export default async function updateOrders(formData: FormData) {
       })
       .where(eq(ordersTable.order_id, orderID));
 
-    await fetch("http://localhost:4000/update-status", {
+    await fetch(`${process.env.NEXT_PUBLIC_SSE_DOMAIN}/update-status`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
