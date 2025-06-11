@@ -16,7 +16,7 @@ export default async function Page(props: {
   const { totalPages } = await fetchOrderPages("");
 
   return (
-    <section className="w-full">
+    <section className="w-full border-2 border-secondary-dark rounded-lg">
       <div className="w-full bg-secondary flex flex-wrap items-center justify-between rounded-t-lg p-6 gap-6">
         <h1 className="text-3xl text-black font-bold">ORDERS</h1>
       </div>
@@ -38,7 +38,7 @@ export default async function Page(props: {
           <OrderHistoryTable currentPage={currentPage} />
         </Suspense>
       </div>
-      <div className="w-full flex flex-wrap justify-end items-center p-6">
+      <div className="w-full flex flex-wrap justify-end items-center p-6 border-t border-gray-200">
         <Pagination totalPages={totalPages} />
       </div>
     </section>

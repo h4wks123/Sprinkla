@@ -39,33 +39,36 @@ export default async function OrderHistoryTable({
                 <table className="w-full table-auto text-left text-black">
                   <thead>
                     <tr className="w-full h-13">
-                      <th className="w-[250px]">Product Name</th>
-                      <th className="w-[200px]">Product Type</th>
-                      <th className="w-[100px]">Quantity</th>
-                      <th className="w-[100px]">Price</th>
+                      <th className="w-[250px] px-4">Product Name</th>
+                      <th className="w-[200px] px-4">Product Type</th>
+                      <th className="w-[100px] px-4">Quantity</th>
+                      <th className="w-[100px] px-4">Price</th>
                     </tr>
                   </thead>
                   <tbody>
                     {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
                     {order.order_items.map((items: any) => (
-                      <tr key={items.id} className="h-13 w-full">
-                        <td className="w-[250px]">{items.product_name}</td>
-                        <th className="w-[200px] font-medium">
+                      <tr
+                        key={items.id}
+                        className="h-13 w-full border-y border-gray-200"
+                      >
+                        <td className="w-[250px] px-4">{items.product_name}</td>
+                        <th className="w-[200px] px-4 font-medium">
                           {items.product_type}
                         </th>
-                        <th className="w-[100px] font-medium">
+                        <th className="w-[100px] px-4 font-medium">
                           {items.quantity}
                         </th>
-                        <th className="w-[100px] font-medium">{items.price}</th>
+                        <th className="w-[100px] px-4 font-medium">
+                          {items.price}
+                        </th>
                       </tr>
                     ))}
                   </tbody>
                 </table>
-                <div className="flex justify-between items-end gap-4">
-                  <div className="w-[200px] flex gap-3 text-black font-bold">
-                    <h6>Order Status:</h6>
-                    <p className="font-medium">{order.status}</p>
-                  </div>
+                <div className="px-4 flex gap-3 text-black font-bold">
+                  <h6>Order Status:</h6>
+                  <p className="font-medium">{order.status}</p>
                 </div>
               </ActionFormPopups>
             </td>

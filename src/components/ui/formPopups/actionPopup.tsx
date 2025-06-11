@@ -56,6 +56,7 @@ const ActionFormPopups: React.FC<ActionPopupsProps> = ({
         type="button"
         variant={variant}
         size={size}
+        interaction={"ghost"}
         className="text-white"
         onClick={() => setOpen(true)}
       >

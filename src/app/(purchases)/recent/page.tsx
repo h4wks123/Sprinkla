@@ -313,7 +313,7 @@ const page = async () => {
             </tbody>
           </table>
         </div>
-        <div className="w-full flex flex-wrap items-center justify-between rounded-t-lg p-6">
+        <div className="w-full bg-white flex flex-wrap items-center justify-between p-6 border-t border-gray-200 rounded-b-lg">
           <div className="flex gap-4">
             <h6 className="text-black font-bold">Address:</h6>
             <p className="text-black">

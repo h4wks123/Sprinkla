@@ -117,23 +117,33 @@ export function PurchasesHeader() {
     <nav className="h-13 w-full flex bg-gray-200 border-y-2 border-secondary-dark">
       <Link
         href="/recent"
-        className={`w-1/2 flex justify-end items-center font-bold text-2xl pr-40 ${
+        className={`w-1/2 h-full flex ${
           pathname === "/recent"
             ? "bg-tertiary-dark text-white"
             : "bg-gray-200 text-black hover:bg-tertiary"
         }`}
       >
-        RECENT
+        <div className="w-[calc(100%-640px)] " />
+        <div className="w-[640px] flex justify-center items-center">
+          <h3 className="w-1/2 font-bold text-2xl flex justify-center items-center">
+            RECENT
+          </h3>
+        </div>
       </Link>
       <Link
         href="/history"
-        className={`w-1/2 flex justify-start items-center font-bold text-2xl pl-40 ${
+        className={`w-1/2 h-full flex ${
           pathname === "/history"
             ? "bg-tertiary-dark text-white"
             : "bg-gray-200 text-black hover:bg-tertiary"
         }`}
       >
-        HISTORY
+        <div className="w-[640px] flex justify-center items-center">
+          <h3 className="w-1/2 font-bold text-2xl flex justify-center items-center">
+            HISTORY
+          </h3>
+        </div>
+        <div className="w-[calc(100%-640px)] " />
       </Link>
     </nav>
   );
