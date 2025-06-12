@@ -53,7 +53,7 @@ export default async function updateOrders(formData: FormData) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         status: productStatus,
-        deliveryId: orderID,
+        orderId: orderID,
       }),
     });
 
