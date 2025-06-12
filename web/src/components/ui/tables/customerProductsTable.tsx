@@ -7,7 +7,7 @@ import SelectProductTypes from "../selectProductTypes";
 import { Button } from "../buttons";
 import HandlerFormPopups from "../formPopups/handlerPopup";
 import NumberPicker from "../numberPicker";
-import { SubmitProductsForm } from "@/app/(handlers)/cart/storeProduct/products";
+import { SubmitProductsForm } from "@/app/(handlers)/cart/products";
 
 export default async function CustomerProductsTable({
   productType,

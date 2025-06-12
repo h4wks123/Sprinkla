@@ -31,7 +31,7 @@ export default async function OrdersTable({
             key={order.order_id}
             className="h-13 w-full border-y border-secondary-dark hover:bg-gray-200"
           >
-            <td className="pl-4 w-[30%]">{order.user_email}</td>
+            <td className="pl-4 w-[30%]">{order.customer.email}</td>
             <td className="pl-4 w-[30%]">{order.address}</td>
             <td className="pl-4 w-[15%]">{order.status}</td>
             <td className="pl-4 w-[10%]">{order.date}</td>
@@ -45,25 +45,30 @@ export default async function OrdersTable({
                 <input type="hidden" name="orderID" value={order.order_id} />
                 <table className="w-full table-auto text-left text-black">
                   <thead>
-                    <tr className="w-full h-13">
-                      <th className="w-[250px]">Product Name</th>
-                      <th className="w-[200px]">Product Type</th>
-                      <th className="w-[100px]">Quantity</th>
-                      <th className="w-[100px]">Price</th>
+                    <tr className="w-full h-13 px-3">
+                      <th className="w-[250px] px-3">Product Name</th>
+                      <th className="w-[200px] px-3">Product Type</th>
+                      <th className="w-[100px] px-3">Quantity</th>
+                      <th className="w-[100px] px-3">Price</th>
                     </tr>
                   </thead>
                   <tbody>
                     {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
                     {order.order_items.map((items: any) => (
-                      <tr key={items.id} className="h-13 w-full">
-                        <td className="w-[250px]">{items.product_name}</td>
-                        <th className="w-[200px] font-medium">
+                      <tr
+                        key={items.id}
+                        className="h-13 w-full border-y border-gray-200"
+                      >
+                        <td className="w-[250px] px-3">{items.product_name}</td>
+                        <th className="w-[200px] px-3 font-medium">
                           {items.product_type}
                         </th>
-                        <th className="w-[100px] font-medium">
+                        <th className="w-[100px] px-3 font-medium">
                           {items.quantity}
                         </th>
-                        <th className="w-[100px] font-medium">{items.price}</th>
+                        <th className="w-[100px] px-3 font-medium">
+                          {items.price}
+                        </th>
                       </tr>
                     ))}
                   </tbody>
