@@ -40,32 +40,36 @@ export async function printOrders(query: string, currentPage: number) {
       whereConditions.push(eq(ordersTable.user_id, user[0].user_id));
     }
 
-    const rawOrders = await db
+    const limitedOrders = db
       .select()
       .from(ordersTable)
       .where(whereConditions.length > 0 ? and(...whereConditions) : undefined)
+      .limit(PAGE_SIZE)
+      .offset(offset)
+      .as("limited_orders");
+
+    const rawOrders = await db
+      .select()
+      .from(limitedOrders)
       .innerJoin(
         orderItemsTable,
-        eq(ordersTable.order_id, orderItemsTable.order_id)
+        eq(limitedOrders.order_id, orderItemsTable.order_id)
       )
-      .innerJoin(usersTable, eq(usersTable.user_id, ordersTable.user_id))
-      .limit(PAGE_SIZE)
-      .offset(offset);
+      .innerJoin(usersTable, eq(limitedOrders.user_id, usersTable.user_id));
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const groupedOrders = new Map<number, any>();
+    const groupedOrders = new Map();
 
-    for (const row of rawOrders) {
-      const { orders: order, order_items: item, users: user } = row;
+    for (const entry of rawOrders) {
+      const orderId = entry.limited_orders.order_id;
 
-      if (!groupedOrders.has(order.order_id)) {
-        groupedOrders.set(order.order_id, {
-          ...order,
-          user_email: user.email,
-          order_items: [item],
+      if (!groupedOrders.has(orderId)) {
+        groupedOrders.set(orderId, {
+          ...entry.limited_orders,
+          customer: entry.users,
+          order_items: [entry.order_items],
         });
       } else {
-        groupedOrders.get(order.order_id).order_items.push(item);
+        groupedOrders.get(orderId).order_items.push(entry.order_items);
       }
     }
 
@@ -109,32 +113,36 @@ export async function printUserOrder(currentPage: number) {
       };
     }
 
-    const rawOrders = await db
+    const limitedOrders = db
       .select()
       .from(ordersTable)
       .where(eq(ordersTable.user_id, user[0].user_id))
+      .limit(PAGE_SIZE)
+      .offset(offset)
+      .as("limited_orders");
+
+    const rawOrders = await db
+      .select()
+      .from(limitedOrders)
       .innerJoin(
         orderItemsTable,
-        eq(ordersTable.order_id, orderItemsTable.order_id)
+        eq(limitedOrders.order_id, orderItemsTable.order_id)
       )
-      .innerJoin(usersTable, eq(usersTable.user_id, ordersTable.user_id))
-      .limit(PAGE_SIZE)
-      .offset(offset);
+      .innerJoin(usersTable, eq(limitedOrders.user_id, usersTable.user_id));
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const groupedOrders = new Map<number, any>();
+    const groupedOrders = new Map();
 
-    for (const row of rawOrders) {
-      const { orders: order, order_items: item, users: user } = row;
+    for (const entry of rawOrders) {
+      const orderId = entry.limited_orders.order_id;
 
-      if (!groupedOrders.has(order.order_id)) {
-        groupedOrders.set(order.order_id, {
-          ...order,
-          user_email: user.email,
-          order_items: [item],
+      if (!groupedOrders.has(orderId)) {
+        groupedOrders.set(orderId, {
+          ...entry.limited_orders,
+          customer: entry.users,
+          order_items: [entry.order_items],
         });
       } else {
-        groupedOrders.get(order.order_id).order_items.push(item);
+        groupedOrders.get(orderId).order_items.push(entry.order_items);
       }
     }
 

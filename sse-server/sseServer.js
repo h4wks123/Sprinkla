@@ -12,12 +12,12 @@ app.use(
 );
 app.use(express.json());
 
-// Map to track SSE connections per deliveryId
-const clients = new Map(); // deliveryId => res (SSE response object)
+// Map to track SSE connections per orderId
+const clients = new Map(); // orderId => res (SSE response object)
 
-// 👂 Client subscribes to updates for a specific deliveryId
-app.get("/events/:deliveryId", (req, res) => {
-  const deliveryId = String(req.params.deliveryId);
+// 👂 Client subscribes to updates for a specific orderId
+app.get("/events/:orderId", (req, res) => {
+  const orderId = String(req.params.orderId);
 
   // SSE headers
   res.setHeader("Content-Type", "text/event-stream");
@@ -26,20 +26,20 @@ app.get("/events/:deliveryId", (req, res) => {
   res.flushHeaders();
 
   // Store the connection
-  if (!clients.has(deliveryId)) {
-    clients.set(deliveryId, new Set());
+  if (!clients.has(orderId)) {
+    clients.set(orderId, new Set());
   }
-  clients.get(deliveryId).add(res);
-  console.log(`Client connected for deliveryId: ${deliveryId}`);
+  clients.get(orderId).add(res);
+  console.log(`Client connected for orderId: ${orderId}`);
 
   // Cleanup on client disconnect
   req.on("close", () => {
-    const clientSet = clients.get(deliveryId);
+    const clientSet = clients.get(orderId);
     if (clientSet) {
       clientSet.delete(res);
-      console.log(`❌ Client disconnected for deliveryId: ${deliveryId}`);
+      console.log(`❌ Client disconnected for orderId: ${orderId}`);
       if (clientSet.size === 0) {
-        clients.delete(deliveryId); // clean up
+        clients.delete(orderId); // clean up
       }
     }
   });
@@ -47,8 +47,8 @@ app.get("/events/:deliveryId", (req, res) => {
 
 // 🔁 Endpoint to push delivery status updates
 app.post("/update-status", (req, res) => {
-  const deliveryId = String(req.body.deliveryId);
-  const clientSet = clients.get(deliveryId);
+  const orderId = String(req.body.orderId);
+  const clientSet = clients.get(orderId);
   const status = req.body.status;
 
   if (clientSet && clientSet.size > 0) {
@@ -56,10 +56,10 @@ app.post("/update-status", (req, res) => {
       clientRes.write(`data: ${JSON.stringify({ status })}\n\n`);
     });
     console.log(
-      `📤 Pushed status "${status}" to all clients of deliveryId: ${deliveryId}`
+      `📤 Pushed status "${status}" to all clients of orderId: ${orderId}`
     );
   } else {
-    console.log(`⚠️ No active clients for deliveryId: ${deliveryId}`);
+    console.log(`⚠️ No active clients for orderId: ${orderId}`);
   }
 
   res.status(200).send("Update attempted");

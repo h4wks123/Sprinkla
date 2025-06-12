@@ -1,4 +1,4 @@
-"use orders";
+"use server";
 
 import { printUserOrder } from "@/libs/database/queries/orders/displayOrders";
 import ActionFormPopups from "../formPopups/actionPopup";
