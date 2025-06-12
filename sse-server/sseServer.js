@@ -4,7 +4,12 @@ const cors = require("cors");
 const app = express();
 const PORT = 4000;
 
-app.use(cors());
+app.use(
+  cors({
+    origin: ["https://sprinkla.vercel.app", "http://localhost:3000"],
+    credentials: true,
+  })
+);
 app.use(express.json());
 
 // Map to track SSE connections per deliveryId
