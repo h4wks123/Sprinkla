@@ -1,6 +1,6 @@
 "use server";
 
-import React, { Suspense } from "react";
+import React from "react";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -97,27 +97,9 @@ const page = async (props: {
           </article>
         </section>
         <section id="products_section" className="relative w-screen mb-20">
-          <div className="relative w-full max-w-[1280px] h-[50rem] mx-auto flex flex-col justify-center items-center rounded-none bg-secondary xl:rounded-md">
-            <Suspense
-              key={productType}
-              fallback={
-                <>
-                  <div className="w-full h-[4.5rem] mx-auto flex justify-start items-center text-black font-bold overflow-x-auto" />
-                  <div className="w-full h-full bg-background border-secondary border-b-8 xl:border-8 xl:rounded-md flex justify-center items-center">
-                    <Image
-                      src="/loader.gif"
-                      alt="loader"
-                      width={75}
-                      height={75}
-                      className="mx-auto"
-                    />
-                  </div>
-                </>
-              }
-            >
-              <CustomerProductsTable productType={productType} />
-            </Suspense>
-            <div className="hidden absolute overflow-hidden -z-10 h-full w-dvw xl:block before:absolute before:animate-slanting-elements-slow before:h-[200dvw] before:w-[20rem] before:rotate-85 before:aspect-auto before:right-1/2 before:-top-[calc(100dvw-25rem)] before:bg-repeat-y before:overflow-hidden before:bg-[url('/customer_home_circles_1.svg')]" />
+          <div className="relative w-[90%] max-w-[1280px] mx-auto flex flex-col justify-center sm:flex-row">
+            <CustomerProductsTable productType={productType} />
+            <div className="hidden absolute overflow-hidden -z-10 h-full w-dvw xl:block before:absolute before:animate-slanting-elements-slow before:h-[202dvw] before:w-[20rem] before:rotate-85 before:aspect-auto before:right-1/2 before:-top-[calc(100dvw-25rem)] before:bg-repeat-y before:overflow-hidden before:bg-[url('/customer_home_circles_1.svg')]" />
           </div>
         </section>
         <section id="sponsors_section" className="relative w-screen mb-20">

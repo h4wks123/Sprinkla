@@ -21,8 +21,8 @@ const UserFormPopups: React.FC<UserFormPopupsProps> = ({ onSignOut }) => {
       <Image
         src="/user-circle_icon.svg"
         alt="users_circle"
-        width={30}
-        height={30}
+        width={35}
+        height={35}
         className="cursor-pointer"
         onClick={() => setOpen(true)}
       />

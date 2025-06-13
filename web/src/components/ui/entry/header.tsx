@@ -16,7 +16,7 @@ export function Header() {
   const router = useRouter();
 
   return (
-    <header className="sticky top-0 bg-background w-full h-[4rem] z-50">
+    <header className="sticky top-0 bg-background opacity-95 w-full h-[4rem] z-50 shadow-lg">
       <header className="w-[min(90%,1280px)] max-w-[1280px] h-full mx-auto flex justify-between items-center">
         <Image
           src="/sprinkla_logo.svg"
@@ -42,18 +42,18 @@ export function Header() {
               }}
               src="/home_icon.svg"
               alt="home_icon"
-              width={30}
-              height={30}
+              width={35}
+              height={35}
               className="cursor-pointer"
             />
             <Image
               onClick={() => {
                 router.push("/cart");
               }}
-              src="/cart_icon.svg"
+              src="/cart_icon_dark.svg"
               alt="cart_icon"
-              width={30}
-              height={30}
+              width={35}
+              height={35}
               className="cursor-pointer"
             />
             <Image
@@ -62,8 +62,8 @@ export function Header() {
               }}
               src="/purchases_icon.svg"
               alt="purchases_icon"
-              width={30}
-              height={30}
+              width={35}
+              height={35}
               className="cursor-pointer"
             />
 
@@ -71,7 +71,7 @@ export function Header() {
               onSignOut={async () => {
                 await signOut({ redirect: true, callbackUrl: "/login" });
                 toaster(
-                  300,
+                  350,
                   `${session.user.email} has successfully logged out`
                 );
               }}
@@ -85,8 +85,8 @@ export function Header() {
               }}
               src="/users_icon.svg"
               alt="users_icon"
-              width={30}
-              height={30}
+              width={35}
+              height={35}
               className="cursor-pointer"
             />
             <Image
@@ -95,8 +95,8 @@ export function Header() {
               }}
               src="/products.svg"
               alt="products"
-              width={30}
-              height={30}
+              width={35}
+              height={35}
               className="cursor-pointer"
             />
             <Image
@@ -105,15 +105,15 @@ export function Header() {
               }}
               src="/orders_icon.svg"
               alt="orders_icon"
-              width={30}
-              height={30}
+              width={35}
+              height={35}
               className="cursor-pointer"
             />
             <UserFormPopups
               onSignOut={async () => {
                 await signOut({ redirect: true, callbackUrl: "/login" });
                 toaster(
-                  300,
+                  350,
                   `${session.user.email} has successfully logged out`
                 );
               }}

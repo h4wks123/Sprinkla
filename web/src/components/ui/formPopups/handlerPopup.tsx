@@ -4,21 +4,28 @@ import React, { useState, ReactNode, FormEvent } from "react";
 import Popup from "reactjs-popup";
 import { Button } from "../buttons";
 import type { Variant, Size } from "../../../../types/types";
+import Image from "next/image";
 
 interface HandlerPopupsProps {
   children: ReactNode;
   handler?: (e: FormEvent<HTMLFormElement>) => Promise<void>;
   message?: string;
+  interaction?: "default" | "ghost" | "store" | null;
   variant?: Variant;
   size?: Size;
+  text?: "default" | "small" | null;
+  cart?: true;
 }
 
 const HandlerFormPopups: React.FC<HandlerPopupsProps> = ({
   children,
   handler,
   message,
+  interaction,
   variant,
   size,
+  text,
+  cart,
 }) => {
   const [open, setOpen] = useState(false);
   const closeModal = () => setOpen(false);
@@ -29,10 +36,15 @@ const HandlerFormPopups: React.FC<HandlerPopupsProps> = ({
         type="button"
         variant={variant}
         size={size}
-        className="text-white"
+        interaction={interaction}
+        text={text}
+        className="group text-background"
         onClick={() => setOpen(true)}
       >
-        {message}
+        {message}{" "}
+        {cart ? (
+          <div className="w-5 h-5 bg-[url('/cart_icon_light.svg')] group-hover:bg-[url('/cart_icon_dark.svg')] bg-contain bg-no-repeat bg-center transition-all duration-300" />
+        ) : null}
       </Button>
 
       <Popup

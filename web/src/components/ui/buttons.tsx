@@ -10,7 +10,7 @@ const buttonVariants = cva(
     variants: {
       //text, color, and roundness
       variant: {
-        default: "bg-accent rounded-md",
+        default: "bg-accent rounded-4xl",
         success: "bg-post rounded-md",
         update: "bg-put rounded-md",
         delete: "bg-delete rounded-md",
@@ -27,11 +27,12 @@ const buttonVariants = cva(
       },
       text: {
         default: "text-md font-semibold",
-        small: "text-md font-md",
+        small: "text-sm font-semibold",
       },
       // hover and UX focus
       interaction: {
         default: "hover:scale-110 ease-in-out",
+        store: "hover:bg-accent-light hover:text-accent",
         ghost: "",
       },
       position: {
