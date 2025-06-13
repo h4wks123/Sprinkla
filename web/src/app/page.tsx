@@ -26,25 +26,13 @@ const page = async (props: {
           id="landing_view_section"
           className="relative w-[100vw] mb-20 h-[calc(42rem+min(175px,20vw))] xl:h-[calc(100dvh-4rem)]"
         >
-          <div className="relative h-[calc(100%-87.5px)]">
+          <div className="relative h-[calc(100%-87.5px)] border-b-4 border-b-accent">
             <Image
               src="/home_donut_video.gif"
               alt="my gif"
               fill
-              style={{
-                zIndex: "-10",
-                objectFit: "cover",
-              }}
+              className="-z-10 object-cover"
             />
-            <div className="static w-[min(90%,1280px)] mx-auto md:relative">
-              <Image
-                src="/sprinkla_logo.svg"
-                alt="spinkla_logo"
-                width={350}
-                height={350}
-                className="absolute top-[10%] left-1/2 -translate-1/2 md:left-0 md:-translate-x-0"
-              />
-            </div>
             <div
               className="absolute w-screen left-1/2 -translate-x-1/2 flex justify-center items-center gap-4 md:gap-12"
               style={{ bottom: "calc(-1 * min(87.5px, 15vw))" }}
@@ -72,7 +60,7 @@ const page = async (props: {
           className="relative w-screen flex flex-col justify-center mb-20 xl:flex-row xl:justify-start"
         >
           <div className="relative flex">
-            <div className="relative bg-tertiary  md:w-full md:h-[40rem] xl:animate-push-extra-large xl:w-[calc(50vw-640px)]" />
+            <div className="relative bg-primary  md:w-full md:h-[40rem] xl:animate-push-extra-large xl:w-[calc(50vw-640px)]" />
             <div className="animate-push-small relative w-[85vw] h-[85vw] aspect-square mr-[15%] md:w-[40rem] md:h-[40rem] md:animate-push-medium xl:animate-none">
               <Image
                 src="/home_donut_2.png"
@@ -82,26 +70,29 @@ const page = async (props: {
                 className="animate-shake-soft absolute z-10"
               />
               <Image
-                src="/customer_home_bezier_curve_1.png"
+                src="/customer_home_beizer_curve_1.svg"
                 alt="cutsomer_home_bezier_curve_1"
-                quality={100}
                 fill
-                className="absolute"
+                className="absolute object-cover w-full h-full overflow-visible"
               />
             </div>
           </div>
           <article className="relative flex flex-col gap-6 mt-20 xl:mt-0 xl:gap-8 xl:w-[min(90%,1280px)] xl:absolute xl:left-1/2 xl:top-1/2 xl:-translate-1/2">
             <h1
-              className="text-purple-logo text-center font-bold tracking-tight text-[50px] md:text-[60px] xl:text-right xl:text-[80px]"
+              className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent text-center font-bold tracking-tight text-[50px] md:text-[60px] xl:text-right xl:text-[80px]"
               style={{ fontFamily: "Lucida Handwriting" }}
             >
               Triple the Delight
             </h1>
-            <h4 className="text-brown-logo text-center font-poppins text-[20px] md:text-[25px] xl:text-right xl:text-[33px]">
+
+            <h4 className="text-charcoal text-center font-poppins text-[20px] md:text-[25px] xl:text-right xl:text-[33px]">
               THREE BRANCHES ACROSS
             </h4>
-            <h3 className="text-blue-logo text-center font-playfair font-bold text-[40px] md:text-[58px] xl:text-right xl:text-[76px]">
-              CEBU CITY
+            <h3
+              id="font-effect"
+              className="text-center font-bold text-[40px] md:text-[58px] xl:text-right xl:text-[76px]"
+            >
+              Cebu City
             </h3>
           </article>
         </section>
@@ -112,7 +103,7 @@ const page = async (props: {
               fallback={
                 <>
                   <div className="w-full h-[4.5rem] mx-auto flex justify-start items-center text-black font-bold overflow-x-auto" />
-                  <div className="w-full h-full bg-primary border-secondary border-b-8 xl:border-8 xl:rounded-md flex justify-center items-center">
+                  <div className="w-full h-full bg-background border-secondary border-b-8 xl:border-8 xl:rounded-md flex justify-center items-center">
                     <Image
                       src="/loader.gif"
                       alt="loader"

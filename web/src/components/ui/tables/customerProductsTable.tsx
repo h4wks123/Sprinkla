@@ -23,7 +23,7 @@ export default async function CustomerProductsTable({
       <div className="w-full h-16 bg-tertiary-dark flex justify-center items-center text-3xl font-bold tracking-wider uppercase overflow-x-auto md:hidden">
         {finalProductType}
       </div>
-      <div className="w-full h-full overflow-y-auto flex flex-wrap items-start justify-center rounded-none p-6 gap-6 border-secondary border-b-8 bg-primary xl:border-x-8 xl:rounded-md">
+      <div className="w-full h-full overflow-y-auto flex flex-wrap items-start justify-center rounded-none p-6 gap-6 border-secondary border-b-8 bg-background xl:border-x-8 xl:rounded-md">
         {products.map((product, i) => (
           <div
             key={i}

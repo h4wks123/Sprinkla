@@ -8,7 +8,7 @@ const page = async () => {
   const pendingOrderedItems = await printRecentOrders();
 
   return (
-    <section className="w-full bg-primary flex flex-col flex-wrap justify-start gap-6 lg:flex-row">
+    <section className="w-full bg-background flex flex-col flex-wrap justify-start gap-6 lg:flex-row">
       <Stepper
         orderID={pendingOrderedItems.currentOrder?.order_id}
         fetchedStatus={pendingOrderedItems.currentOrder?.status}

@@ -10,7 +10,7 @@ const buttonVariants = cva(
     variants: {
       //text, color, and roundness
       variant: {
-        default: "bg-quaternary-dark rounded-md",
+        default: "bg-accent rounded-md",
         success: "bg-post rounded-md",
         update: "bg-put rounded-md",
         delete: "bg-delete rounded-md",
