@@ -10,14 +10,15 @@ import toaster from "../toaster";
 import UserFormPopups from "../formPopups/userPopup";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { SidebarTrigger } from "@/components/shadcn/sidebar";
 
 export function Header() {
   const { data: session } = useSession();
   const router = useRouter();
 
   return (
-    <header className="sticky top-0 bg-background opacity-95 w-full h-[4rem] z-50 shadow-lg">
-      <header className="w-[min(90%,1280px)] max-w-[1280px] h-full mx-auto flex justify-between items-center">
+    <header className="fixed top-0 bg-background opacity-95 w-full h-[4rem] z-50 shadow-lg">
+      <nav className="w-[min(90%,1280px)] max-w-[1280px] h-full mx-auto flex justify-between items-center">
         <Image
           src="/sprinkla_logo.svg"
           alt="spinkla_logo"
@@ -35,47 +36,52 @@ export function Header() {
             SIGN IN
           </Button>
         ) : session!.user!.role === "customer" ? (
-          <div className="flex justify-center items-center gap-6">
-            <Image
-              onClick={() => {
-                router.push("/");
-              }}
-              src="/home_icon.svg"
-              alt="home_icon"
-              width={35}
-              height={35}
-              className="cursor-pointer"
-            />
-            <Image
-              onClick={() => {
-                router.push("/cart");
-              }}
-              src="/cart_icon_dark.svg"
-              alt="cart_icon"
-              width={35}
-              height={35}
-              className="cursor-pointer"
-            />
-            <Image
-              onClick={() => {
-                router.push("/recent");
-              }}
-              src="/purchases_icon.svg"
-              alt="purchases_icon"
-              width={35}
-              height={35}
-              className="cursor-pointer"
-            />
+          <div>
+            <div className="hidden sm:flex sm:justify-center sm:items-center sm:gap-6">
+              <Image
+                onClick={() => {
+                  router.push("/");
+                }}
+                src="/home_icon.svg"
+                alt="home_icon"
+                width={35}
+                height={35}
+                className="cursor-pointer"
+              />
+              <Image
+                onClick={() => {
+                  router.push("/cart");
+                }}
+                src="/cart_icon_dark.svg"
+                alt="cart_icon"
+                width={35}
+                height={35}
+                className="cursor-pointer"
+              />
+              <Image
+                onClick={() => {
+                  router.push("/recent");
+                }}
+                src="/purchases_icon.svg"
+                alt="purchases_icon"
+                width={35}
+                height={35}
+                className="cursor-pointer"
+              />
 
-            <UserFormPopups
-              onSignOut={async () => {
-                await signOut({ redirect: true, callbackUrl: "/login" });
-                toaster(
-                  350,
-                  `${session.user.email} has successfully logged out`
-                );
-              }}
-            />
+              <UserFormPopups
+                onSignOut={async () => {
+                  await signOut({ redirect: true, callbackUrl: "/login" });
+                  toaster(
+                    350,
+                    `${session.user.email} has successfully logged out`
+                  );
+                }}
+              />
+            </div>
+            <div className="sm:hidden">
+              <SidebarTrigger />
+            </div>
           </div>
         ) : (
           <div className="flex justify-center items-center gap-6">
@@ -120,7 +126,7 @@ export function Header() {
             />
           </div>
         )}
-      </header>
+      </nav>
     </header>
   );
 }

@@ -46,7 +46,7 @@ const triviaFacts = [
   },
 ];
 
-export default function TestimonialCarousel() {
+export default function TriviaCarousel() {
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
   const [count, setCount] = useState(0);
@@ -70,11 +70,14 @@ export default function TestimonialCarousel() {
           {Array.from({ length: 5 }).map((_, index) => (
             <CarouselItem
               key={index}
-              className={cn("basis-[calc(80%)] sm:basis-1/2 xl:basis-1/3", {})}
+              className={cn(
+                "relative basis-[calc(80%)] sm:basis-1/2 xl:basis-1/3",
+                {}
+              )}
             >
               <Card
                 className={cn(
-                  "transition-transform duration-500 h-auto",
+                  "h-[25rem] transition-transform duration-500 overflow-y-scroll sm:h-[30rem] lg:h-[35rem]",
                   index === 1 || index === 4
                     ? "bg-primary"
                     : index === 2
@@ -86,8 +89,8 @@ export default function TestimonialCarousel() {
                   }
                 )}
               >
-                <CardContent className="flex flex-col aspect-square justify-start items-center px-6">
-                  <div className="relative w-full h-1/2 aspect-square">
+                <CardContent className="flex flex-col justify-start items-center px-6">
+                  <div className="relative w-full h-[10rem] aspect-square sm:h-[12rem] lg:h-[15rem]">
                     <Image
                       src={`${triviaFacts[index].image}`}
                       alt="trivia_donut"
@@ -105,10 +108,26 @@ export default function TestimonialCarousel() {
                     <h4 className="text-center font-bold text-lg sm:text-xl lg:text-3xl">
                       {triviaFacts[index].title}
                     </h4>
-                    <p className="text-md">{triviaFacts[index].description}</p>
+                    <p className="text-sm sm:text-md">
+                      {triviaFacts[index].description}
+                    </p>
                   </article>
                 </CardContent>
               </Card>
+              <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 flex items-center justify-center gap-2 sm:hidden">
+                {Array.from({ length: count }).map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => api?.scrollTo(index)}
+                    className={cn(
+                      "h-3.5 w-3.5 rounded-full border-2 border-accent",
+                      {
+                        "bg-accent": current === index + 1,
+                      }
+                    )}
+                  />
+                ))}
+              </div>
             </CarouselItem>
           ))}
         </CarouselContent>
@@ -117,17 +136,6 @@ export default function TestimonialCarousel() {
           <CarouselNext className="absolute bg-accent-light hover:bg-accent-hover" />
         </div>
       </Carousel>
-      <div className="mt-4 flex items-center justify-center gap-2 sm:hidden">
-        {Array.from({ length: count }).map((_, index) => (
-          <button
-            key={index}
-            onClick={() => api?.scrollTo(index)}
-            className={cn("h-3.5 w-3.5 rounded-full border-2 border-accent", {
-              "bg-accent": current === index + 1,
-            })}
-          />
-        ))}
-      </div>
     </div>
   );
 }

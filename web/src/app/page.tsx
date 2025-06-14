@@ -8,7 +8,7 @@ import Link from "next/link";
 import { Header } from "@/components/ui/entry/header";
 import Footer from "@/components/ui/entry/footer";
 import LogoCarousel from "@/components/ui/carousels/logoCarousel";
-import TestimonialCarousel from "@/components/ui/carousels/testimonial";
+import TriviaCarousel from "@/components/ui/carousels/trivia";
 
 import CustomerProductsTable from "@/components/ui/tables/customerProductsTable";
 
@@ -152,7 +152,7 @@ const page = async (props: {
               Learn some delicious facts too!
             </p>
           </article>
-          <TestimonialCarousel />
+          <TriviaCarousel />
         </section>
         <Footer />
       </main>
