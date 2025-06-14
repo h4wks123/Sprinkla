@@ -65,15 +65,16 @@ export default function TriviaCarousel() {
 
   return (
     <div className="relative mx-auto w-full max-w-[1640px] flex flex-col justify-center items-center">
-      <Carousel setApi={setApi} className="w-full" opts={{ loop: true }}>
+      <Carousel
+        setApi={setApi}
+        className="relative w-full"
+        opts={{ loop: true }}
+      >
         <CarouselContent className="py-3">
           {Array.from({ length: 5 }).map((_, index) => (
             <CarouselItem
               key={index}
-              className={cn(
-                "relative basis-[calc(80%)] sm:basis-1/2 xl:basis-1/3",
-                {}
-              )}
+              className={cn("basis-[calc(80%)] sm:basis-1/2 xl:basis-1/3", {})}
             >
               <Card
                 className={cn(
@@ -114,26 +115,23 @@ export default function TriviaCarousel() {
                   </article>
                 </CardContent>
               </Card>
-              <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 flex items-center justify-center gap-2 sm:hidden">
-                {Array.from({ length: count }).map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => api?.scrollTo(index)}
-                    className={cn(
-                      "h-3.5 w-3.5 rounded-full border-2 border-accent",
-                      {
-                        "bg-accent": current === index + 1,
-                      }
-                    )}
-                  />
-                ))}
-              </div>
             </CarouselItem>
           ))}
         </CarouselContent>
         <div className="absolute top-1/2 left-1/2 -translate-1/2 hidden sm:block sm:w-[calc(50%-64px)] xl:w-[calc(33%-64px)]">
           <CarouselPrevious className="absolute bg-accent-light hover:bg-accent-hover" />
           <CarouselNext className="absolute bg-accent-light hover:bg-accent-hover" />
+        </div>
+        <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 flex items-center justify-center gap-2 sm:hidden">
+          {Array.from({ length: count }).map((_, index) => (
+            <button
+              key={index}
+              onClick={() => api?.scrollTo(index)}
+              className={cn("h-3.5 w-3.5 rounded-full border-2 border-accent", {
+                "bg-accent": current === index + 1,
+              })}
+            />
+          ))}
         </div>
       </Carousel>
     </div>

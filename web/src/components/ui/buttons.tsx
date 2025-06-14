@@ -15,6 +15,8 @@ const buttonVariants = cva(
         update: "bg-put rounded-md",
         delete: "bg-delete rounded-md",
         white: "bg-white rounded-md",
+        outline:
+          "border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50",
         ghost: "",
       },
       // size, margins, and paddings
