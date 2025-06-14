@@ -21,10 +21,10 @@ export default async function CustomerProductsTable({
     <>
       <SelectProductTypes productTypes={productTypes} />
       <div className="flex flex-col w-full h-[50rem] rounded-lg">
-        <div className="w-full bg-accent pl-6 py-10 font-bold text-3xl rounded-t-none sm:rounded-tr-lg">
+        <div className="w-full bg-accent pl-6 py-10 font-bold text-3xl rounded-none sm:rounded-tr-lg">
           {finalProductType.toUpperCase()}
         </div>
-        <div className="w-full h-full flex flex-wrap justify-center overflow-y-auto gap-3 p-6 border-x-2 border-b-2 border-accent bg-background rounded-b-4xl sm:justify-normal">
+        <div className="w-full h-full flex flex-wrap justify-center overflow-y-auto gap-3 p-6 border-x-none border-b-2 border-accent bg-background rounded-none sm:rounded-b-4xl sm:border-x-2 sm:justify-normal">
           {products.map((product, i) => (
             <div key={i} className="w-[10rem] h-[15rem]">
               <Image

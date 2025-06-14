@@ -7,6 +7,8 @@ import Link from "next/link";
 
 import { Header } from "@/components/ui/entry/header";
 import Footer from "@/components/ui/entry/footer";
+import LogoCarousel from "@/components/ui/carousels/logoCarousel";
+import TestimonialCarousel from "@/components/ui/carousels/testimonial";
 
 import CustomerProductsTable from "@/components/ui/tables/customerProductsTable";
 
@@ -97,15 +99,18 @@ const page = async (props: {
           </article>
         </section>
         <section id="products_section" className="relative w-screen mb-20">
-          <div className="relative w-[90%] max-w-[1280px] mx-auto flex flex-col justify-center sm:flex-row">
+          <div className="relative w-full max-w-[1280px] mx-auto flex flex-col justify-center sm:w-[90%] sm:flex-row">
             <CustomerProductsTable productType={productType} />
             <div className="hidden absolute overflow-hidden -z-10 h-full w-dvw xl:block before:absolute before:animate-slanting-elements-slow before:h-[202dvw] before:w-[20rem] before:rotate-85 before:aspect-auto before:right-1/2 before:-top-[calc(100dvw-25rem)] before:bg-repeat-y before:overflow-hidden before:bg-[url('/customer_home_circles_1.svg')]" />
           </div>
         </section>
-        <section id="sponsors_section" className="relative w-screen mb-20">
+        <section
+          id="sponsors_section"
+          className="relative w-screen mb-20 overflow-x-clip overflow-y-visible"
+        >
           <div className="flex justify-start overflow-y-visible overflow-x-clip">
-            <div className="bg-quaternary relative w-[calc(50%-640px)] h-[12rem]" />
-            <div className="relative bg-quaternary w-full max-w-[1280px] h-[12rem] bg-top bg-contain bg-no-repeat bg-[url('/brands_bezier_curve_1.svg')]">
+            <div className="bg-primary relative w-[calc(50%-640px)] h-[12rem]" />
+            <div className="relative bg-primary w-full max-w-[1280px] h-[12rem] bg-top bg-contain bg-no-repeat bg-[url('/brands_bezier_curve_1.svg')]">
               <Image
                 src="/home_donut_1.png"
                 alt="home_donut_1"
@@ -114,113 +119,40 @@ const page = async (props: {
                 className="animate-shake-hard absolute -top-[8rem] left-0"
               />
             </div>
-            <div className="bg-quaternary w-[calc(50%-640px)] h-[12rem]" />
+            <div className="bg-primary w-[calc(50%-640px)] h-[12rem]" />
           </div>
-          <article className="w-screen bg-quaternary pb-20 flex flex-col gap-10">
-            <h3 className="w-[min(90%,1280px)] max-w-[1280px] mx-auto text-tertiary-dark font-bold text-center text-5xl sm:text-7xl">
-              SPONSORS
-            </h3>
-            <ul className="w-[min(90%,1280px)] max-w-[1280px] mx-auto flex flex-wrap justify-center gap-10">
-              <li className="relative w-[calc(1280px/4-2rem)] h-[calc(1280px/4-2rem)]">
-                <Image
-                  src="/dunkin_donuts_logo.png"
-                  alt="dunkin_donuts_logo"
-                  fill
-                  quality={100}
-                  className="cursor-pointer duration-300 ease-in-out hover:scale-110"
-                />
-              </li>
-              <li className="relative w-[calc(1280px/4-2rem)] h-[calc(1280px/4-2rem)]">
-                <Image
-                  src="/starbucks_logo.png"
-                  alt="starbucks_logo"
-                  fill
-                  quality={100}
-                  className="cursor-pointer duration-300 ease-in-out hover:scale-110"
-                />
-              </li>
-              <li className="relative w-[calc(1280px/4-2rem)] h-[calc(1280px/4-2rem)]">
-                <Image
-                  src="/krispy_kreme_logo.png"
-                  alt="krispy_kreme_logo"
-                  fill
-                  quality={100}
-                  className="cursor-pointer duration-300 ease-in-out hover:scale-110"
-                />
-              </li>
-            </ul>
-          </article>
-          <div className="relative w-dvw max-h-[20rem] aspect-[4/1] bg-contain bg-repeat-x bg-[url('/brands_bezier_curve_2.svg')]" />
+          <div className="w-screen bg-primary py-20 flex flex-col gap-10">
+            <article className="flex flex-col gap-3">
+              <h3
+                className="w-[min(90%,1280px)] max-w-[1280px] mx-auto text-charcoal font-bold text-center text-5xl sm:text-8xl"
+                style={{ fontFamily: "Lucida Handwriting" }}
+              >
+                SPONSORS
+              </h3>
+              <p className="mx-auto text-charcoal text-lg font-semibold">
+                Technologies used in making of this project...
+              </p>
+            </article>
+            <LogoCarousel />
+          </div>
+          <div className="relative w-dvw max-h-[20rem] min-w-[640px] aspect-[4/1] bg-contain bg-repeat-x bg-[url('/brands_bezier_curve_2.svg')]" />
         </section>
         <section
           id="contacts_section"
-          className="relative w-screen mb-20 flex justify-center"
+          className="relative w-screen mb-20 flex flex-col justify-center items-center"
         >
-          <div className="w-[min(90%,1280px)] max-w-[1280px] mx-auto bg-secondary flex flex-col justify-between items-center rounded-lg lg:flex-row lg:pr-10">
-            <div className="relative w-full h-full aspect-square">
-              <Image
-                src="/sprinkla_restaurant.jpg"
-                alt="sprinkla_restaurant"
-                fill
-                className="absolute rounded-t-md lg:rounded-l-md lg:rounded-t-none"
-              />
-            </div>
-            <article className="w-full max-w-[640px] text-black flex flex-col items-left justify-center gap-4 p-10 pb-20 lg:max-w-none lg:pl-15 lg:py-10 lg:pr-0 ">
-              <div className="flex items-center gap-3">
-                <Image
-                  src="/touch_icon.svg"
-                  alt="touch_icon"
-                  width={35}
-                  height={35}
-                />
-                <h3 className="font-bold text-xl">Let`s Get In Touch</h3>
-              </div>
-              <h6>
-                Or just reach me out to{" "}
-                <Link
-                  href="mailto:ivannebayer@gmail.com"
-                  className="cursor-pointer text-blue-700 border-b-1"
-                >
-                  ivannebayer@gmail.com
-                </Link>
-              </h6>
-              <div className="flex items-center gap-3">
-                <Image
-                  src="/phone_icon.svg"
-                  alt="phone_icon"
-                  width={35}
-                  height={35}
-                />
-                <h3 className="font-bold text-xl">Delivery Numbers</h3>
-              </div>
-              <ul className="flex flex-wrap gap-x-8 gap-y-4">
-                <li>
-                  <div className="text-tertiary-dark font-semibold">
-                    Robinsons Galleria, Cebu City
-                  </div>
-                  <div>(32) 123-79000</div>
-                </li>
-                <li>
-                  <div className="text-tertiary-dark font-semibold">
-                    SM Seaside, Cebu City
-                  </div>
-                  <div>(32) 777-50001</div>
-                </li>
-                <li>
-                  <div className="text-tertiary-dark font-semibold">
-                    Ayala Malls, Cebu City
-                  </div>
-                  <div>(32) 123-79000</div>
-                </li>
-              </ul>
-              <p className="font-light">
-                Delivery service for Sprinkla is available in Cebu only. A
-                minimum order of Php 350 is required to proceed with any
-                transaction
-              </p>
-            </article>
-          </div>
-          <div className="hidden absolute overflow-hidden -z-10 h-full w-dvw xl:block before:absolute before:animate-slanting-elements-slow before:h-[200dvw] before:w-[20rem] before:rotate-90 before:aspect-auto before:right-1/2 before:-top-[calc(100dvw-25rem)] before:bg-repeat-y before:overflow-hidden before:bg-[url('/customer_home_circles_2.svg')]" />
+          <article className="w-[min(90%,1280px)] mx-auto flex flex-col items-center justify-center gap-3 mb-10">
+            <h3
+              className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent text-center text-5xl sm:text-8xl"
+              style={{ fontFamily: "Lucida Handwriting" }}
+            >
+              DONUT JUST EAT
+            </h3>
+            <p className="mx-auto text-charcoal text-lg font-semibold">
+              Learn some delicious facts too!
+            </p>
+          </article>
+          <TestimonialCarousel />
         </section>
         <Footer />
       </main>
