@@ -11,10 +11,10 @@ const buttonVariants = cva(
       //text, color, and roundness
       variant: {
         default: "bg-accent rounded-4xl",
-        success: "bg-post rounded-md",
-        update: "bg-put rounded-md",
-        delete: "bg-delete rounded-md",
-        white: "bg-white rounded-md",
+        success: "bg-post rounded-4xl",
+        update: "bg-put rounded-4xl",
+        delete: "bg-delete rounded-4xl",
+        white: "bg-white rounded-4xl",
         outline:
           "border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50",
         ghost: "",

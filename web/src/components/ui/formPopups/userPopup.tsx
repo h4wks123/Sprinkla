@@ -33,7 +33,7 @@ const UserFormPopups: React.FC<UserFormPopupsProps> = ({ onSignOut }) => {
         modal
         overlayStyle={{ background: "rgba(0, 0, 0, 0.5)" }}
       >
-        <form className="relative bg-white p-6 rounded-xl shadow-md max-w-md mx-auto flex flex-col gap-4">
+        <form className="relative bg-background p-6 rounded-xl shadow-md max-w-md mx-auto flex flex-col gap-4">
           <button
             type="button"
             onClick={closeModal}

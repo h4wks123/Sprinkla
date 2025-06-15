@@ -15,6 +15,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/shadcn/sidebar";
+import { Separator } from "@/components/shadcn/separator";
 
 export function AppSidebar() {
   const { data: session } = useSession();
@@ -50,21 +51,26 @@ export function AppSidebar() {
     <Sidebar side="right">
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>
-            {isCustomer
-              ? "Customer Menu"
-              : isEmployee
-              ? "Employee Menu"
-              : "Application"}
+          <SidebarGroupLabel className="flex flex-col items-start gap-4 mt-2 pl-2">
+            <h6>
+              {isCustomer
+                ? "Customer Menu"
+                : isEmployee
+                ? "Employee Menu"
+                : "Application"}
+            </h6>
+            <h6>Email: {session?.user.email}</h6>
+            <h6>Contact Number: {session?.user.contactNumber}</h6>
           </SidebarGroupLabel>
           <SidebarGroupContent>
+            <Separator />
             <SidebarMenu>
               {menuItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
+                  <SidebarMenuButton asChild className="rounded-none">
                     <button
                       onClick={() => router.push(item.route)}
-                      className="flex items-center gap-3 w-full p-2 hover:bg-muted rounded-md cursor-pointer"
+                      className="flex items-center gap-3 w-full p-2 py-6 cursor-pointer"
                     >
                       <Image
                         src={item.src}
@@ -78,7 +84,8 @@ export function AppSidebar() {
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
-              <SidebarMenuItem>
+              <Separator className="mb-4" />
+              <SidebarMenuItem className="px-2">
                 <Button
                   onClick={handleSignOut}
                   size="full"

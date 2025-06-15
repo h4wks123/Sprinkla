@@ -56,7 +56,7 @@ const HandlerFormPopups: React.FC<HandlerPopupsProps> = ({
       >
         <form
           onSubmit={handler}
-          className="relative bg-white p-6 rounded-xl shadow-md max-w-md mx-auto flex flex-col gap-4"
+          className="relative bg-background p-6 rounded-xl shadow-md max-w-md mx-auto flex flex-col gap-4"
         >
           <button
             type="button"

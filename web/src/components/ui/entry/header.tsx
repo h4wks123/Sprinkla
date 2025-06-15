@@ -119,12 +119,12 @@ export function PurchasesHeader() {
   const linkClasses = (path: string) =>
     `w-1/2 h-full flex ${
       pathname === path
-        ? "bg-tertiary-dark text-white"
-        : "bg-gray-200 text-black hover:bg-tertiary"
+        ? "bg-accent text-white"
+        : "bg-primary text-black hover:bg-accent-hover"
     }`;
 
   return (
-    <nav className="flex w-full h-13 bg-gray-200 border-y-2 border-secondary-dark">
+    <nav className="flex w-full h-13 mt-30">
       <Link href="/recent" className={linkClasses("/recent")}>
         <div className="w-[calc(100%-640px)]" />
         <div className="flex w-[640px] items-center justify-center">

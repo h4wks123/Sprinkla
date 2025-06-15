@@ -19,12 +19,12 @@ export default async function Page(props: {
   const { totalPages } = await fetchOrderPages(query);
 
   return (
-    <section className="w-full">
-      <div className="w-full bg-secondary flex flex-wrap items-center justify-between rounded-t-lg p-6 gap-6">
+    <section className="w-full border-accent border-2 rounded-lg">
+      <div className="w-full bg-accent flex flex-wrap items-center justify-between p-6 gap-6">
         <h1 className="text-3xl text-black font-bold">ORDERS</h1>
         <Search placeholder="Search customer name..." />
       </div>
-      <div className="h-[620px] border-secondary-dark border-t overflow-x-auto">
+      <div className="h-[620px] border-accent border-t overflow-x-auto">
         <Suspense
           key={query + currentPage}
           fallback={

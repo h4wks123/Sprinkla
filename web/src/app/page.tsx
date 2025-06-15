@@ -62,8 +62,8 @@ const page = async (props: {
           className="relative w-screen flex flex-col justify-center mb-20 xl:flex-row xl:justify-start"
         >
           <div className="relative flex">
-            <div className="relative bg-primary  md:w-full md:h-[40rem] xl:animate-push-extra-large xl:w-[calc(50vw-640px)]" />
-            <div className="animate-push-small relative w-[85vw] h-[85vw] aspect-square mr-[15%] md:w-[40rem] md:h-[40rem] md:animate-push-medium xl:animate-none">
+            <div className="relative bg-primary  md:w-full md:h-[35rem] xl:animate-push-extra-large xl:w-[calc(50vw-640px)]" />
+            <div className="animate-push-small relative w-[85vw] h-[85vw] aspect-square md:w-[35rem] md:h-[35rem] md:animate-push-medium xl:animate-none">
               <Image
                 src="/home_donut_2.png"
                 alt="home_donut_2"
@@ -75,13 +75,13 @@ const page = async (props: {
                 src="/customer_home_beizer_curve_1.svg"
                 alt="cutsomer_home_bezier_curve_1"
                 fill
-                className="absolute object-cover w-full h-full overflow-visible"
+                className="absolute w-[85vw] h-[85vw] object-contain overflow-visible md:h-[35rem] md:w-[35rem] md:object-cover xl:w-full xl:h-full"
               />
             </div>
           </div>
-          <article className="relative flex flex-col gap-6 mt-20 xl:mt-0 xl:gap-8 xl:w-[min(90%,1280px)] xl:absolute xl:left-1/2 xl:top-1/2 xl:-translate-1/2">
+          <article className="relative flex flex-col gap-6 mt-10 sm:mt-20 xl:mt-0 xl:gap-8 xl:w-[min(90%,1280px)] xl:absolute xl:left-1/2 xl:top-1/2 xl:-translate-1/2">
             <h1
-              className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent text-center font-bold tracking-tight text-[50px] md:text-[60px] xl:text-right xl:text-[80px]"
+              className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent text-center font-bold tracking-tight text-[50px] md:text-[60px] xl:text-right xl:text-[80px] xl:pr-6"
               style={{ fontFamily: "Lucida Handwriting" }}
             >
               Triple the Delight
@@ -111,13 +111,14 @@ const page = async (props: {
           <div className="flex justify-start overflow-y-visible overflow-x-clip">
             <div className="bg-primary relative w-[calc(50%-640px)] h-[12rem]" />
             <div className="relative bg-primary w-full max-w-[1280px] h-[12rem] bg-top bg-contain bg-no-repeat bg-[url('/brands_bezier_curve_1.svg')]">
-              <Image
-                src="/home_donut_1.png"
-                alt="home_donut_1"
-                width={350}
-                height={350}
-                className="animate-shake-hard absolute -top-[8rem] left-0"
-              />
+              <div className="absolute left-0 w-[18rem] h-[18rem] -top-[6rem] z-10 overflow-auto">
+                <Image
+                  src="/home_donut_1.png"
+                  alt="home_donut_1"
+                  fill
+                  className="animate-shake-hard"
+                />
+              </div>
             </div>
             <div className="bg-primary w-[calc(50%-640px)] h-[12rem]" />
           </div>
@@ -129,17 +130,17 @@ const page = async (props: {
               >
                 SPONSORS
               </h3>
-              <p className="mx-auto text-charcoal text-lg font-semibold">
+              <p className="mx-auto text-charcoal text-center text-lg font-semibold p-2">
                 Technologies used in making of this project...
               </p>
             </article>
             <LogoCarousel />
           </div>
-          <div className="relative w-dvw max-h-[20rem] min-w-[640px] aspect-[4/1] bg-contain bg-repeat-x bg-[url('/brands_bezier_curve_2.svg')]" />
+          <div className="relative w-dvw max-h-[20rem] min-w-[780px] aspect-[4/1] bg-contain bg-repeat-x bg-[url('/brands_bezier_curve_2.svg')]" />
         </section>
         <section
           id="contacts_section"
-          className="relative w-screen mb-20 flex flex-col justify-center items-center"
+          className="relative w-screen mb-30 flex flex-col justify-center items-center sm:mb-20"
         >
           <article className="w-[min(90%,1280px)] mx-auto flex flex-col items-center justify-center gap-3 mb-10">
             <h3
