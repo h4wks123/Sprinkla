@@ -11,7 +11,7 @@ import {
   CarouselPrevious,
 } from "@/components/shadcn/carousel";
 import { cn } from "@/libs/utils/utils";
-import { type CarouselApi } from "../carousel";
+import type { CarouselApi } from "@/components/shadcn/carousel";
 
 const triviaFacts = [
   {
