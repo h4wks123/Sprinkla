@@ -19,11 +19,11 @@ export default function SelectProductTypes({
     } else {
       newParams.set("productType", type);
     }
-    replace(`${pathname}?${newParams.toString()}#products_section`);
+    replace(`${pathname}?${newParams.toString()}`, { scroll: false });
   }
 
   return (
-    <ul className="w-[90%] h-[5rem] mx-auto flex justify-start items-center text-black font-bold overflow-x-auto">
+    <ul className="w-full bg-accent-light flex justify-start text-accent font-semibold overflow-auto rounded-t-lg rounded-b-none sm:rounded-t-none  sm:rounded-l-lg sm:flex-col sm:w-[15rem] sm:h-[47rem]">
       {productTypes.map((type, index) => {
         const isActive =
           currentType === type || (currentType === null && index === 0);
@@ -32,8 +32,10 @@ export default function SelectProductTypes({
           <li
             key={type}
             onClick={() => handleClick(type)}
-            className={`h-full flex justify-center items-center cursor-pointer px-8 ${
-              isActive ? "bg-tertiary text-tertiary-dark" : ""
+            className={`cursor-pointer px-8 py-6 hover:bg-accent-hover ${
+              isActive
+                ? "bg-accent-hover text-tertiary-dark font-bold"
+                : "font-semibold"
             }`}
           >
             {type.toUpperCase()}

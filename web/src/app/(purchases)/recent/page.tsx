@@ -8,13 +8,13 @@ const page = async () => {
   const pendingOrderedItems = await printRecentOrders();
 
   return (
-    <section className="w-full bg-primary flex flex-col flex-wrap justify-start gap-6 lg:flex-row">
+    <section className="w-full bg-background flex flex-col flex-wrap justify-start gap-6 lg:flex-row">
       <Stepper
         orderID={pendingOrderedItems.currentOrder?.order_id}
         fetchedStatus={pendingOrderedItems.currentOrder?.status}
       />
-      <div className="w-full lg:w-[calc(100%-344px)] border-2 border-secondary-dark rounded-lg">
-        <div className="w-full bg-secondary flex flex-wrap items-center justify-between rounded-t-lg p-6 gap-6">
+      <div className="w-full lg:w-[calc(100%-344px)] border-2 border-accent rounded-lg">
+        <div className="w-full bg-accent flex flex-wrap items-center justify-between p-6 gap-6">
           <h1 className="text-3xl text-black font-bold">MOST RECENT ORDER</h1>
         </div>
         <div className="h-[480px] w-full bg-white overflow-auto">

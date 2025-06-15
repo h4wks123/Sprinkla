@@ -32,7 +32,7 @@ const Register = () => {
           router
         )
       }
-      className="bg-secondary absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] max-w-[540px] rounded-md flex flex-col items-center pb-12 shadow-xl/30"
+      className="bg-secondary text-charcoal font-medium absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] max-w-[540px] rounded-md flex flex-col items-center pb-12 shadow-xl/30"
     >
       <div className="relative w-full h-48 lg:h-64">
         <Image
@@ -88,13 +88,15 @@ const Register = () => {
           <h6 className="text-red-600 text-xs">{contactNumberInputMessage}</h6>
         ) : null}
       </div>
-      <Button type="submit">Register</Button>
+      <Button type="submit" className="text-white">
+        Register
+      </Button>
       <h6 className="font-light text-sm mt-6">
         Already a member?
         <Link
           href="/login"
           onClick={(e) => e.stopPropagation()}
-          className="ml-2 text-blue-700 hover:underline"
+          className="ml-2 text-accent hover:underline"
         >
           Sign In
         </Link>

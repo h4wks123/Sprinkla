@@ -75,7 +75,7 @@ const ActionFormPopups: React.FC<ActionPopupsProps> = ({
       >
         <form
           onSubmit={handleSubmit}
-          className={`relative bg-white p-6 rounded-xl shadow-md mx-auto flex flex-col gap-4 max-w-md ${
+          className={`relative bg-background p-6 rounded-xl shadow-md mx-auto flex flex-col gap-4 max-w-md ${
             overflow ? "max-w-[650px]" : ""
           }`}
         >
