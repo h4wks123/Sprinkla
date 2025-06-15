@@ -50,9 +50,9 @@ const page = async (props: {
                 className="w-[min(175px,30vw)] h-[min(175px,30vw)] bg-cover bg-[url('/brands_icon_light.svg')] cursor-pointer duration-300 ease-in-out hover:bg-[url('/brands_icon_dark.svg')] hover:scale-125"
               />
               <Link
-                href="#contacts_section"
+                href="#faqs_section"
                 scroll={true}
-                className="w-[min(175px,30vw)] h-[min(175px,30vw)] bg-cover bg-[url('/contact_icon_light.svg')] cursor-pointer duration-300 ease-in-out hover:bg-[url('/contact_icon_dark.svg')] hover:scale-125"
+                className="w-[min(175px,30vw)] h-[min(175px,30vw)] bg-cover bg-[url('/faq_icon_light.svg')] cursor-pointer duration-300 ease-in-out hover:bg-[url('/faq_icon_dark.svg')] hover:scale-125"
               />
             </div>
           </div>
@@ -139,7 +139,7 @@ const page = async (props: {
           <div className="relative w-dvw max-h-[20rem] min-w-[780px] aspect-[4/1] bg-contain bg-repeat-x bg-[url('/brands_bezier_curve_2.svg')]" />
         </section>
         <section
-          id="contacts_section"
+          id="faqs_section"
           className="relative w-screen mb-30 flex flex-col justify-center items-center sm:mb-20"
         >
           <article className="w-[min(90%,1280px)] mx-auto flex flex-col items-center justify-center gap-3 mb-10">
