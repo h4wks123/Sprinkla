@@ -3,9 +3,9 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-![alt text](https://github.com/h4wks123/Sprinkla/blob/main/web/public/sprinkla_logo.png "SPRINKLA Logo") 
+![alt text](web/public/sprinkla_logo.png "SPRINKLA Logo") 
   
-  <h3 align="center">SPRINKLA</h3>
+  <h1 align="center">SPRINKLA</h1>
   
   <p align="center">
     A sophisticated end to end donut delivery system with real time updates!
