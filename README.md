@@ -71,13 +71,13 @@ This section lists the main languages, libraries, and tools used to build the pr
 
 * [![Node.js](https://img.shields.io/badge/Node.js-339933?logo=node.js\&logoColor=white)](https://nodejs.org/)
 * [![Express.js](https://img.shields.io/badge/Express.js-404d59?logo=express\&logoColor=white)](https://expressjs.com/)
-* [![Drizzle ORM](https://img.shields.io/badge/Drizzle_C5F74F?logo=drizzle\&logoColor=000000)](https://orm.drizzle.team/)
-* [![Turso](https://img.shields.io/badge/Turso-4FF8D2.svg?style=for-the-badge\&logo=sqlite\&logoColor=black)](https://turso.tech/)
+* [![Drizzle ORM](https://img.shields.io/badge/Drizzle-C5F74F.svg?style=for-the-badge&logo=Drizzle&logoColor=black)](https://orm.drizzle.team/)
+* [![Turso](https://img.shields.io/badge/Turso-4FF8D2.svg?style=for-the-badge&logo=Turso&logoColor=black)](https://turso.tech/)
 
 #### 🚀 Hosting & Deployment
 
 * [![Vercel](https://img.shields.io/badge/Vercel-000000.svg?logo=vercel\&logoColor=white)](https://vercel.com/)
-* [![Render](https://img.shields.io/badge/Render-46E3B7?style=for-the-badge\&logo=render\&logoColor=black)](https://render.com/)
+* [![Render](https://img.shields.io/badge/Render-000000.svg?style=for-the-badge&logo=Render&logoColor=white)](https://render.com/)
 
 #### 📦 Package Manager
 
