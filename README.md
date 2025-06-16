@@ -15,8 +15,6 @@
 
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
 Sprinkla is a conceptual delivery tracking system built to demonstrate my full stack development skills. The project features real-time delivery status updates using Server-Sent Events (SSE), simulating how modern logistics platforms track and display order progress. While Sprinkla isn't tied to a real business or live data, it showcases my ability to design scalable architecture, implement real-time communication, and build responsive user interfaces. From backend APIs and authentication to frontend state management and UI, the entire system was built from scratch using modern tools like Next.js, TypeScript, and Turso.
 
 <!-- TOOLS, LANGUAGES, AND FRAMEWORKS -->
