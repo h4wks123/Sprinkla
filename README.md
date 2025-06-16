@@ -3,8 +3,8 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-![LOGO](/web/public/sprinkla_logo.svg)
-
+![LOGO](https://github.com/h4wks123/Sprinkla/blob/main/web/public/sprinkla_logo.svg)
+  
   <h3 align="center">Best-README-Template</h3>
 
   <p align="center">
