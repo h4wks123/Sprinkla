@@ -3,7 +3,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-![alt text](web/public/sprinkla_logo.png "SPRINKLA Logo") 
+![web/public/sprinkla_logo.png](https://github.com/h4wks123/Sprinkla/blob/main/web/public/sprinkla_logo.png)
   
   <h1 align="center">SPRINKLA</h1>
   
