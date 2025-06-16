@@ -49,35 +49,46 @@
 
 Sprinkla is a conceptual delivery tracking system built to demonstrate my full stack development skills. The project features real-time delivery status updates using Server-Sent Events (SSE), simulating how modern logistics platforms track and display order progress. While Sprinkla isn't tied to a real business or live data, it showcases my ability to design scalable architecture, implement real-time communication, and build responsive user interfaces. From backend APIs and authentication to frontend state management and UI, the entire system was built from scratch using modern tools like Next.js, TypeScript, and Turso.
 
-### Built With
+### 🚧 Built With
 
-This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
+This section lists the main languages, libraries, and tools used to build the project.
 
-Programming Languages:
-- [![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=000)](#)
-- [![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=fff)](#)
-Front End:
-- [![HTML](https://img.shields.io/badge/HTML-%23E34F26.svg?logo=html5&logoColor=white)](#)
-- [![CSS](https://img.shields.io/badge/CSS-639?logo=css&logoColor=fff)](#)
-- [![Next.js](https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)](https://nextjs.org/)
-- [![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org/)
-- [![TailwindCSS](https://img.shields.io/badge/Tailwind%20CSS-%2338B2AC.svg?logo=tailwind-css&logoColor=white)](#)
-- [![shadcn/ui](https://img.shields.io/badge/shadcn%2Fui-000?logo=shadcnui&logoColor=fff)](#)
-Back End:
-- [![NodeJS](https://img.shields.io/badge/Node.js-6DA55F?logo=node.js&logoColor=white)](#)
-- [![Express.js](https://img.shields.io/badge/Express.js-%23404d59.svg?logo=express&logoColor=%2361DAFB)](#)
-- [![Drizzle](https://img.shields.io/badge/Drizzle-C5F74F?logo=drizzle&logoColor=000)](#)
-- [![turso](https://img.shields.io/badge/Turso-4FF8D2.svg?style=for-the-badge&logo=Turso&logoColor=black)](#)
-Hosting and Deployment:
-- [![Vercel](https://img.shields.io/badge/Vercel-%23000000.svg?logo=vercel&logoColor=white)](#)
-- [![render](https://img.shields.io/badge/Render-000000.svg?style=for-the-badge&logo=Render&logoColor=white)](#)
-Package Manager:
-- [![npm](https://img.shields.io/badge/npm-CB3837?logo=npm&logoColor=fff)](#)
-- [![Vite](https://img.shields.io/badge/Vite-646CFF?logo=vite&logoColor=fff)](#)
-Tools:
-- [![Visual Studio Code](https://custom-icon-badges.demolab.com/badge/Visual%20Studio%20Code-0078d7.svg?logo=vsc&logoColor=white)](#)
-- [![Figma](https://img.shields.io/badge/Figma-F24E1E?logo=figma&logoColor=white)](#)
-- [![Canva](https://img.shields.io/badge/Canva-%2300C4CC.svg?&logo=Canva&logoColor=white)](#)
+#### 🧠 Programming Languages
+
+* [![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript\&logoColor=000)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+* [![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript\&logoColor=fff)](https://www.typescriptlang.org/)
+
+#### 🎨 Front End
+
+* [![HTML](https://img.shields.io/badge/HTML5-E34F26.svg?logo=html5\&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
+* [![CSS](https://img.shields.io/badge/CSS3-264de4?logo=css3\&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
+* [![React](https://img.shields.io/badge/React-20232A?style=for-the-badge\&logo=react\&logoColor=61DAFB)](https://reactjs.org/)
+* [![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge\&logo=nextdotjs\&logoColor=white)](https://nextjs.org/)
+* [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC.svg?logo=tailwind-css\&logoColor=white)](https://tailwindcss.com/)
+* [![shadcn/ui](https://img.shields.io/badge/shadcn%2Fui-000000?logo=vercel\&logoColor=white)](https://ui.shadcn.dev)
+
+#### 🛠️ Back End
+
+* [![Node.js](https://img.shields.io/badge/Node.js-339933?logo=node.js\&logoColor=white)](https://nodejs.org/)
+* [![Express.js](https://img.shields.io/badge/Express.js-404d59?logo=express\&logoColor=white)](https://expressjs.com/)
+* [![Drizzle ORM](https://img.shields.io/badge/Drizzle_C5F74F?logo=drizzle\&logoColor=000000)](https://orm.drizzle.team/)
+* [![Turso](https://img.shields.io/badge/Turso-4FF8D2.svg?style=for-the-badge\&logo=sqlite\&logoColor=black)](https://turso.tech/)
+
+#### 🚀 Hosting & Deployment
+
+* [![Vercel](https://img.shields.io/badge/Vercel-000000.svg?logo=vercel\&logoColor=white)](https://vercel.com/)
+* [![Render](https://img.shields.io/badge/Render-46E3B7?style=for-the-badge\&logo=render\&logoColor=black)](https://render.com/)
+
+#### 📦 Package Manager
+
+* [![npm](https://img.shields.io/badge/npm-CB3837?logo=npm\&logoColor=white)](https://www.npmjs.com/)
+* [![Vite](https://img.shields.io/badge/Vite-646CFF?logo=vite\&logoColor=fff)](https://vitejs.dev/)
+
+#### 🧰 Tools
+
+* [![VS Code](https://img.shields.io/badge/VS_Code-007ACC?logo=visualstudiocode\&logoColor=white)](https://code.visualstudio.com/)
+* [![Figma](https://img.shields.io/badge/Figma-F24E1E?logo=figma\&logoColor=white)](https://www.figma.com/)
+* [![Canva](https://img.shields.io/badge/Canva-00C4CC?logo=canva\&logoColor=white)](https://www.canva.com/)
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
