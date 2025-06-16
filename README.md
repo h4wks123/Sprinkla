@@ -1,11 +1,9 @@
 <a id="readme-top"></a>
 
-[![LinkedIn][linkedin-shield]][linkedin-url]
-
 <!-- PROJECT LOGO -->
 <br />
 <div align="center"> https://github.com/h4wks123/Sprinkla/blob/feat/read-me/web/public/sprinkla_logo.svg
-  <a href="https://github.com/h4wks123/Sprinkla/tree/feat/read-me">
+  <a href="https://github.com/h4wks123/Sprinkla">
     <img src="/web/public/sprinkla_logo.svg" alt="Logo" width="80" height="80">
   </a>
 
