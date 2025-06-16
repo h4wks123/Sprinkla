@@ -49,10 +49,9 @@ This section lists the main languages, libraries, and tools used to build the pr
 - [![Vercel](https://img.shields.io/badge/Vercel-000000.svg?logo=vercel&logoColor=white)](https://vercel.com/)
 - [![Render](https://img.shields.io/badge/Render-000000.svg?style=for-the-badge&logo=Render&logoColor=white)](https://render.com/)
 
-#### 📦 Package Manager and Build Tools
+#### 📦 Package Manager
 
 - [![npm](https://img.shields.io/badge/npm-CB3837?logo=npm&logoColor=white)](https://www.npmjs.com/)
-- [![Vite](https://img.shields.io/badge/Vite-646CFF?logo=vite&logoColor=fff)](https://vitejs.dev/)
 
 #### 🧰 Tools
 
