@@ -3,9 +3,11 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center"> https://github.com/h4wks123/Sprinkla/blob/feat/read-me/web/public/sprinkla_logo.svg
+<p align="center">
   <a href="https://github.com/h4wks123/Sprinkla">
-    <img src="/web/public/sprinkla_logo.svg" alt="Logo" width="80" height="80">
+    <img src="./public/sprinkla_logo.svg" width="80" height="80" alt="Sprinkla Logo"/>
   </a>
+</p>
 
   <h3 align="center">Best-README-Template</h3>
 
