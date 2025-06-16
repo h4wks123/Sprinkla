@@ -3,7 +3,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-![LOGO](https://github.com/h4wks123/Sprinkla/blob/main/web/public/sprinkla_logo.svg)
+[![LOGO]](https://github.com/h4wks123/Sprinkla/blob/main/web/public/sprinkla_logo.svg)
   
   <h3 align="center">SPRINKLA</h3>
   
@@ -14,32 +14,6 @@
     <br />
   </p>
 </div>
-
-<!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
-  </ol>
-</details>
 
 <!-- ABOUT THE PROJECT -->
 
@@ -156,19 +130,21 @@ You can reach me through the following platforms:
 
 [![LinkedIn](https://custom-icon-badges.demolab.com/badge/LinkedIn-0A66C2?logo=linkedin-white\&logoColor=fff)](https://www.linkedin.com/in/ivanne-dave-bayer-a23b30302/)  
 [![Gmail](https://img.shields.io/badge/Gmail-D14836?logo=gmail\&logoColor=white)](mailto:ivannebayer@gmail.com)  
-[![GitHub](https://github.com/h4wks123) 
+[![GitHub](https://img.shields.io/badge/GitHub-%23121011.svg?logo=github&logoColor=white)](https://github.com/h4wks123)
 
 <!-- ACKNOWLEDGMENTS -->
 
-## Acknowledgments
+Here’s an improved and cleaner version of your **Acknowledgments** section:
 
-Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
+---
 
-- [Choose an Open Source License](https://choosealicense.com)
-- [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
-- [Malven's Flexbox Cheatsheet](https://flexbox.malven.co/)
-- [Malven's Grid Cheatsheet](https://grid.malven.co/)
-- [Img Shields](https://shields.io)
-- [GitHub Pages](https://pages.github.com)
-- [Font Awesome](https://fontawesome.com)
-- [React Icons](https://react-icons.github.io/react-icons/search)
+## 🙏 Acknowledgments
+
+Big thanks to the following tools and resources that helped make this project possible:
+
+* [**Tabler Icons**](https://tabler.io/icons) – Simple, customizable SVG icons
+* [**Color Hunt**](https://colorhunt.co/) – Curated color palettes for design inspiration
+* [**Real Time Colors**](https://www.realtimecolors.com/?colors=050315-fbfbfe-2f27ce-dedcff-433bff&fonts=Inter-Inter) – Live preview tool for color and font combinations
+* [**React Toastify**](https://www.npmjs.com/package/react-toastify) – Elegant notification system for React
+* [**React Popup**](https://react-popup.elazizi.com/) – Lightweight popup component for React
+* [**Canva AI Image Generator**](https://www.canva.com/ai-image-generator/) – AI-powered tool for generating images quickly
