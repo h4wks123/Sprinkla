@@ -81,7 +81,7 @@ const page = async (props: {
             </div>
           </div>
           <article className="relative flex flex-col gap-6 mt-10 sm:mt-20 xl:mt-0 xl:gap-8 xl:w-[min(90%,1280px)] xl:absolute xl:left-1/2 xl:top-1/2 xl:-translate-1/2">
-            <h1 className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent text-center font-luckiest font-bold tracking-tight text-[50px] md:text-[60px] xl:text-right xl:text-[70px] xl:pr-1">
+            <h1 className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent text-center font-luckiest font-bold text-[50px] md:text-[60px] xl:text-right xl:text-[70px] xl:pr-1">
               TRIPLE THE DELIGHT
             </h1>
 
@@ -122,7 +122,7 @@ const page = async (props: {
           </div>
           <div className="w-screen bg-primary py-20 flex flex-col gap-10">
             <article className="flex flex-col gap-3">
-              <h3 className="w-[min(90%,1280px)] max-w-[1280px] mx-auto text-charcoal font-luckiest tracking-tight font-bold text-center text-5xl sm:text-8xl">
+              <h3 className="w-[min(90%,1280px)] max-w-[1280px] mx-auto text-charcoal font-luckiest font-bold text-center text-5xl sm:text-8xl">
                 SPONSORS
               </h3>
               <p className="mx-auto text-charcoal text-center text-lg font-semibold p-2">
@@ -138,7 +138,7 @@ const page = async (props: {
           className="relative w-screen mb-30 flex flex-col justify-center items-center sm:mb-20"
         >
           <article className="w-[min(90%,1280px)] mx-auto flex flex-col items-center justify-center gap-3 mb-10">
-            <h3 className="bg-gradient-to-r from-primary to-accent font-luckiest font-bold tracking-tight  bg-clip-text text-transparent text-center text-5xl sm:text-8xl xl:pr-1">
+            <h3 className="bg-gradient-to-r from-primary to-accent font-luckiest font-bold  bg-clip-text text-transparent text-center text-5xl sm:text-8xl xl:pr-1">
               DONUT JUST EAT
             </h3>
             <p className="mx-auto text-charcoal text-lg font-semibold">

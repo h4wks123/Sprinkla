@@ -41,9 +41,6 @@ const HandlerFormPopups: React.FC<HandlerPopupsProps> = ({
         onClick={() => setOpen(true)}
       >
         {message}{" "}
-        {cart === true ? (
-          <div className="w-5 h-5 bg-[url('/cart_icon_light.svg')] group-hover:bg-[url('/cart_icon_dark.svg')] bg-contain bg-no-repeat bg-center transition-all duration-300" />
-        ) : null}
       </Button>
 
       <Popup
