@@ -1,7 +1,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <h1 align="center">SPRINKLA</h1>
+  <h1 align="center">🍩 SPRINKLA 🍩</h1>
   
   <p align="center">
     A sophisticated end to end donut delivery system with real time updates!
