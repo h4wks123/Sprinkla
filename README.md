@@ -8,7 +8,7 @@
   <h3 align="center">SPRINKLA</h3>
   
   <p align="center">
-    A sophisticated end to end delivery system with real time updates!
+    A sophisticated end to end donut delivery system with real time updates!
     <br />
     <a href="https://sprinkla.vercel.app"><strong>View Demo »</strong></a>
     <br />
@@ -146,11 +146,17 @@ Distributed under the Unlicense License. See `LICENSE.txt` for more information.
 
 <!-- CONTACT -->
 
-## Contact
+Here’s a cleaned-up and one-liner version of your `## Contact` section with proper formatting and placeholders for links:
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
+---
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
+## 📬 Contact
+
+You can reach me through the following platforms:
+
+[![LinkedIn](https://custom-icon-badges.demolab.com/badge/LinkedIn-0A66C2?logo=linkedin-white\&logoColor=fff)](https://www.linkedin.com/in/ivanne-dave-bayer-a23b30302/)  
+[![Gmail](https://img.shields.io/badge/Gmail-D14836?logo=gmail\&logoColor=white)](mailto:ivannebayer@gmail.com)  
+[![GitHub](https://github.com/h4wks123) 
 
 <!-- ACKNOWLEDGMENTS -->
 
