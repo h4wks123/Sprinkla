@@ -90,9 +90,6 @@ This section lists the main languages, libraries, and tools used to build the pr
 * [![Figma](https://img.shields.io/badge/Figma-F24E1E?logo=figma\&logoColor=white)](https://www.figma.com/)
 * [![Canva](https://img.shields.io/badge/Canva-00C4CC?logo=canva\&logoColor=white)](https://www.canva.com/)
 
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 <!-- GETTING STARTED -->
 
 ## 🚀 Installation
@@ -147,8 +144,6 @@ Follow these steps to run the project locally:
 
 Distributed under the Unlicense License. See `LICENSE.txt` for more information.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 <!-- CONTACT -->
 
 ## Contact
@@ -156,8 +151,6 @@ Distributed under the Unlicense License. See `LICENSE.txt` for more information.
 Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
 
 Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- ACKNOWLEDGMENTS -->
 
@@ -173,5 +166,3 @@ Use this space to list resources you find helpful and would like to give credit 
 - [GitHub Pages](https://pages.github.com)
 - [Font Awesome](https://fontawesome.com)
 - [React Icons](https://react-icons.github.io/react-icons/search)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
