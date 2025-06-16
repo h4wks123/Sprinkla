@@ -37,15 +37,15 @@ app.get("/events/:orderId", (req, res) => {
     const clientSet = clients.get(orderId);
     if (clientSet) {
       clientSet.delete(res);
-      console.log(`❌ Client disconnected for orderId: ${orderId}`);
+      console.log(`Client disconnected for orderId: ${orderId}`);
       if (clientSet.size === 0) {
-        clients.delete(orderId); // clean up
+        clients.delete(orderId);
       }
     }
   });
 });
 
-// 🔁 Endpoint to push delivery status updates
+// Endpoint to push delivery status updates
 app.post("/update-status", (req, res) => {
   const orderId = String(req.body.orderId);
   const clientSet = clients.get(orderId);
@@ -56,15 +56,15 @@ app.post("/update-status", (req, res) => {
       clientRes.write(`data: ${JSON.stringify({ status })}\n\n`);
     });
     console.log(
-      `📤 Pushed status "${status}" to all clients of orderId: ${orderId}`
+      `Pushed status "${status}" to all clients of orderId: ${orderId}`
     );
   } else {
-    console.log(`⚠️ No active clients for orderId: ${orderId}`);
+    console.log(`No active clients for orderId: ${orderId}`);
   }
 
   res.status(200).send("Update attempted");
 });
 
 app.listen(PORT, () => {
-  console.log(`✅ SSE server listening on http://localhost:${PORT}`);
+  console.log(`SSE server listening on http://localhost:${PORT}`);
 });
