@@ -24,7 +24,6 @@ const HandlerFormPopups: React.FC<HandlerPopupsProps> = ({
   variant,
   size,
   text,
-  cart,
 }) => {
   const [open, setOpen] = useState(false);
   const closeModal = () => setOpen(false);
