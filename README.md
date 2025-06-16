@@ -3,7 +3,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-[![LOGO]](https://github.com/h4wks123/Sprinkla/blob/main/web/public/sprinkla_logo.svg)
+![alt text](https://github.com/h4wks123/Sprinkla/blob/main/web/public/sprinkla_logo.svg "Logo Title Text 1")'
   
   <h3 align="center">SPRINKLA</h3>
   
@@ -16,14 +16,14 @@
 </div>
 
 <!-- ABOUT THE PROJECT -->
-
 ## About The Project
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
 Sprinkla is a conceptual delivery tracking system built to demonstrate my full stack development skills. The project features real-time delivery status updates using Server-Sent Events (SSE), simulating how modern logistics platforms track and display order progress. While Sprinkla isn't tied to a real business or live data, it showcases my ability to design scalable architecture, implement real-time communication, and build responsive user interfaces. From backend APIs and authentication to frontend state management and UI, the entire system was built from scratch using modern tools like Next.js, TypeScript, and Turso.
 
-### 🚧 Built With
+<!-- TOOLS, LANGUAGES, AND FRAMEWORKS -->
+## 🚧 Built With
 
 This section lists the main languages, libraries, and tools used to build the project.
 
@@ -65,7 +65,6 @@ This section lists the main languages, libraries, and tools used to build the pr
 * [![Canva](https://img.shields.io/badge/Canva-00C4CC?logo=canva\&logoColor=white)](https://www.canva.com/)
 
 <!-- GETTING STARTED -->
-
 ## 🚀 Installation
 
 Follow these steps to run the project locally:
@@ -111,19 +110,13 @@ Follow these steps to run the project locally:
    cd ../sse-server
    npm install
    ```
-   
-<!-- LICENSE -->
 
+<!-- LICENSE -->
 ## License
 
 Distributed under the Unlicense License. See `LICENSE.txt` for more information.
 
 <!-- CONTACT -->
-
-Here’s a cleaned-up and one-liner version of your `## Contact` section with proper formatting and placeholders for links:
-
----
-
 ## 📬 Contact
 
 You can reach me through the following platforms:
@@ -133,11 +126,6 @@ You can reach me through the following platforms:
 [![GitHub](https://img.shields.io/badge/GitHub-%23121011.svg?logo=github&logoColor=white)](https://github.com/h4wks123)
 
 <!-- ACKNOWLEDGMENTS -->
-
-Here’s an improved and cleaner version of your **Acknowledgments** section:
-
----
-
 ## 🙏 Acknowledgments
 
 Big thanks to the following tools and resources that helped make this project possible:
