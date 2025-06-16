@@ -1,10 +1,6 @@
-<a id="readme-top"></a>
-
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  ![sprinkla_logo](https://github.com/user-attachments/assets/d15fa004-626a-4e48-8208-fd85b3bcd568)
-
   <h1 align="center">SPRINKLA</h1>
   
   <p align="center">
