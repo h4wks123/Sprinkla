@@ -2,8 +2,8 @@
 
 <!-- PROJECT LOGO -->
 <br />
-<div align="center"> https://github.com/h4wks123/Sprinkla/blob/feat/read-me/web/public/sprinkla_logo.svg
-[![Logo](./public/sprinkla_logo.svg)](https://github.com/h4wks123/Sprinkla)
+<div align="center">
+![LOGO](/web/public/sprinkla_logo.svg)
 
   <h3 align="center">Best-README-Template</h3>
 
