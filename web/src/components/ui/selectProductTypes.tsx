@@ -14,11 +14,9 @@ export default function SelectProductTypes({
 
   function handleClick(type: string) {
     const newParams = new URLSearchParams(searchParams);
-    if (type === currentType) {
-      newParams.delete("productType");
-    } else {
-      newParams.set("productType", type);
-    }
+
+    newParams.set("productType", type);
+
     replace(`${pathname}?${newParams.toString()}`, { scroll: false });
   }
 
@@ -32,7 +30,7 @@ export default function SelectProductTypes({
           <li
             key={type}
             onClick={() => handleClick(type)}
-            className={`cursor-pointer px-8 py-6 hover:bg-accent-hover ${
+            className={`cursor-pointer px-4 py-6 hover:bg-accent-hover ${
               isActive
                 ? "bg-accent-hover text-tertiary-dark font-bold"
                 : "font-semibold"

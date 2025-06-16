@@ -4,8 +4,8 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="relative w-screen min-h-36  bg-primary flex flex-wrap items-center text-charcoal">
-      <ul className="w-[min(90%,1280px)] max-w-[1280px] mx-auto flex flex-wrap justify-center items-center gap-6 sm:justify-between">
+    <footer className="relative w-screen bg-primary flex flex-wrap items-center text-charcoal">
+      <ul className="w-[min(90%,1280px)] max-w-[1280px] mx-auto flex flex-wrap justify-center items-center gap-6 p-6 sm:justify-between">
         <li className="flex justify-center items-center">
           <h6 className="flex flex-nowrap">© By&nbsp;</h6>
           <Link

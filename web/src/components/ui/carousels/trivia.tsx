@@ -78,7 +78,7 @@ export default function TriviaCarousel() {
             >
               <Card
                 className={cn(
-                  "h-[25rem] transition-transform duration-500 overflow-y-scroll sm:h-[30rem] lg:h-[35rem]",
+                  "h-[25rem] transition-transform duration-500 overflow-y-scroll sm:h-[30rem]",
                   index === 1 || index === 4
                     ? "bg-primary"
                     : index === 2
@@ -91,7 +91,7 @@ export default function TriviaCarousel() {
                 )}
               >
                 <CardContent className="flex flex-col justify-start items-center px-6">
-                  <div className="relative w-full h-[10rem] aspect-square sm:h-[12rem] lg:h-[15rem]">
+                  <div className="relative w-full h-[10rem] aspect-square sm:h-[12rem]">
                     <Image
                       src={`${triviaFacts[index].image}`}
                       alt="trivia_donut"
@@ -127,9 +127,12 @@ export default function TriviaCarousel() {
             <button
               key={index}
               onClick={() => api?.scrollTo(index)}
-              className={cn("h-3.5 w-3.5 rounded-full border-2 border-accent", {
-                "bg-accent": current === index + 1,
-              })}
+              className={cn(
+                "h-3.5 w-3.5 rounded-full border-2 border-accent cursor-pointer",
+                {
+                  "bg-accent": current === index + 1,
+                }
+              )}
             />
           ))}
         </div>

@@ -1,9 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Satisfy&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @import "tailwindcss";
 @import "tailwindcss/preflight.css" layer(base);
 @import "tw-animate-css";
-
-@custom-variant dark (&:is(.dark *));
 
 @theme {
   --color-background: #fffcf9;
@@ -20,7 +18,7 @@
   --color-white: #ffffff;
 
   --font-poppins: "Poppins", sans-serif;
-  --font-playfair: "Playfair Display", serif;
+  --font-luckiest: "Luckiest Guy", cursive;
 
   --animate-slanting-elements-slow: slanting-elements-slow 30s linear infinite;
   --animate-slanting-elements-fast: slanting-elements-fast 10s linear infinite;
@@ -149,21 +147,6 @@
 }
 
 :root {
-  /* | Role           | Color Name        | Hex       | Description                                                             |
-| -------------- | ----------------- | --------- | ----------------------------------------------------------------------- |
-| **Background** | **Soft white**    | `#FFFCF9` | A near-white with a warm tone – clean and airy without feeling clinical |
-| **Primary**    | **Donut pink**    | `#F7A4B8` | Soft, warm pink – inviting, playful, and perfect for branding           |
-| **Secondary**  | **Beige**         | `#FBE9D0` | Used in sections/cards – still cozy and on-theme                        |
-| **Accent**     | **Candy blue**    | `#4A90E2` | Crisp and vibrant – great for CTAs, links, or status indicators         |
-| **Text**       | **Deep charcoal** | `#2B2B2B` | High contrast on soft white, easy on the eyes                           | */
-
-  /* --color-primary: #fbf3b9;
-  --color-secondary: #ffdccc;
-  --color-secondary-dark: #a34c32;
-  --color-tertiary: #fdb7ea;
-  --color-tertiary-dark: #fdb7ea;
-  --color-quaternary: #b7b1f2;
-  --color-quaternary-dark: #b7b1f2; */
   --color-background: #fffcf9;
   --color-primary: #f7a4b8;
   --color-secondary: #fbe9d0;
@@ -178,7 +161,7 @@
   --color-delete: #f93e3e;
   --color-white: #ffffff;
   --font-poppins: "Poppins", sans-serif;
-  --font-playfair: "Playfair Display", serif;
+  --font-luckiest: "Luckiest Guy", cursive;
   --sidebar: hsl(0 0% 98%);
   --sidebar-foreground: hsl(240 5.3% 26.1%);
   --sidebar-primary: hsl(240 5.9% 10%);
